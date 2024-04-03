@@ -1,8 +1,17 @@
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import Home from '@/pages/home'
+import Login from '@/pages/login'
+import NotFound from '@/pages/common/NotFound'
+
 function App() {
   return (
-    <div>
-      <h1 className='bg-red-700'>Hello</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='*' element={<NotFound />} />
+      </Routes>
+    </Router>
   )
 }
 
