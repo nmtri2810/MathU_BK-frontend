@@ -1,17 +1,12 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import Home from '@/pages/home'
-import Login from '@/pages/login'
-import NotFound from '@/pages/common/NotFound'
+import { ThemeProvider } from '@material-tailwind/react'
+import AppRoutes from '@/routers/index'
+import { theme } from '@/constants/index'
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </Router>
+    <ThemeProvider value={theme}>
+      <AppRoutes />
+    </ThemeProvider>
   )
 }
 
