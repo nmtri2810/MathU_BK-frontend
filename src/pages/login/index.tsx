@@ -1,10 +1,10 @@
-import { Button } from '@/components/ui/button'
+import { Button } from '@nextui-org/button'
 import React from 'react'
 
 const Login: React.FC = () => {
   return (
     <div>
-      <Button>Button</Button>
+      <Button color='primary'>Button</Button>
     </div>
   )
 }
