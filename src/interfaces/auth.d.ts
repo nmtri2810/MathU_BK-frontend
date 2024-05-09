@@ -1,5 +1,6 @@
 import { NavigateFunction } from 'react-router-dom';
 import { IAction, IResponse } from '.';
+import { IRole } from '@/interfaces/role';
 
 export interface IAuthState {
   user: ILoginUser | null;
@@ -15,7 +16,7 @@ export interface ILoginRequestPayload {
 
 export interface ILoginUser {
   id: number;
-  role_id: number;
+  role: IRole;
   email: string;
   username: string;
   created_at: string;
