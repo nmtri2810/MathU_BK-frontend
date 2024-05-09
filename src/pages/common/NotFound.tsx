@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const NotFound: React.FC = () => {
   return (
@@ -20,7 +20,7 @@ const NotFound: React.FC = () => {
         </div>
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default NotFound
+export default NotFound;

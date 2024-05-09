@@ -1,8 +1,8 @@
-import React from 'react'
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import Home from '@/pages/home'
-import Login from '@/pages/login'
-import NotFound from '@/pages/common/NotFound'
+import React from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Home from '@/pages/home';
+import Login from '@/pages/login';
+import NotFound from '@/pages/common/NotFound';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -13,7 +13,7 @@ const AppRoutes: React.FC = () => {
         <Route path='*' element={<NotFound />} />
       </Routes>
     </Router>
-  )
-}
+  );
+};
 
-export default AppRoutes
+export default AppRoutes;
