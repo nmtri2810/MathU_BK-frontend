@@ -1,8 +1,17 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { LOGIN_REQUEST, loginFailure, loginSuccess } from '@/store/actions/auth';
-import { ILoginAction, ILoginResponse } from '@/interfaces/auth';
+import {
+  LOGIN_REQUEST,
+  LOGOUT_REQUEST,
+  loginFailure,
+  loginSuccess,
+  logoutFailure,
+  logoutSuccess
+} from '@/store/actions/auth';
+import { ILoginAction, ILoginResponse, ILogoutAction, ILogoutResponse } from '@/interfaces/auth';
 import authAPI from '@/api/auth';
 import { toast } from 'sonner';
+import { Path } from '@/constants';
+import { AxiosError } from 'axios';
 
 function* loginSaga(action: ILoginAction) {
   try {
@@ -12,13 +21,36 @@ function* loginSaga(action: ILoginAction) {
     yield put(loginSuccess(response.data));
   } catch (error: unknown) {
     console.log(error);
-    toast.error('Error');
-    yield put(loginFailure());
+
+    if (error instanceof AxiosError) {
+      const message = error.response?.data.error;
+      toast.error(message);
+      yield put(loginFailure());
+    }
+  }
+}
+
+function* logoutSaga(action: ILogoutAction) {
+  try {
+    const { payload } = action;
+    const response: ILogoutResponse = yield call(authAPI.logout);
+    toast.success(response.message);
+    yield put(logoutSuccess());
+    payload.navigate(Path.LOGIN);
+  } catch (error: unknown) {
+    console.log(error);
+
+    if (error instanceof AxiosError) {
+      const message = error.response?.data.error;
+      toast.error(message);
+      yield put(logoutFailure());
+    }
   }
 }
 
 function* watchAuth() {
   yield takeLatest(LOGIN_REQUEST, loginSaga);
+  yield takeLatest(LOGOUT_REQUEST, logoutSaga);
 }
 
 export default watchAuth;

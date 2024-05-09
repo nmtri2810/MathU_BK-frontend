@@ -1,3 +1,4 @@
+import { store } from '@/store/store';
 import axios from 'axios';
 
 const axiosInstance = axios.create({
@@ -10,6 +11,15 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config) => {
+    if (config.headers) {
+      const authInfo = store.getState().auth;
+      const accessToken = authInfo.tokens?.accessToken;
+
+      if (accessToken) {
+        config.headers.Authorization = `Bearer ${accessToken}`;
+      }
+    }
+
     return config;
   },
   (error) => {

@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
-import { MessagesValidate, PasswordValidation } from '@/constants';
-import { useAppDispatch } from '@/store/hooks';
+import { MessagesValidate, PasswordValidation, Path, Role } from '@/constants';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { loginRequest } from '@/store/actions/auth';
+import { useNavigate } from 'react-router-dom';
 
 const LoginSchema = z.object({
   email: z
@@ -37,6 +38,10 @@ const LoginSchema = z.object({
 
 const Login: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const accessToken = useAppSelector((state) => state.auth.tokens?.accessToken);
+  const roleId = useAppSelector((state) => state.auth.user?.role_id);
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -49,6 +54,10 @@ const Login: React.FC = () => {
   function onSubmit(data: z.infer<typeof LoginSchema>) {
     dispatch(loginRequest(data));
   }
+
+  useEffect(() => {
+    if (accessToken) navigate(roleId === Role.ADMIN ? Path.HOME_CLIENT : Path.HOME_CLIENT); // HOME_ADMIN
+  }, [accessToken, navigate, roleId]);
 
   return (
     <div className='flex h-screen w-full items-center justify-center'>

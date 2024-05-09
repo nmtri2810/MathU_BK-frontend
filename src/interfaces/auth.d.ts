@@ -1,4 +1,5 @@
-import { IResponse } from '.';
+import { NavigateFunction } from 'react-router-dom';
+import { IAction, IResponse } from '.';
 
 export interface IAuthState {
   user: ILoginUser | null;
@@ -32,5 +33,12 @@ export interface ILoginDataResponse {
   tokens: ITokens;
 }
 
+export interface ILogoutRequestPayload {
+  navigate: NavigateFunction;
+}
+
 export type ILoginAction = IAction<ILoginRequestPayload>;
 export type ILoginResponse = IResponse<ILoginDataResponse>;
+
+export type ILogoutAction = IAction<ILogoutRequestPayload>;
+export type ILogoutResponse = IResponse<null>;

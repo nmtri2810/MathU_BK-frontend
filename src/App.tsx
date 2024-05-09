@@ -1,5 +1,5 @@
 import AppRoutes from '@/routers/index';
-import { NextUIProvider } from '@nextui-org/react';
+import { NextUIProvider } from '@nextui-org/system';
 import { Toaster } from '@/components/ui/sonner';
 
 function App() {

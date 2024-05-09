@@ -1,6 +1,13 @@
 import { IAuthState } from '@/interfaces/auth';
 import { createReducer } from '@reduxjs/toolkit';
-import { loginFailure, loginRequest, loginSuccess } from '@/store/actions/auth';
+import {
+  loginFailure,
+  loginRequest,
+  loginSuccess,
+  logoutFailure,
+  logoutRequest,
+  logoutSuccess
+} from '@/store/actions/auth';
 import { ApiStatus } from '@/constants';
 
 const initialState: IAuthState = {
@@ -32,6 +39,28 @@ const authReducer = createReducer<IAuthState>(initialState, (builder) => {
       return {
         ...state,
         status: ApiStatus.POST_FAILED,
+        isLoading: false
+      };
+    });
+
+  builder
+    .addCase(logoutRequest, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.REQUESTING,
+        isLoading: true
+      };
+    })
+    .addCase(logoutSuccess, () => {
+      return {
+        ...initialState,
+        status: ApiStatus.GET_SUCCEED
+      };
+    })
+    .addCase(logoutFailure, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.GET_FAILED,
         isLoading: false
       };
     });
