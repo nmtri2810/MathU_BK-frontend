@@ -41,7 +41,7 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const accessToken = useAppSelector((state) => state.auth.tokens?.accessToken);
-  const roleId = useAppSelector((state) => state.auth.user?.role_id);
+  const roleId = useAppSelector((state) => state.auth.user?.role.id);
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
