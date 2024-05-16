@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import Layout from '@/layout/mainLayout';
 import { logoutRequest } from '@/store/actions/auth';
 import { useAppDispatch } from '@/store/hooks';
 import React from 'react';
@@ -13,10 +14,10 @@ const Home: React.FC = () => {
   };
 
   return (
-    <>
+    <Layout>
       <div>Home</div>
       <Button onClick={handleLogout}>Logout</Button>
-    </>
+    </Layout>
   );
 };
 
