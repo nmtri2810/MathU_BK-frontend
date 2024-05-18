@@ -14,15 +14,9 @@ export const ApiStatus = {
   DELETE_FAILED: 'DELETE_FAILED'
 };
 
-export enum Path {
-  HOME_ADMIN = '/admin/',
-  HOME_CLIENT = '/',
-  LOGIN = '/login',
-  NOT_FOUND = '*'
-}
-
-export enum Role {
-  ADMIN = 1,
-  MODERATOR = 2,
-  USER = 3
-}
+export const Role = {
+  Admin: 1,
+  Moderator: 2,
+  User: 3,
+  Guest: 0
+};

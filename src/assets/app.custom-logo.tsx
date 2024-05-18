@@ -2,7 +2,7 @@ import React from 'react';
 
 const AppLogo: React.FC = () => {
   return (
-    <div className='flex items-center justify-center gap-1'>
+    <div className='flex items-center justify-center gap-1 select-none'>
       <svg
         fill='#000000'
         version='1.1'
