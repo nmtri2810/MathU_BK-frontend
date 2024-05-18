@@ -10,7 +10,7 @@ import {
 import { ILoginAction, ILoginResponse, ILogoutAction, ILogoutResponse } from '@/interfaces/auth';
 import authAPI from '@/api/auth';
 import { toast } from 'sonner';
-import { Path } from '@/constants';
+import { Path } from '@/constants/enum';
 import { AxiosError } from 'axios';
 
 function* loginSaga(action: ILoginAction) {
@@ -20,10 +20,8 @@ function* loginSaga(action: ILoginAction) {
     toast.success(response.message);
     yield put(loginSuccess(response.data));
   } catch (error: unknown) {
-    console.log(error);
-
     if (error instanceof AxiosError) {
-      const message = error.response?.data.error;
+      const message = error.response?.data.message;
       toast.error(message);
       yield put(loginFailure());
     }
@@ -36,12 +34,10 @@ function* logoutSaga(action: ILogoutAction) {
     const response: ILogoutResponse = yield call(authAPI.logout);
     toast.success(response.message);
     yield put(logoutSuccess());
-    payload.navigate(Path.LOGIN);
+    payload.navigate(Path.HOME_CLIENT);
   } catch (error: unknown) {
-    console.log(error);
-
     if (error instanceof AxiosError) {
-      const message = error.response?.data.error;
+      const message = error.response?.data.message;
       toast.error(message);
       yield put(logoutFailure());
     }
