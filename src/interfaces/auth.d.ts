@@ -38,8 +38,22 @@ export interface ILogoutRequestPayload {
   navigate: NavigateFunction;
 }
 
+export interface ISignupRequestPayload {
+  email: string;
+  password: string;
+}
+
+export interface ILoginGoogleRequestPayload {
+  code: string;
+}
+
 export type ILoginAction = IAction<ILoginRequestPayload>;
 export type ILoginResponse = IResponse<ILoginDataResponse>;
 
 export type ILogoutAction = IAction<ILogoutRequestPayload>;
 export type ILogoutResponse = IResponse<null>;
+
+export type ISignupAction = IAction<ISignupRequestPayload>;
+export type ISignupResponse = IResponse<ILoginDataResponse>;
+
+export type ILoginGoogleAction = IAction<ILoginGoogleRequestPayload>;

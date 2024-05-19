@@ -5,8 +5,7 @@ const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API_URL,
   headers: {
     'Content-Type': 'application/json'
-  },
-  timeout: Number(import.meta.env.VITE_APP_AXIOS_TIMEOUT)
+  }
 });
 
 axiosInstance.interceptors.request.use(

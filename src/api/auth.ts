@@ -1,5 +1,5 @@
 import axiosInstance from '@/api/axiosInstance';
-import { ILoginRequestPayload } from '@/interfaces/auth';
+import { ILoginGoogleRequestPayload, ILoginRequestPayload, ISignupRequestPayload } from '@/interfaces/auth';
 
 const context = '/auth';
 
@@ -9,6 +9,12 @@ const authAPI = {
   },
   logout() {
     return axiosInstance.get(`${context}/logout`);
+  },
+  signup(payload: ISignupRequestPayload) {
+    return axiosInstance.post(`${context}/register`, payload);
+  },
+  loginGoogle(payload: ILoginGoogleRequestPayload) {
+    return axiosInstance.post(`${context}/google`, payload);
   }
 };
 
