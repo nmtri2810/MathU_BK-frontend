@@ -6,25 +6,25 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { SignupSchema } from '@/validations/auth';
-// import { useAppDispatch } from '@/store/hooks';
+import { useAppDispatch } from '@/store/hooks';
 import { Button } from '@/components/ui/button';
+import { signupRequest } from '@/store/actions/auth';
 
 const SignUp: React.FC = () => {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
   const form = useForm<z.infer<typeof SignupSchema>>({
     resolver: zodResolver(SignupSchema),
     defaultValues: {
       email: '',
       password: '',
-      passwordConfirmation: '',
-      username: ''
+      passwordConfirmation: ''
     }
   });
 
   function onSubmit(data: z.infer<typeof SignupSchema>) {
-    console.log('src_pages_auth_signup.tsx#21: ', data);
-    // dispatch(registerRequest(data));
+    const { email, password } = data;
+    dispatch(signupRequest({ email, password }));
   }
 
   return (
@@ -83,24 +83,6 @@ const SignUp: React.FC = () => {
                     placeholder='Enter password confirmation'
                     type='password'
                     errorMsg={form.formState.errors.passwordConfirmation?.message}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name='username'
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password confirmation</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder='Enter Username'
-                    type='text'
-                    errorMsg={form.formState.errors.username?.message}
                     {...field}
                   />
                 </FormControl>

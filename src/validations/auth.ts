@@ -54,15 +54,7 @@ export const SignupSchema = z
       }),
     passwordConfirmation: z.string().min(1, {
       message: MessagesValidate.isRequired('Password confirmation')
-    }),
-    username: z
-      .string()
-      .min(1, {
-        message: MessagesValidate.isRequired('Username')
-      })
-      .max(50, {
-        message: MessagesValidate.maxLength('Username', 50)
-      })
+    })
   })
   .refine((values) => values.password === values.passwordConfirmation, {
     message: 'Passwords did not match',
