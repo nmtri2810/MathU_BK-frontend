@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import React, { ReactNode } from 'react';
 
@@ -10,7 +11,7 @@ interface INavItemProps {
   children: ReactNode;
   fullHeight?: boolean;
   className?: string;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 export const NavItemGroup: React.FC<INavItemGroupProps> = ({ children, className }) => (
@@ -18,14 +19,15 @@ export const NavItemGroup: React.FC<INavItemGroupProps> = ({ children, className
 );
 
 export const NavItem: React.FC<INavItemProps> = ({ children, fullHeight = false, className, onClick }) => (
-  <div
+  <Button
+    variant='ghost'
     className={cn(
-      'px-4 hover:bg-gray-200 hover:cursor-pointer',
+      'px-4 font-normal',
       fullHeight ? 'h-full flex items-center rounded-sm' : 'py-1 rounded-full',
       className
     )}
     onClick={onClick}
   >
     {children}
-  </div>
+  </Button>
 );

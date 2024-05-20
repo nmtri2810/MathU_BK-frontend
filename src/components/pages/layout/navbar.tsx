@@ -7,6 +7,7 @@ import { Path } from '@/constants/enum';
 import { UnlockAccess } from '@/routers/rolebasedRoute';
 import { Role } from '@/constants';
 import { NavItem, NavItemGroup } from '@/components/pages/layout/navbarItems';
+import AvatarDropdown from '@/components/pages/layout/avatarDropdown';
 
 const NavBar: React.FC = () => {
   const navigate = useNavigate();
@@ -21,22 +22,25 @@ const NavBar: React.FC = () => {
         <NavItem fullHeight className='-ml-4 shrink-0' onClick={() => navigate(Path.HOME_CLIENT)}>
           <AppLogo />
         </NavItem>
+
         <NavItemGroup className='shrink-0'>
-          <NavItem>
+          <NavItem onClick={() => console.log('About')}>
             <div>About</div>
           </NavItem>
-          <NavItem>
+          <NavItem onClick={() => console.log('Products')}>
             <div>Products</div>
           </NavItem>
-          <NavItem>
+          <NavItem onClick={() => console.log('Image scanning')}>
             <div>Image scanning</div>
           </NavItem>
         </NavItemGroup>
+
         <SearchBar className='grow mx-4' onSubmit={search} />
+
         <UnlockAccess request={[Role.Guest]}>
           <NavItemGroup className='shrink-0 gap-2'>
             <Button
-              variant={'outline'}
+              variant='outline'
               className='h-8 w-[70px] border-blue-600 text-blue-600 font-normal hover:text-blue-600 hover:bg-blue-100'
               onClick={() => navigate(Path.LOGIN)}
             >
@@ -49,6 +53,10 @@ const NavBar: React.FC = () => {
               Sign up
             </Button>
           </NavItemGroup>
+        </UnlockAccess>
+
+        <UnlockAccess request={[Role.Moderator, Role.User]}>
+          <AvatarDropdown />
         </UnlockAccess>
       </div>
     </div>
