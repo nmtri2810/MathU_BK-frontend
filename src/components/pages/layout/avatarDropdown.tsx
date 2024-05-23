@@ -26,7 +26,7 @@ const AvatarDropdown: React.FC = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className='focus-visible:outline-none px-4 font-normal h-full flex items-center rounded-sm hover:bg-accent hover:text-accent-foreground'>
+      <DropdownMenuTrigger className='flex h-full items-center rounded-sm px-4 font-normal hover:bg-accent hover:text-accent-foreground focus-visible:outline-none'>
         <AvatarFull className='size-8' />
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end' className='min-w-56'>

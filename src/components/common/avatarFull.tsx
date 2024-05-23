@@ -11,12 +11,12 @@ interface IAvatarFullProps {
 
 const AvatarFull: React.FC<IAvatarFullProps> = ({ imgUrl, username, className }) => {
   return imgUrl ? (
-    <Avatar className={cn('rounded-sm size-8 select-none', className)}>
+    <Avatar className={cn('size-8 select-none rounded-sm', className)}>
       <AvatarImage src='https://github.com/shadcn.png' />
       <AvatarFallback>{`${username}_`}</AvatarFallback>
     </Avatar>
   ) : (
-    <CircleUserRound className={cn('rounded-sm size-8 select-none', className)} />
+    <CircleUserRound className={cn('size-8 select-none rounded-sm', className)} />
   );
 };
 

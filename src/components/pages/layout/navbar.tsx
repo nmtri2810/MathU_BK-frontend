@@ -17,9 +17,9 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <div className='border-b-1 border-b-gray-300 border-t-3 border-t-gray-900 w-full h-14 bg-white fixed top-0 overflow-hidden'>
-      <div className='container h-full flex items-center justify-between'>
-        <NavItem fullHeight className='-ml-4 shrink-0' onClick={() => navigate(Path.HOME_CLIENT)}>
+    <div className='fixed top-0 h-14 w-full overflow-hidden border-b-1 border-t-3 border-b-gray-300 border-t-gray-900 bg-white'>
+      <div className='container flex h-full items-center justify-between'>
+        <NavItem fullHeight className='mr-[3.2rem] shrink-0 px-1' onClick={() => navigate(Path.HOME_CLIENT)}>
           <AppLogo />
         </NavItem>
 
@@ -35,19 +35,19 @@ const NavBar: React.FC = () => {
           </NavItem>
         </NavItemGroup>
 
-        <SearchBar className='grow mx-4' onSubmit={search} />
+        <SearchBar className='mx-4 grow' onSubmit={search} />
 
         <UnlockAccess request={[Role.Guest]}>
           <NavItemGroup className='shrink-0 gap-2'>
             <Button
               variant='outline'
-              className='h-8 w-[70px] border-blue-600 text-blue-600 font-normal hover:text-blue-600 hover:bg-blue-100'
+              className='h-8 w-[70px] border-blue-600 font-normal text-blue-600 hover:bg-blue-100 hover:text-blue-600'
               onClick={() => navigate(Path.LOGIN)}
             >
               Log in
             </Button>
             <Button
-              className='h-8 w-[70px] bg-blue-600 hover:bg-blue-700 font-normal'
+              className='h-8 w-[70px] bg-blue-600 font-normal hover:bg-blue-700'
               onClick={() => navigate(Path.SIGN_UP)}
             >
               Sign up

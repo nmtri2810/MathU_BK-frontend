@@ -35,7 +35,7 @@ const SignUp: React.FC = () => {
       cardClassName='min-w-[500px]'
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className='p-6 pt-0 grid gap-4 min-w-'>
+        <form onSubmit={form.handleSubmit(onSubmit)} className='min-w- grid gap-4 p-6 pt-0'>
           <FormField
             control={form.control}
             name='email'

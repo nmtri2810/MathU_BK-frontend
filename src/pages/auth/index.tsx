@@ -40,18 +40,18 @@ const Auth: React.FC<IAuth> = ({ isLogin, children, title, description, cardClas
   });
 
   return (
-    <Layout className='bg-gray-100 fullscreen'>
+    <Layout className='fullscreen bg-gray-100'>
       {!authLoading ? (
-        <div className='flex flex-col items-center justify-center mt-28'>
+        <div className='mt-40 flex flex-col items-center justify-center'>
           <div
-            className={cn('rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-sm', cardClassName)}
+            className={cn('w-full max-w-sm rounded-lg border bg-card text-card-foreground shadow-sm', cardClassName)}
           >
             <div className='flex flex-col space-y-1.5 p-6'>
-              <h3 className='font-semibold tracking-tight text-2xl'>{title}</h3>
+              <h3 className='text-2xl font-semibold tracking-tight'>{title}</h3>
               <p className='text-sm text-muted-foreground'>{description}</p>
             </div>
             {children}
-            <div className='p-6 pt-0 grid gap-4'>
+            <div className='grid gap-4 p-6 pt-0'>
               <div className='relative'>
                 <div className='absolute inset-0 flex items-center'>
                   <div className='w-full border-t'></div>
@@ -69,7 +69,7 @@ const Auth: React.FC<IAuth> = ({ isLogin, children, title, description, cardClas
             <div className='my-8'>
               <span>Don't have an account? </span>
               <span
-                className='text-blue-700 hover:text-blue-800 hover:cursor-pointer hover:underline select-none'
+                className='select-none text-blue-700 hover:cursor-pointer hover:text-blue-800 hover:underline'
                 onClick={() => navigate(Path.SIGN_UP)}
               >
                 Sign up
@@ -79,7 +79,7 @@ const Auth: React.FC<IAuth> = ({ isLogin, children, title, description, cardClas
             <div className='my-8'>
               <span>Already have an account? </span>
               <span
-                className='text-blue-700 hover:text-blue-800 hover:cursor-pointer hover:underline select-none'
+                className='select-none text-blue-700 hover:cursor-pointer hover:text-blue-800 hover:underline'
                 onClick={() => navigate(Path.LOGIN)}
               >
                 Log in

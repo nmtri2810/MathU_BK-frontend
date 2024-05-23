@@ -21,11 +21,7 @@ export const NavItemGroup: React.FC<INavItemGroupProps> = ({ children, className
 export const NavItem: React.FC<INavItemProps> = ({ children, fullHeight = false, className, onClick }) => (
   <Button
     variant='ghost'
-    className={cn(
-      'px-4 font-normal',
-      fullHeight ? 'h-full flex items-center rounded-sm' : 'py-1 rounded-full',
-      className
-    )}
+    className={cn('h-full px-4 py-1 font-normal', fullHeight ? 'rounded-sm' : 'rounded-full', className)}
     onClick={onClick}
   >
     {children}

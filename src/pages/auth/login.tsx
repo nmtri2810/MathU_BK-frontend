@@ -31,7 +31,7 @@ const Login: React.FC = () => {
   return (
     <Auth isLogin={true} title='Login to MathU' description='Enter your information to login to your account'>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className='p-6 pt-0 grid gap-4'>
+        <form onSubmit={form.handleSubmit(onSubmit)} className='grid gap-4 p-6 pt-0'>
           <FormField
             control={form.control}
             name='email'
@@ -55,9 +55,9 @@ const Login: React.FC = () => {
             name='password'
             render={({ field }) => (
               <FormItem>
-                <div className='flex justify-between items-center'>
+                <div className='flex items-center justify-between'>
                   <FormLabel>Password</FormLabel>
-                  <span className='text-sm font-normal leading-none text-blue-700 hover:text-blue-800 hover:cursor-pointer hover:underline select-none'>
+                  <span className='select-none text-sm font-normal leading-none text-blue-700 hover:cursor-pointer hover:text-blue-800 hover:underline'>
                     Forgot password?
                   </span>
                 </div>
