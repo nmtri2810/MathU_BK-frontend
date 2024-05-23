@@ -36,7 +36,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({ className, onSubmit }) => {
       <div className='search-bar relative'>
         <Search
           className={cn(
-            'text-[#636b74] absolute top-1/2 -translate-y-1/2 left-2 hover:cursor-text',
+            'absolute left-2 top-1/2 -translate-y-1/2 text-[#636b74] hover:cursor-text',
             isFocused && 'pointer-events-none'
           )}
           size={18}
@@ -45,7 +45,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({ className, onSubmit }) => {
         <Input
           type='text'
           placeholder='Search...'
-          className='h-8 pl-8 select-none'
+          className='h-8 select-none pl-8'
           ref={inputRef}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
@@ -56,7 +56,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({ className, onSubmit }) => {
       </div>
       {isFocused && (
         <div
-          className={cn('w-full top-[42px] p-3 rounded-md select-text absolute border shadow')}
+          className={cn('absolute top-[42px] w-full select-text rounded-md border p-3 shadow')}
           onMouseDown={(e) => e.preventDefault()}
         >
           <div>hello</div>

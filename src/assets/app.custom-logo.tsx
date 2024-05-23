@@ -2,7 +2,7 @@ import React from 'react';
 
 const AppLogo: React.FC = () => {
   return (
-    <div className='flex items-center justify-center gap-1 select-none'>
+    <div className='flex select-none items-center justify-center gap-1'>
       <svg
         fill='#000000'
         version='1.1'
@@ -58,7 +58,7 @@ const AppLogo: React.FC = () => {
           </g>
         </g>
       </svg>
-      <div className='font-bold text-lg'>MathU</div>
+      <div className='text-lg font-bold'>MathU</div>
     </div>
   );
 };

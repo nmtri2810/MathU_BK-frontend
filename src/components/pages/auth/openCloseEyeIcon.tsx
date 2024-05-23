@@ -12,7 +12,7 @@ export const OpenCloseEyeIcon: React.FC<IOpenCloseEyeIcon> = ({ isShowPassword, 
   return (
     <IconComponent
       size={30}
-      className='absolute top-1/2 -translate-y-1/2 right-2 hover:cursor-pointer select-none hover:bg-gray-100 rounded-full p-1'
+      className='absolute right-2 top-1/2 -translate-y-1/2 select-none rounded-full p-1 hover:cursor-pointer hover:bg-gray-100'
       onClick={onClick}
     />
   );
