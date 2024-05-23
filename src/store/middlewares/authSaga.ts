@@ -18,7 +18,6 @@ import {
   ILoginGoogleAction,
   ILoginResponse,
   ILogoutAction,
-  ILogoutResponse,
   ISignupAction,
   ISignupResponse
 } from '@/interfaces/auth';
@@ -44,8 +43,7 @@ function* loginSaga(action: ILoginAction) {
 function* logoutSaga(action: ILogoutAction) {
   try {
     const { payload } = action;
-    const response: ILogoutResponse = yield call(authAPI.logout);
-    toast.success(response.message);
+    yield call(authAPI.logout);
     yield put(logoutSuccess());
     payload.navigate(Path.HOME_CLIENT);
   } catch (error: unknown) {
