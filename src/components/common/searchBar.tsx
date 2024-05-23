@@ -56,7 +56,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({ className, onSubmit }) => {
       </div>
       {isFocused && (
         <div
-          className={cn('absolute top-[42px] w-full select-text rounded-md border p-3 shadow')}
+          className={cn('absolute top-[42px] z-50 w-full select-text rounded-md border p-3 shadow')}
           onMouseDown={(e) => e.preventDefault()}
         >
           <div>hello</div>
