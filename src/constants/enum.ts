@@ -3,7 +3,11 @@ export enum Path {
   LOGIN = '/login',
   SIGN_UP = '/signup',
   NOT_FOUND = '*',
-  UNAUTHORIZED = '/unauthorized'
+  UNAUTHORIZED = '/unauthorized',
+  QUESTIONS = '/questions',
+  TAGS = '/tags',
+  SAVES = '/saves',
+  USERS = '/users'
 }
 
 const baseURL = '/admin/';

@@ -20,3 +20,12 @@ export const Role = {
   User: 3,
   Guest: 0
 };
+
+export const NavLabel = {
+  HOME: 'Home',
+  QUESTIONS: 'Questions',
+  TAGS: 'Tags',
+  SAVES: 'Saves',
+  USERS: 'Users',
+  SPACER: 'Spacer'
+};
