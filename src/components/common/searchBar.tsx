@@ -1,7 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { createPortal } from 'react-dom';
+import { Button } from '@/components/ui/button';
 
 interface ISearchBarProps {
   className: string;
@@ -9,10 +11,12 @@ interface ISearchBarProps {
 }
 
 const SearchBar: React.FC<ISearchBarProps> = ({ className, onSubmit }) => {
-  const [isFocused, setIsFocused] = useState(false);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
   const [textSearch, setTextSearch] = useState<string>('');
+  const [portalStyle, setPortalStyle] = useState<React.CSSProperties>({});
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const handleIconClick = () => {
     const inputElement = inputRef.current;
@@ -31,8 +35,19 @@ const SearchBar: React.FC<ISearchBarProps> = ({ className, onSubmit }) => {
     }
   };
 
+  useEffect(() => {
+    if (containerRef.current) {
+      const { top, left, width, height } = containerRef.current.getBoundingClientRect();
+      setPortalStyle({
+        top: top + height + 7,
+        left,
+        width
+      });
+    }
+  }, [isFocused]);
+
   return (
-    <div className={cn('relative', className)}>
+    <div className={cn('relative', className)} ref={containerRef}>
       <div className='search-bar relative'>
         <Search
           className={cn(
@@ -54,14 +69,19 @@ const SearchBar: React.FC<ISearchBarProps> = ({ className, onSubmit }) => {
           onKeyDown={handleEnter}
         />
       </div>
-      {isFocused && (
-        <div
-          className={cn('absolute top-[42px] z-50 w-full select-text rounded-md border p-3 shadow')}
-          onMouseDown={(e) => e.preventDefault()}
-        >
-          <div>hello</div>
-        </div>
-      )}
+      {isFocused &&
+        createPortal(
+          <div
+            className='fixed z-[1] rounded-md border bg-white p-3 shadow'
+            style={portalStyle}
+            onMouseDown={(e) => e.preventDefault()}
+          >
+            {/* content inside */}
+            <div>hello</div>
+            <Button onClick={() => console.log('src_components_common_searchBar.tsx#80: ')}>Helo</Button>
+          </div>,
+          document.body
+        )}
     </div>
   );
 };

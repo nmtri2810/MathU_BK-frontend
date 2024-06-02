@@ -36,7 +36,7 @@ const AvatarDropdown: React.FC = () => {
         {/* temp */}
         {/* <p>Role: {user?.role.id}</p> */}
 
-        <div>
+        <div className='text-sm'>
           <NavItem className='justify-start rounded-sm px-3 py-2' link=''>
             <User className='mr-2 size-4' />
             <span>Profile</span>
