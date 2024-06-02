@@ -15,7 +15,7 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <div className='fixed top-0 h-14 w-full overflow-hidden border-b-1 border-t-3 border-b-gray-300 border-t-gray-900 bg-white'>
+    <div className='fixed top-0 z-[1] h-14 w-full overflow-hidden border-b-1 border-t-3 border-b-gray-300 border-t-gray-900 bg-white'>
       <div className='container flex h-full items-center justify-between'>
         <NavItem fullHeight className='w-40 shrink-0' link={Path.HOME_CLIENT}>
           <AppLogo />
