@@ -27,7 +27,7 @@ const AvatarDropdown: React.FC = () => {
         <div className='flex items-center gap-2 px-3 py-2'>
           <AvatarFull className='size-9' />
           <div>
-            <p className='text-sm font-semibold'>{user?.username} Username</p>
+            <p className='text-sm font-semibold'>{user?.username}</p>
             <p className='text-sm text-gray-500'>{user?.email}</p>
           </div>
         </div>
