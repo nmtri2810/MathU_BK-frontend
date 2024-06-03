@@ -14,3 +14,8 @@ const baseURL = '/admin/';
 export enum AdminPath {
   HOME_ADMIN = `${baseURL}`
 }
+
+export enum VoteableTypes {
+  QUESTION,
+  ANSWER
+}
