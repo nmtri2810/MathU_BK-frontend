@@ -29,3 +29,22 @@ export const NavLabel = {
   USERS: 'Users',
   SPACER: 'Spacer'
 };
+
+export const QuestionFilterValues = {
+  NEWEST: 'newest',
+  OLDEST: 'oldest'
+};
+
+export const QuestionFilterOptions = [
+  { label: 'Newest', value: QuestionFilterValues.NEWEST },
+  { label: 'Oldest', value: QuestionFilterValues.OLDEST }
+];
+
+export const AppLanguages = {
+  ENGLISH: 'en',
+  VIETNAMESE: 'vi'
+};
+
+export const I18nNamespaces = {
+  GLOBAL: 'global'
+};

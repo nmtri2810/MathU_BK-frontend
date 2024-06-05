@@ -1,17 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppLogo from '@/assets/app.custom-logo';
 import SearchBar from '@/components/common/searchBar';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { Path } from '@/constants/enum';
 import { UnlockAccess } from '@/routers/rolebasedRoute';
-import { Role } from '@/constants';
+import { AppLanguages, Role } from '@/constants';
 import { NavItem, NavItemGroup } from '@/components/pages/layout/navbarItems';
 import AvatarDropdown from '@/components/pages/layout/avatarDropdown';
+import ReactSelect, { IReactSelectOptions } from '@/components/ui/reactSelect';
+import { MultiValue, SingleValue } from 'react-select';
+import { useTranslation } from 'react-i18next';
+import VietnameseLogo from '@/assets/vietnamese.logo';
+import EnglishLogo from '@/assets/english.logo';
+
+// save language in local storage
+const LanguageOptions = [
+  { label: <VietnameseLogo size={20} />, value: AppLanguages.VIETNAMESE },
+  { label: <EnglishLogo size={20} />, value: AppLanguages.ENGLISH }
+];
 
 const NavBar: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
+  const [selectedOption, setSelectedOption] = useState<SingleValue<IReactSelectOptions>>(LanguageOptions[0]);
+
   const search = (text: string) => {
     console.log('src_layout_navbar_index.tsx#8: ', text);
+  };
+
+  const handleChange = (option: SingleValue<IReactSelectOptions> | MultiValue<IReactSelectOptions>) => {
+    const selected = option as SingleValue<IReactSelectOptions>;
+    i18n.changeLanguage(selected?.value);
+    setSelectedOption(option as SingleValue<IReactSelectOptions>);
   };
 
   return (
@@ -22,23 +43,23 @@ const NavBar: React.FC = () => {
         </NavItem>
 
         <NavItemGroup className='shrink-0'>
-          <NavItem link='/about'>About</NavItem>
-          <NavItem link='/products'>Products</NavItem>
-          <NavItem link='/image-scanning'>Image scanning</NavItem>
+          <NavItem link='/about'>{t('header.about')}</NavItem>
+          <NavItem link='/help-center'>{t('header.help-center')}</NavItem>
+          <NavItem link='/image-scanning'>{t('header.image-scanning')}</NavItem>
         </NavItemGroup>
 
-        <SearchBar className='mx-4 grow' onSubmit={search} />
+        <SearchBar className='mx-4 grow' onSubmit={search} placeholder={t('header.search')} />
 
         <UnlockAccess request={[Role.Guest]}>
           <NavItemGroup className='shrink-0 gap-2'>
             <Button
               variant='outline'
-              className='h-8 w-[70px] border-blue-600 font-normal text-blue-600 hover:bg-blue-100 hover:text-blue-600'
+              className='h-8 w-fit border-blue-600 font-normal text-blue-600 hover:bg-blue-100 hover:text-blue-600'
             >
-              <Link to={Path.LOGIN}>Log in</Link>
+              <Link to={Path.LOGIN}>{t('header.log-in')}</Link>
             </Button>
-            <Button className='h-8 w-[70px] bg-blue-600 font-normal hover:bg-blue-700'>
-              <Link to={Path.SIGN_UP}>Sign up</Link>
+            <Button className='h-8 w-fit bg-blue-600 font-normal hover:bg-blue-700'>
+              <Link to={Path.SIGN_UP}>{t('header.sign-up')}</Link>
             </Button>
           </NavItemGroup>
         </UnlockAccess>
@@ -46,6 +67,15 @@ const NavBar: React.FC = () => {
         <UnlockAccess request={[Role.Moderator, Role.User]}>
           <AvatarDropdown />
         </UnlockAccess>
+
+        <ReactSelect
+          options={LanguageOptions}
+          value={selectedOption}
+          onChange={handleChange}
+          className='ml-2 w-fit shrink-0 text-sm'
+          isInNavbar={true}
+          hideSeparator={true}
+        />
       </div>
     </div>
   );
