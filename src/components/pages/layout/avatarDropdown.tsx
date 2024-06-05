@@ -7,10 +7,12 @@ import { LogOut, Settings, User } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { NavItem } from './navbarItems';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 
 const AvatarDropdown: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const user = useAppSelector((state) => state.auth.user);
 
@@ -39,18 +41,18 @@ const AvatarDropdown: React.FC = () => {
         <div className='text-sm'>
           <NavItem className='justify-start rounded-sm px-3 py-2' link=''>
             <User className='mr-2 size-4' />
-            <span>Profile</span>
+            <span>{t('header.avatar-dropdown.profile')}</span>
           </NavItem>
           <NavItem className='justify-start rounded-sm px-3 py-2' link=''>
             <Settings className='mr-2 size-4' />
-            <span>Settings</span>
+            <span>{t('header.avatar-dropdown.settings')}</span>
           </NavItem>
         </div>
         <div className='-mx-1 my-1 h-px bg-muted'></div>
 
         <Button variant='ghost' className='w-full justify-start rounded-sm px-3' onClick={handleLogout}>
           <LogOut className='mr-2 size-4' />
-          <span>Log out</span>
+          <span>{t('header.avatar-dropdown.log-out')}</span>
         </Button>
       </PopoverContent>
     </Popover>

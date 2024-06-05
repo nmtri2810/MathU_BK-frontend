@@ -1,10 +1,27 @@
 {
+  "Home": "Trang chủ",
+  "Questions": "Câu hỏi",
+  "Tags": "Thẻ",
+  "Saves": "Đã Lưu",
+  "Users": "Người dùng",
+  "ask-question": "Đặt câu hỏi",
   "header": {
     "about": "Về chúng tôi",
     "help-center": "Hỗ trợ",
     "image-scanning": "Quét ảnh",
     "log-in": "Đăng nhập",
     "sign-up": "Đăng ký",
-    "search": "Tìm kiếm..."
+    "search": "Tìm kiếm...",
+    "avatar-dropdown": {
+      "profile": "Thông tin cá nhân",
+      "settings": "Cài đặt",
+      "log-out": "Đăng xuất"
+    }
+  },
+  "home-screen": {
+    "top-questions": "Câu hỏi nổi bật"
+  },
+  "question-screen": {
+    "all-questions": "Tất cả câu hỏi"
   }
 }

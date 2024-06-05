@@ -5,7 +5,7 @@ import { AppLanguages, I18nNamespaces } from '@/constants';
 
 i18n.init({
   interpolation: { escapeValue: false },
-  lng: AppLanguages.VIETNAMESE,
+  lng: localStorage.getItem('language') || AppLanguages.VIETNAMESE,
   resources: {
     en: {
       global: global_en

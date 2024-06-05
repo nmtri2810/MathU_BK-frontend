@@ -1,10 +1,27 @@
 {
+  "Home": "Home",
+  "Questions": "Questions",
+  "Tags": "Tags",
+  "Saves": "Saves",
+  "Users": "Users",
+  "ask-question": "Ask question",
   "header": {
     "about": "About",
     "help-center": "Help center",
     "image-scanning": "Image scanning",
     "log-in": "Log in",
     "sign-up": "Sign up",
-    "search": "Search..."
+    "search": "Search...",
+    "avatar-dropdown": {
+      "profile": "Profile",
+      "settings": "Settings",
+      "log-out": "Log out"
+    }
+  },
+  "home-screen": {
+    "top-questions": "Top Questions"
+  },
+  "question-screen": {
+    "all-questions": "All Questions"
   }
 }

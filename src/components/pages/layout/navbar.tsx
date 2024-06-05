@@ -23,15 +23,18 @@ const LanguageOptions = [
 const NavBar: React.FC = () => {
   const { t, i18n } = useTranslation();
 
-  const [selectedOption, setSelectedOption] = useState<SingleValue<IReactSelectOptions>>(LanguageOptions[0]);
+  const [selectedOption, setSelectedOption] = useState<SingleValue<IReactSelectOptions>>(() => {
+    return LanguageOptions.find((option) => option.value === localStorage.getItem('language')) || LanguageOptions[0];
+  });
 
   const search = (text: string) => {
     console.log('src_layout_navbar_index.tsx#8: ', text);
   };
 
-  const handleChange = (option: SingleValue<IReactSelectOptions> | MultiValue<IReactSelectOptions>) => {
+  const handleChangeLanguage = (option: SingleValue<IReactSelectOptions> | MultiValue<IReactSelectOptions>) => {
     const selected = option as SingleValue<IReactSelectOptions>;
     i18n.changeLanguage(selected?.value);
+    localStorage.setItem('language', selected?.value as string);
     setSelectedOption(option as SingleValue<IReactSelectOptions>);
   };
 
@@ -71,7 +74,7 @@ const NavBar: React.FC = () => {
         <ReactSelect
           options={LanguageOptions}
           value={selectedOption}
-          onChange={handleChange}
+          onChange={handleChangeLanguage}
           className='ml-2 w-fit shrink-0 text-sm'
           isInNavbar={true}
           hideSeparator={true}
