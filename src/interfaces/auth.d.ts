@@ -41,6 +41,7 @@ export interface ILogoutRequestPayload {
 export interface ISignupRequestPayload {
   email: string;
   password: string;
+  username: string;
 }
 
 export interface ILoginGoogleRequestPayload {

@@ -18,13 +18,14 @@ const SignUp: React.FC = () => {
     defaultValues: {
       email: '',
       password: '',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
+      username: ''
     }
   });
 
   function onSubmit(data: z.infer<typeof SignupSchema>) {
-    const { email, password } = data;
-    dispatch(signupRequest({ email, password }));
+    const { email, password, username } = data;
+    dispatch(signupRequest({ email, password, username }));
   }
 
   return (
@@ -83,6 +84,24 @@ const SignUp: React.FC = () => {
                     placeholder='Enter password confirmation'
                     type='password'
                     errorMsg={form.formState.errors.passwordConfirmation?.message}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='username'
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder='Enter Username'
+                    type='text'
+                    errorMsg={form.formState.errors.username?.message}
                     {...field}
                   />
                 </FormControl>
