@@ -13,6 +13,7 @@ import { MultiValue, SingleValue } from 'react-select';
 import { useTranslation } from 'react-i18next';
 import VietnameseLogo from '@/assets/vietnamese.logo';
 import EnglishLogo from '@/assets/english.logo';
+import { I18nKeys } from '@/locales/i18nKeys';
 
 // save language in local storage
 const LanguageOptions = [
@@ -46,12 +47,12 @@ const NavBar: React.FC = () => {
         </NavItem>
 
         <NavItemGroup className='shrink-0'>
-          <NavItem link='/about'>{t('header.about')}</NavItem>
-          <NavItem link='/help-center'>{t('header.help-center')}</NavItem>
-          <NavItem link='/image-scanning'>{t('header.image-scanning')}</NavItem>
+          <NavItem link='/about'>{t(I18nKeys.HEADER.ABOUT)}</NavItem>
+          <NavItem link='/help-center'>{t(I18nKeys.HEADER.HELP_CENTER)}</NavItem>
+          <NavItem link='/image-scanning'>{t(I18nKeys.HEADER.IMAGE_SCANNING)}</NavItem>
         </NavItemGroup>
 
-        <SearchBar className='mx-4 grow' onSubmit={search} placeholder={t('header.search')} />
+        <SearchBar className='mx-4 grow' onSubmit={search} placeholder={t(I18nKeys.HEADER.SEARCH_PLACEHOLDER)} />
 
         <UnlockAccess request={[Role.Guest]}>
           <NavItemGroup className='shrink-0 gap-2'>
@@ -59,10 +60,10 @@ const NavBar: React.FC = () => {
               variant='outline'
               className='h-8 w-fit border-blue-600 font-normal text-blue-600 hover:bg-blue-100 hover:text-blue-600'
             >
-              <Link to={Path.LOGIN}>{t('header.log-in')}</Link>
+              <Link to={Path.LOGIN}>{t(I18nKeys.HEADER.LOGIN)}</Link>
             </Button>
             <Button className='h-8 w-fit bg-blue-600 font-normal hover:bg-blue-700'>
-              <Link to={Path.SIGN_UP}>{t('header.sign-up')}</Link>
+              <Link to={Path.SIGN_UP}>{t(I18nKeys.HEADER.SIGNUP)}</Link>
             </Button>
           </NavItemGroup>
         </UnlockAccess>

@@ -1,22 +1,58 @@
 {
-  "Home": "Trang chủ",
-  "Questions": "Câu hỏi",
-  "Tags": "Thẻ",
-  "Saves": "Đã Lưu",
-  "Users": "Người dùng",
+  "home": "Trang chủ",
+  "questions": "Câu hỏi",
+  "tags": "Thẻ",
+  "saves": "Đã lưu",
+  "users": "Người dùng",
   "ask-question": "Đặt câu hỏi",
+  "email": "Email",
+  "email-placeholder": "Nhập vào email",
+  "password": "Mật khẩu",
+  "password-placeholder": "Nhập vào mật khẩu",
+  "forgot-password": "Quên mật khẩu?",
+  "submit": "Submit",
+  "or": "Hoặc",
+  "newest": "Mới nhất",
+  "oldest": "Cũ nhất",
+  "asked": "hỏi",
+  "count": {
+    "question_one": "{{count}} câu hỏi",
+    "question_other": "{{count}} câu hỏi",
+    "vote_one": "{{count}} bình chọn",
+    "vote_other": "{{count}} bình chọn",
+    "answer_one": "{{count}} câu trả lời",
+    "answer_other": "{{count}} câu trả lời",
+    "view_one": "{{count}} lượt xem",
+    "view_other": "{{count}} lượt xem"
+  },
   "header": {
     "about": "Về chúng tôi",
     "help-center": "Hỗ trợ",
     "image-scanning": "Quét ảnh",
     "log-in": "Đăng nhập",
     "sign-up": "Đăng ký",
-    "search": "Tìm kiếm...",
+    "search-placeholder": "Tìm kiếm...",
     "avatar-dropdown": {
       "profile": "Thông tin cá nhân",
       "settings": "Cài đặt",
       "log-out": "Đăng xuất"
     }
+  },
+  "login-screen": {
+    "title": "Đăng nhập vào MathU",
+    "description": "Nhập thông tin bên duới để đăng nhập vào trang",
+    "submit": "Đăng nhập",
+    "google-login": "Đăng nhập với Google",
+    "acc-not-exist": "Chưa có tài khoản?"
+  },
+  "signup-screen": {
+    "title": "Tạo tài khoản",
+    "description": "Tạo tài khoản mới để tham gia cộng đồng MathU",
+    "submit": "Đăng ký",
+    "google-signup": "Đăng ký với Google",
+    "acc-exist": "Đã có tài khoản?",
+    "password-confirmation": "Xác nhận mật khẩu",
+    "password-confirmation-placeholder": "Nhập vào xác nhận mật khẩu"
   },
   "home-screen": {
     "top-questions": "Câu hỏi nổi bật"

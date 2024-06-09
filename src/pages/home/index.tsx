@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Role } from '@/constants';
 import Layout from '@/layout/mainLayout';
+import { I18nKeys } from '@/locales/i18nKeys';
 import { UnlockAccess } from '@/routers/rolebasedRoute';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,8 +12,8 @@ const Home: React.FC = () => {
   return (
     <Layout>
       <div className='mb-7 flex min-h-10 justify-between'>
-        <h1 className='text-3xl font-bold'>{t('home-screen.top-questions')}</h1>
-        <Button className='bg-blue-600 font-normal hover:bg-blue-700'>{t('ask-question')}</Button>
+        <h1 className='text-3xl font-bold'>{t(I18nKeys.HOME_SCREEN.TOP_QUESTIONS)}</h1>
+        <Button className='bg-blue-600 font-normal hover:bg-blue-700'>{t(I18nKeys.GLOBAL.ASK_QUESTION)}</Button>
       </div>
 
       <UnlockAccess request={[Role.Guest]}>

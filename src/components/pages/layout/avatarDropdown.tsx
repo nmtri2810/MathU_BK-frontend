@@ -8,6 +8,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { NavItem } from './navbarItems';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
+import { I18nKeys } from '@/locales/i18nKeys';
 
 const AvatarDropdown: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -41,18 +42,18 @@ const AvatarDropdown: React.FC = () => {
         <div className='text-sm'>
           <NavItem className='justify-start rounded-sm px-3 py-2' link=''>
             <User className='mr-2 size-4' />
-            <span>{t('header.avatar-dropdown.profile')}</span>
+            <span>{t(I18nKeys.HEADER.AVATAR_DROPDOWN.PROFILE)}</span>
           </NavItem>
           <NavItem className='justify-start rounded-sm px-3 py-2' link=''>
             <Settings className='mr-2 size-4' />
-            <span>{t('header.avatar-dropdown.settings')}</span>
+            <span>{t(I18nKeys.HEADER.AVATAR_DROPDOWN.SETTINGS)}</span>
           </NavItem>
         </div>
         <div className='-mx-1 my-1 h-px bg-muted'></div>
 
         <Button variant='ghost' className='w-full justify-start rounded-sm px-3' onClick={handleLogout}>
           <LogOut className='mr-2 size-4' />
-          <span>{t('header.avatar-dropdown.log-out')}</span>
+          <span>{t(I18nKeys.HEADER.AVATAR_DROPDOWN.LOGOUT)}</span>
         </Button>
       </PopoverContent>
     </Popover>

@@ -9,9 +9,12 @@ import { SignupSchema } from '@/validations/auth';
 import { useAppDispatch } from '@/store/hooks';
 import { Button } from '@/components/ui/button';
 import { signupRequest } from '@/store/actions/auth';
+import { useTranslation } from 'react-i18next';
+import { I18nKeys } from '@/locales/i18nKeys';
 
 const SignUp: React.FC = () => {
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const form = useForm<z.infer<typeof SignupSchema>>({
     resolver: zodResolver(SignupSchema),
@@ -30,8 +33,8 @@ const SignUp: React.FC = () => {
   return (
     <Auth
       isLogin={false}
-      title='Create your account'
-      description='Create your account to join MathU community'
+      title={t(I18nKeys.SIGNUP_SCREEN.TITLE)}
+      description={t(I18nKeys.SIGNUP_SCREEN.DESCRIPTION)}
       cardClassName='min-w-[500px]'
     >
       <Form {...form}>
@@ -41,10 +44,10 @@ const SignUp: React.FC = () => {
             name='email'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{t(I18nKeys.GLOBAL.EMAIL)}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder='Enter email'
+                    placeholder={t(I18nKeys.GLOBAL.EMAIL_PLACEHOLDER)}
                     type='email'
                     errorMsg={form.formState.errors.email?.message}
                     {...field}
@@ -59,10 +62,10 @@ const SignUp: React.FC = () => {
             name='password'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>{t(I18nKeys.GLOBAL.PASSWORD)}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder='Enter password'
+                    placeholder={t(I18nKeys.GLOBAL.PASSWORD_PLACEHOLDER)}
                     type='password'
                     errorMsg={form.formState.errors.password?.message}
                     {...field}
@@ -77,10 +80,10 @@ const SignUp: React.FC = () => {
             name='passwordConfirmation'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password confirmation</FormLabel>
+                <FormLabel>{t(I18nKeys.SIGNUP_SCREEN.PASSWORD_CONFIRMATION)}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder='Enter password confirmation'
+                    placeholder={t(I18nKeys.SIGNUP_SCREEN.PASSWORD_CONFIRMATION_PLACEHOLDER)}
                     type='password'
                     errorMsg={form.formState.errors.passwordConfirmation?.message}
                     {...field}
@@ -91,7 +94,7 @@ const SignUp: React.FC = () => {
             )}
           />
           <Button className='mt-4' type='submit'>
-            Submit
+            {t(I18nKeys.SIGNUP_SCREEN.SUBMIT)}
           </Button>
         </form>
       </Form>

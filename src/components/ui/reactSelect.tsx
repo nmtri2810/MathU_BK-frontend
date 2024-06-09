@@ -20,6 +20,7 @@ export interface IReactSelectProps {
   className?: string;
   isInNavbar?: boolean;
   hideSeparator?: boolean;
+  defaultValue?: SingleValue<IReactSelectOptions> | MultiValue<IReactSelectOptions> | undefined;
 }
 
 const ReactSelect: React.FC<IReactSelectProps> = ({
@@ -32,7 +33,8 @@ const ReactSelect: React.FC<IReactSelectProps> = ({
   isMulti = undefined,
   className,
   isInNavbar = false,
-  hideSeparator = false
+  hideSeparator = false,
+  defaultValue
 }) => {
   const customStyles: StylesConfig<IReactSelectOptions, true> = isInNavbar
     ? {
@@ -71,6 +73,7 @@ const ReactSelect: React.FC<IReactSelectProps> = ({
       className={className}
       styles={customStyles}
       options={options}
+      defaultValue={defaultValue}
       value={value}
       onChange={onChange}
       isSearchable={isSearchable}
