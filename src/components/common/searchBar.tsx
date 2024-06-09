@@ -8,9 +8,10 @@ import { Button } from '@/components/ui/button';
 interface ISearchBarProps {
   className: string;
   onSubmit: (text: string) => void;
+  placeholder: string;
 }
 
-const SearchBar: React.FC<ISearchBarProps> = ({ className, onSubmit }) => {
+const SearchBar: React.FC<ISearchBarProps> = ({ className, onSubmit, placeholder }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [textSearch, setTextSearch] = useState<string>('');
   const [portalStyle, setPortalStyle] = useState<React.CSSProperties>({});
@@ -59,7 +60,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({ className, onSubmit }) => {
         />
         <Input
           type='text'
-          placeholder='Search...'
+          placeholder={placeholder}
           className='h-8 select-none pl-8'
           ref={inputRef}
           onFocus={() => setIsFocused(true)}

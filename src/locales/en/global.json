@@ -1,0 +1,63 @@
+{
+  "home": "Home",
+  "questions": "Questions",
+  "tags": "Tags",
+  "saves": "Saves",
+  "users": "Users",
+  "ask-question": "Ask question",
+  "email": "Email",
+  "email-placeholder": "Enter email",
+  "password": "Password",
+  "password-placeholder": "Enter password",
+  "forgot-password": "Forgot password?",
+  "submit": "Submit",
+  "or": "Or",
+  "newest": "Newest",
+  "oldest": "Oldest",
+  "asked": "asked",
+  "count": {
+    "question_one": "{{count}} question",
+    "question_other": "{{count}} questions",
+    "vote_one": "{{count}} vote",
+    "vote_other": "{{count}} votes",
+    "answer_one": "{{count}} answer",
+    "answer_other": "{{count}} answers",
+    "view_one": "{{count}} view",
+    "view_other": "{{count}} views"
+  },
+  "header": {
+    "about": "About",
+    "help-center": "Help center",
+    "image-scanning": "Image scanning",
+    "log-in": "Log in",
+    "sign-up": "Sign up",
+    "search-placeholder": "Search...",
+    "avatar-dropdown": {
+      "profile": "Profile",
+      "settings": "Settings",
+      "log-out": "Log out"
+    }
+  },
+  "login-screen": {
+    "title": "Login to MathU",
+    "description": "Enter your information to login to your account",
+    "submit": "Submit",
+    "google-login": "Log in with Google",
+    "acc-not-exist": "Don't have an account?"
+  },
+  "signup-screen": {
+    "title": "Create your account",
+    "description": "Create your account to join MathU community",
+    "submit": "Submit",
+    "google-signup": "Sign up with Google",
+    "acc-exist": "Already have an account?",
+    "password-confirmation": "Password confirmation",
+    "password-confirmation-placeholder": "Enter password confirmation"
+  },
+  "home-screen": {
+    "top-questions": "Top Questions"
+  },
+  "question-screen": {
+    "all-questions": "All Questions"
+  }
+}

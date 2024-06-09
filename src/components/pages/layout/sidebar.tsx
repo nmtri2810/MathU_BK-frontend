@@ -4,21 +4,25 @@ import { Bookmark, CircleHelp, Home, Tags, Users } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { Path } from '@/constants/enum';
 import { NavLabel } from '@/constants';
+import { useTranslation } from 'react-i18next';
+import { I18nKeys } from '@/locales/i18nKeys';
 
 const Sidebar: React.FC = () => {
+  const { t } = useTranslation();
+
   const sidebarNav = [
     {
-      label: NavLabel.HOME,
+      label: t(I18nKeys.GLOBAL.HOME),
       link: Path.HOME_CLIENT,
       icon: <Home size={18} />
     },
     {
-      label: NavLabel.QUESTIONS,
+      label: t(I18nKeys.GLOBAL.QUESTIONS),
       link: Path.QUESTIONS,
       icon: <CircleHelp size={18} />
     },
     {
-      label: NavLabel.TAGS,
+      label: t(I18nKeys.GLOBAL.TAGS),
       link: Path.TAGS,
       icon: <Tags size={18} />
     },
@@ -26,12 +30,12 @@ const Sidebar: React.FC = () => {
       label: NavLabel.SPACER
     },
     {
-      label: NavLabel.SAVES,
+      label: t(I18nKeys.GLOBAL.SAVES),
       link: Path.SAVES,
       icon: <Bookmark size={18} />
     },
     {
-      label: NavLabel.USERS,
+      label: t(I18nKeys.GLOBAL.USERS),
       link: Path.USERS,
       icon: <Users size={18} />
     }

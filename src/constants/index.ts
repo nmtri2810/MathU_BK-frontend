@@ -1,3 +1,6 @@
+import { I18nKeys } from '@/locales/i18nKeys';
+import { TFunction } from 'i18next';
+
 export * from './messages';
 
 export const PasswordValidation = new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/);
@@ -28,4 +31,23 @@ export const NavLabel = {
   SAVES: 'Saves',
   USERS: 'Users',
   SPACER: 'Spacer'
+};
+
+export const QuestionFilterValues = {
+  NEWEST: 'newest',
+  OLDEST: 'oldest'
+};
+
+export const getQuestionFilterOptions = (t: TFunction) => [
+  { label: t(I18nKeys.GLOBAL.NEWEST), value: 'newest' },
+  { label: t(I18nKeys.GLOBAL.OLDEST), value: 'oldest' }
+];
+
+export const AppLanguages = {
+  ENGLISH: 'en',
+  VIETNAMESE: 'vi'
+};
+
+export const I18nNamespaces = {
+  GLOBAL: 'global'
 };
