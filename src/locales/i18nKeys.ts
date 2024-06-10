@@ -15,7 +15,9 @@ export const I18nKeys = {
     OR: 'or',
     NEWEST: 'newest',
     OLDEST: 'oldest',
-    ASKED: 'asked'
+    ASKED: 'asked',
+    LOADING: 'loading',
+    PERPAGE: 'perpage'
   },
   COUNT: {
     QUESTION: 'count.question',

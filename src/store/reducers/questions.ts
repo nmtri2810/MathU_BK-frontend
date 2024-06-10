@@ -1,11 +1,19 @@
 import { IQuestionState } from '@/interfaces/question';
 import { createReducer } from '@reduxjs/toolkit';
-import { listQuestionFailure, listQuestionRequest, listQuestionSuccess } from '@/store/actions/question';
-import { ApiStatus } from '@/constants';
+import { listQuestionFailure, listQuestionRequest, listQuestionSuccess, updateParams } from '@/store/actions/question';
+import { ApiStatus, ItemsPerPage } from '@/constants';
 
 const initialState: IQuestionState = {
   list: null,
-  meta: null,
+  meta: {
+    total: 0,
+    lastPage: 0,
+    currentPage: 1, // default
+    perPage: Number(ItemsPerPage[0]), // default
+    prev: 0,
+    next: 0
+  },
+  keyword: '',
   listLoading: false,
   status: ''
 };
@@ -35,6 +43,18 @@ const questionReducer = createReducer<IQuestionState>(initialState, (builder) =>
         listLoading: false
       };
     });
+
+  builder.addCase(updateParams, (state, action) => {
+    return {
+      ...state,
+      meta: {
+        ...state.meta,
+        currentPage: action.payload.page,
+        perPage: action.payload.perPage
+      },
+      keyword: action.payload.keyword
+    };
+  });
 });
 
 export default questionReducer;

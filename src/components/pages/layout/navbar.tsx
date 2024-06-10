@@ -34,9 +34,10 @@ const NavBar: React.FC = () => {
 
   const handleChangeLanguage = (option: SingleValue<IReactSelectOptions> | MultiValue<IReactSelectOptions>) => {
     const selected = option as SingleValue<IReactSelectOptions>;
+
     i18n.changeLanguage(selected?.value);
     localStorage.setItem('language', selected?.value as string);
-    setSelectedOption(option as SingleValue<IReactSelectOptions>);
+    setSelectedOption(selected);
   };
 
   return (
