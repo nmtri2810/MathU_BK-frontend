@@ -51,3 +51,7 @@ export const AppLanguages = {
 export const I18nNamespaces = {
   GLOBAL: 'global'
 };
+
+export const ItemsPerPage = ['5', '10', '15'];
+
+export const PerpageOptions = ItemsPerPage.map((value) => ({ label: value, value }));

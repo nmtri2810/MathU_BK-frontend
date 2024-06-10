@@ -34,7 +34,8 @@ export interface IListQuestionDataResponse {
 
 export interface IQuestionState {
   list: IListQuestion[] | null;
-  meta: IPaginationMetaResponse | null;
+  meta: IPaginationMetaResponse;
+  keyword: string;
   listLoading: boolean;
   status: string;
 }

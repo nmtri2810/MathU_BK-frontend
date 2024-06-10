@@ -21,6 +21,7 @@ export interface IReactSelectProps {
   isInNavbar?: boolean;
   hideSeparator?: boolean;
   defaultValue?: SingleValue<IReactSelectOptions> | MultiValue<IReactSelectOptions> | undefined;
+  menuPlacement?: 'auto' | 'top' | 'bottom';
 }
 
 const ReactSelect: React.FC<IReactSelectProps> = ({
@@ -34,7 +35,8 @@ const ReactSelect: React.FC<IReactSelectProps> = ({
   className,
   isInNavbar = false,
   hideSeparator = false,
-  defaultValue
+  defaultValue,
+  menuPlacement
 }) => {
   const customStyles: StylesConfig<IReactSelectOptions, true> = isInNavbar
     ? {
@@ -81,6 +83,7 @@ const ReactSelect: React.FC<IReactSelectProps> = ({
       isLoading={isLoading}
       isMulti={isMulti}
       components={componentsProps}
+      menuPlacement={menuPlacement}
       {...menuProps}
     />
   );

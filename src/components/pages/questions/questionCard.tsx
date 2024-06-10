@@ -8,13 +8,15 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { cn } from '@/lib/utils';
 dayjs.extend(relativeTime);
 
 interface IQuestionCardProps {
   question: IListQuestion;
+  isLast: boolean;
 }
 
-const QuestionCard: React.FC<IQuestionCardProps> = ({ question }) => {
+const QuestionCard: React.FC<IQuestionCardProps> = ({ question, isLast }) => {
   const { _count, title, description, tags, user, created_at } = question;
   const { t } = useTranslation();
 
@@ -38,7 +40,7 @@ const QuestionCard: React.FC<IQuestionCardProps> = ({ question }) => {
   };
 
   return (
-    <div className='flex border-t-1 p-4'>
+    <div className={cn('flex border-t-1 p-4', isLast && 'border-b-1')}>
       <div className='mr-5 flex h-full min-w-28 flex-col items-end gap-2 text-sm'>
         <p>{t(I18nKeys.COUNT.VOTE, { count: _count.votes })}</p>
         {renderAnswerUI(_count.answers, hasAcceptedAnswer)}
