@@ -43,7 +43,7 @@ const Auth: React.FC<IAuth> = ({ isLogin, children, title, description, cardClas
   });
 
   return (
-    <Layout className='fullscreen bg-gray-100'>
+    <Layout className='fullscreen bg-gray-100' showLeftSidebar={false}>
       {!authLoading ? (
         <div className='mt-40 flex flex-col items-center justify-center'>
           <div
