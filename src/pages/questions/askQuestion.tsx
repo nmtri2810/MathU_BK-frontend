@@ -7,12 +7,15 @@ import ReactSelect from '@/components/ui/reactSelect';
 import { Path } from '@/constants/enum';
 import { ITag } from '@/interfaces/tag';
 import Layout from '@/layout/mainLayout';
+import { I18nKeys } from '@/locales/i18nKeys';
+import { createQuestionRequest } from '@/store/actions/question';
 import { listTagRequest } from '@/store/actions/tag';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { AskQuestionSchema } from '@/validations/question';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -20,6 +23,7 @@ import { z } from 'zod';
 const AskQuestionScreen: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const user = useAppSelector((state) => state.auth.user);
   const tagList = useAppSelector((state) => state.tag.list) || [];
@@ -33,7 +37,17 @@ const AskQuestionScreen: React.FC = () => {
   });
 
   function onSubmit(data: z.infer<typeof AskQuestionSchema>) {
-    console.log('src_pages_questions_askQuestion.tsx#23: ', data);
+    if (!user) return;
+
+    const tagNumArr = data.tags.map((tag) => Number(tag.value));
+    const requestData = {
+      title: data.title,
+      description: data.body,
+      user_id: user?.id,
+      tag_ids: tagNumArr
+    };
+
+    dispatch(createQuestionRequest({ ...requestData, navigate }));
   }
 
   const convertedTags = (tags: ITag[]) => {
@@ -48,9 +62,9 @@ const AskQuestionScreen: React.FC = () => {
   useEffect(() => {
     if (!user) {
       navigate(Path.LOGIN);
-      toast.error('Please login first');
+      toast.error(t(I18nKeys.GLOBAL.LOGIN_FIRST));
     }
-  }, [navigate, user]);
+  }, [navigate, t, user]);
 
   useEffect(() => {
     dispatch(listTagRequest());
@@ -58,7 +72,7 @@ const AskQuestionScreen: React.FC = () => {
 
   return (
     <Layout>
-      <h1 className='text-3xl font-bold'>Ask a public question</h1>
+      <h1 className='text-3xl font-bold'>{t(I18nKeys.GLOBAL.ASK_QUESTION)}</h1>
       <Form {...form}>
         <div className='space-y-6'>
           <FormField
@@ -69,7 +83,7 @@ const AskQuestionScreen: React.FC = () => {
                 <FormControl>
                   <AskQuestionCard
                     className='mt-6'
-                    title='Title'
+                    title={t(I18nKeys.GLOBAL.TITLE)}
                     description="Be specific and imagine you're asking a question to another person"
                   >
                     <Input

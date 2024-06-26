@@ -6,9 +6,10 @@ import createSagaMiddleware from 'redux-saga';
 import rootSaga from '@/store/middlewares/rootSaga';
 
 const persistConfig = {
-  key: 'root',
+  key: 'MathU',
   version: 1,
-  storage
+  storage,
+  whitelist: ['auth', 'client']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

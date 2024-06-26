@@ -14,22 +14,22 @@ import {
   loginGoogleFailure
 } from '@/store/actions/auth';
 import {
-  ILoginAction,
-  ILoginGoogleAction,
-  ILoginResponse,
-  ILogoutAction,
-  ISignupAction,
-  ISignupResponse
+  TLoginAction,
+  TLoginGoogleAction,
+  TLoginResponse,
+  TLogoutAction,
+  TSignupAction,
+  TSignupResponse
 } from '@/interfaces/auth';
 import authAPI from '@/api/auth';
 import { toast } from 'sonner';
 import { Path } from '@/constants/enum';
 import { AxiosError } from 'axios';
 
-function* loginSaga(action: ILoginAction) {
+function* loginSaga(action: TLoginAction) {
   try {
     const { payload } = action;
-    const response: ILoginResponse = yield call(authAPI.login, payload);
+    const response: TLoginResponse = yield call(authAPI.login, payload);
     yield put(loginSuccess(response.data));
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
@@ -40,7 +40,7 @@ function* loginSaga(action: ILoginAction) {
   }
 }
 
-function* logoutSaga(action: ILogoutAction) {
+function* logoutSaga(action: TLogoutAction) {
   try {
     const { payload } = action;
     yield call(authAPI.logout);
@@ -55,10 +55,10 @@ function* logoutSaga(action: ILogoutAction) {
   }
 }
 
-function* signupSaga(action: ISignupAction) {
+function* signupSaga(action: TSignupAction) {
   try {
     const { payload } = action;
-    const response: ISignupResponse = yield call(authAPI.signup, payload);
+    const response: TSignupResponse = yield call(authAPI.signup, payload);
     toast.success(response.message);
     yield put(signupSuccess(response.data));
   } catch (error) {
@@ -70,10 +70,10 @@ function* signupSaga(action: ISignupAction) {
   }
 }
 
-function* loginGoogleSaga(action: ILoginGoogleAction) {
+function* loginGoogleSaga(action: TLoginGoogleAction) {
   try {
     const { payload } = action;
-    const response: ILoginResponse = yield call(authAPI.loginGoogle, payload);
+    const response: TLoginResponse = yield call(authAPI.loginGoogle, payload);
     yield put(loginGoogleSuccess(response.data));
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
