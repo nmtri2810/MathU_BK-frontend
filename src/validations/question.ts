@@ -1,6 +1,12 @@
 import { MessagesValidate } from '@/constants';
 import { z } from 'zod';
 
+const tagsSelectSchema = z.object({
+  label: z.string(),
+  value: z.string(),
+  disable: z.boolean().optional()
+});
+
 export const AskQuestionSchema = z.object({
   title: z
     .string()
@@ -17,5 +23,8 @@ export const AskQuestionSchema = z.object({
     })
     .max(300, {
       message: MessagesValidate.maxLength('Body', 300)
-    })
+    }),
+  tags: z
+    .array(tagsSelectSchema, { required_error: MessagesValidate.isRequired(`Tag`) })
+    .min(1, { message: MessagesValidate.isRequired(`Tag`) })
 });
