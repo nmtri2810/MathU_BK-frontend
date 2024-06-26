@@ -3,11 +3,11 @@ import { LIST_TAG_REQUEST, listTagFailure, listTagSuccess } from '@/store/action
 import { AxiosError } from 'axios';
 import { toast } from 'sonner';
 import tagAPI from '@/api/tag';
-import { IListTagResponse } from '@/interfaces/tag';
+import { TListTagResponse } from '@/interfaces/tag';
 
 function* listTagSaga() {
   try {
-    const response: IListTagResponse = yield call(tagAPI.list);
+    const response: TListTagResponse = yield call(tagAPI.list);
     yield put(listTagSuccess(response.data));
   } catch (error: unknown) {
     if (error instanceof AxiosError) {

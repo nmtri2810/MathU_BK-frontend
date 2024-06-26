@@ -17,7 +17,9 @@ export const I18nKeys = {
     OLDEST: 'oldest',
     ASKED: 'asked',
     LOADING: 'loading',
-    PERPAGE: 'perpage'
+    PERPAGE: 'perpage',
+    LOGIN_FIRST: 'login-first',
+    TITLE: 'title'
   },
   COUNT: {
     QUESTION: 'count.question',

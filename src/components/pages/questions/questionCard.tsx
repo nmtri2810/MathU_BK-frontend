@@ -1,6 +1,6 @@
 import AvatarFull from '@/components/common/avatarFull';
 import { Badge } from '@/components/ui/badge';
-import { IListQuestion } from '@/interfaces/question';
+import { IQuestionBEResponse } from '@/interfaces/question';
 import { I18nKeys } from '@/locales/i18nKeys';
 import { Check } from 'lucide-react';
 import React from 'react';
@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 dayjs.extend(relativeTime);
 
 interface IQuestionCardProps {
-  question: IListQuestion;
+  question: IQuestionBEResponse;
   isLast: boolean;
 }
 

@@ -12,4 +12,4 @@ export interface ITagState {
   status: string;
 }
 
-export type IListTagResponse = IResponse<ITag[]>;
+export type TListTagResponse = IResponse<ITag[]>;

@@ -16,7 +16,7 @@ const AskQuestionBtn: React.FC = () => {
   const handleNavigate = () => {
     if (!user) {
       navigate(Path.LOGIN);
-      toast.error('Please login first');
+      toast.error(t(I18nKeys.GLOBAL.LOGIN_FIRST));
       return;
     }
 

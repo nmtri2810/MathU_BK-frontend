@@ -17,6 +17,8 @@
   "asked": "hỏi",
   "loading": "Đang tải...",
   "perpage": "trên một trang",
+  "login-first": "Vui lòng đăng nhập để tiếp tục",
+  "title": "Tiêu đề",
   "count": {
     "question_one": "{{count}} câu hỏi",
     "question_other": "{{count}} câu hỏi",

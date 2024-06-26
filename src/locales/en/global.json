@@ -17,6 +17,8 @@
   "asked": "asked",
   "loading": "Loading...",
   "perpage": "per page",
+  "login-first": "Please login first",
+  "title": "Title",
   "count": {
     "question_one": "{{count}} question",
     "question_other": "{{count}} questions",

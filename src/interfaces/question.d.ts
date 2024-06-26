@@ -1,3 +1,4 @@
+import { NavigateFunction } from 'react-router-dom';
 import { IAction, IPaginationMetaResponse, IPaginationPayload, IResponse, ITimestamp } from '.';
 import { IAnswer } from './answer';
 import { ITag } from './tag';
@@ -19,7 +20,7 @@ export interface IListQuestionDataCount {
   tags: number;
 }
 
-export interface IListQuestion extends IQuestion {
+export interface IQuestionBEResponse extends IQuestion {
   votes: IVote[];
   answers: IAnswer[];
   tags: ITag[];
@@ -28,17 +29,34 @@ export interface IListQuestion extends IQuestion {
 }
 
 export interface IListQuestionDataResponse {
-  list: IListQuestion[];
+  list: IQuestionBEResponse[];
   meta: IPaginationMetaResponse;
 }
 
 export interface IQuestionState {
-  list: IListQuestion[] | null;
+  list: IQuestionBEResponse[] | null;
   meta: IPaginationMetaResponse;
   keyword: string;
   listLoading: boolean;
+  one: IQuestionBEResponse | null;
+  oneLoading: boolean;
   status: string;
 }
 
-export type IListQuestionAction = IAction<IListQuestionPayload>;
-export type IListQuestionResponse = IResponse<IListQuestionDataResponse>;
+export interface ICreateQuestionPayload {
+  title: string;
+  description: string;
+  user_id: number;
+  tag_ids: number[];
+  navigate: NavigateFunction;
+}
+
+export type TReqPayload = Omit<ICreateQuestionPayload, 'navigate'>;
+
+export interface ICreateQuestionDataResponse extends IQuestionBEResponse {}
+
+export type TListQuestionAction = IAction<IListQuestionPayload>;
+export type TListQuestionResponse = IResponse<IListQuestionDataResponse>;
+
+export type TCreateQuestionAction = IAction<ICreateQuestionPayload>;
+export type TCreateQuestionResponse = IResponse<ICreateQuestionDataResponse>;

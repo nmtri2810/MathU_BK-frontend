@@ -1,6 +1,14 @@
 import { IQuestionState } from '@/interfaces/question';
 import { createReducer } from '@reduxjs/toolkit';
-import { listQuestionFailure, listQuestionRequest, listQuestionSuccess, updateParams } from '@/store/actions/question';
+import {
+  createQuestionFailure,
+  createQuestionRequest,
+  createQuestionSuccess,
+  listQuestionFailure,
+  listQuestionRequest,
+  listQuestionSuccess,
+  updateParams
+} from '@/store/actions/question';
 import { ApiStatus, ItemsPerPage } from '@/constants';
 
 const initialState: IQuestionState = {
@@ -15,6 +23,8 @@ const initialState: IQuestionState = {
   },
   keyword: '',
   listLoading: false,
+  one: null,
+  oneLoading: false,
   status: ''
 };
 
@@ -55,6 +65,30 @@ const questionReducer = createReducer<IQuestionState>(initialState, (builder) =>
       keyword: action.payload.keyword
     };
   });
+
+  builder
+    .addCase(createQuestionRequest, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.REQUESTING,
+        oneLoading: true
+      };
+    })
+    .addCase(createQuestionSuccess, (state, action) => {
+      return {
+        ...state,
+        one: action.payload,
+        status: ApiStatus.POST_SUCCEED,
+        oneLoading: false
+      };
+    })
+    .addCase(createQuestionFailure, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.POST_FAILED,
+        oneLoading: false
+      };
+    });
 });
 
 export default questionReducer;

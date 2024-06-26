@@ -48,12 +48,12 @@ export interface ILoginGoogleRequestPayload {
   code: string;
 }
 
-export type ILoginAction = IAction<ILoginRequestPayload>;
-export type ILoginResponse = IResponse<ILoginDataResponse>;
+export type TLoginAction = IAction<ILoginRequestPayload>;
+export type TLoginResponse = IResponse<ILoginDataResponse>;
 
-export type ILogoutAction = IAction<ILogoutRequestPayload>;
+export type TLogoutAction = IAction<ILogoutRequestPayload>;
 
-export type ISignupAction = IAction<ISignupRequestPayload>;
-export type ISignupResponse = IResponse<ILoginDataResponse>;
+export type TSignupAction = IAction<ISignupRequestPayload>;
+export type TSignupResponse = IResponse<ILoginDataResponse>;
 
-export type ILoginGoogleAction = IAction<ILoginGoogleRequestPayload>;
+export type TLoginGoogleAction = IAction<ILoginGoogleRequestPayload>;
