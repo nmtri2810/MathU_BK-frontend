@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import AskQuestionBtn from '@/components/common/askQuestionBtn';
 import { Role } from '@/constants';
 import Layout from '@/layout/mainLayout';
 import { I18nKeys } from '@/locales/i18nKeys';
@@ -13,7 +13,7 @@ const Home: React.FC = () => {
     <Layout>
       <div className='mb-7 flex min-h-10 justify-between'>
         <h1 className='text-3xl font-bold'>{t(I18nKeys.HOME_SCREEN.TOP_QUESTIONS)}</h1>
-        <Button className='bg-blue-600 font-normal hover:bg-blue-700'>{t(I18nKeys.GLOBAL.ASK_QUESTION)}</Button>
+        <AskQuestionBtn />
       </div>
 
       <UnlockAccess request={[Role.Guest]}>

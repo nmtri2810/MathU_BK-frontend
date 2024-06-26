@@ -102,7 +102,7 @@ const SignUp: React.FC = () => {
                 <FormLabel>Username</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder='Enter Username'
+                    placeholder='Enter username'
                     type='text'
                     errorMsg={form.formState.errors.username?.message}
                     {...field}

@@ -6,5 +6,6 @@ export const MessagesValidate = {
 
     return `${defaultMsg}. ${reason}`;
   },
-  maxLength: (fieldName: string, length: number) => `${fieldName} must be less than ${length} characters`
+  maxLength: (fieldName: string, length: number) => `${fieldName} must be less than ${length} characters`,
+  minLength: (fieldName: string, length: number) => `${fieldName} must be more than ${length} characters`
 };

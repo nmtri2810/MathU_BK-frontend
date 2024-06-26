@@ -1,0 +1,48 @@
+.tiptap-input h1 {
+  @apply text-2xl font-bold;
+}
+
+.tiptap-input h2 {
+  @apply text-xl font-bold;
+}
+
+.tiptap-input ol {
+  @apply list-decimal pl-4;
+}
+
+.tiptap-input ul {
+  @apply list-disc pl-4;
+}
+
+.tiptap-input hr {
+  @apply my-4;
+}
+
+.tiptap-input blockquote {
+  @apply my-4 border-l-3 border-solid border-l-[#ccc] bg-gray-50/50 pl-4 text-gray-500;
+}
+
+.tiptap-input .editor-content .ProseMirror {
+  @apply focus-visible:outline-none;
+}
+
+.tiptap-input .Tiptap-mathematics-editor {
+  @apply bg-[#202020] px-2 py-1 font-mono text-white;
+}
+
+.tiptap-input .Tiptap-mathematics-render {
+  @apply px-1;
+}
+
+.tiptap-input .Tiptap-mathematics-render--editable {
+  @apply cursor-pointer transition;
+}
+
+.tiptap-input .Tiptap-mathematics-render--editable:hover {
+  @apply bg-[#eee];
+}
+
+.tiptap-input .Tiptap-mathematics-editor,
+.tiptap-input .Tiptap-mathematics-render {
+  @apply inline-block rounded-sm;
+}

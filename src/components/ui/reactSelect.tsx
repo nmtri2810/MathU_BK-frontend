@@ -22,7 +22,35 @@ export interface IReactSelectProps {
   hideSeparator?: boolean;
   defaultValue?: SingleValue<IReactSelectOptions> | MultiValue<IReactSelectOptions> | undefined;
   menuPlacement?: 'auto' | 'top' | 'bottom';
+  placeholder?: string;
+  errorMsg?: string;
 }
+
+const navbarStyles: StylesConfig<IReactSelectOptions, true> = {
+  control: (baseStyles) => ({
+    ...baseStyles,
+    borderRadius: 8,
+    height: '34px',
+    minHeight: '34px'
+  }),
+  indicatorsContainer: (baseStyles) => ({
+    ...baseStyles,
+    height: '34px'
+  }),
+  valueContainer: (baseStyles) => ({
+    ...baseStyles,
+    height: '34px'
+  })
+};
+
+const errorStyles: StylesConfig<IReactSelectOptions, true> = {
+  control: (baseStyles) => ({
+    ...baseStyles,
+    border: 0,
+    boxShadow: 'none',
+    outline: '1px solid red'
+  })
+};
 
 const ReactSelect: React.FC<IReactSelectProps> = ({
   options,
@@ -36,44 +64,23 @@ const ReactSelect: React.FC<IReactSelectProps> = ({
   isInNavbar = false,
   hideSeparator = false,
   defaultValue,
-  menuPlacement
+  menuPlacement,
+  placeholder,
+  errorMsg
 }) => {
-  const customStyles: StylesConfig<IReactSelectOptions, true> = isInNavbar
-    ? {
-        control: (baseStyles) => ({
-          ...baseStyles,
-          borderRadius: 8,
-          height: '34px',
-          minHeight: '34px'
-        }),
-        indicatorsContainer: (baseStyles) => ({
-          ...baseStyles,
-          height: '34px'
-        }),
-        valueContainer: (baseStyles) => ({
-          ...baseStyles,
-          height: '34px'
-        })
-      }
-    : {};
-
-  const menuProps = isInNavbar
-    ? {
-        menuPortalTarget: document.body,
-        menuPosition: 'fixed' as const
-      }
-    : {};
-
-  const componentsProps = hideSeparator
-    ? {
-        IndicatorSeparator: () => null
-      }
-    : {};
+  const defaultStyles: StylesConfig<IReactSelectOptions, true> = {
+    option: (baseStyles) => ({
+      ...baseStyles,
+      cursor: 'pointer'
+    }),
+    ...(errorMsg && errorStyles),
+    ...(isInNavbar && navbarStyles)
+  };
 
   return (
     <Select
       className={className}
-      styles={customStyles}
+      styles={defaultStyles}
       options={options}
       defaultValue={defaultValue}
       value={value}
@@ -82,9 +89,15 @@ const ReactSelect: React.FC<IReactSelectProps> = ({
       isClearable={isClearable}
       isLoading={isLoading}
       isMulti={isMulti}
-      components={componentsProps}
+      components={{
+        ...(hideSeparator && { IndicatorSeparator: () => null })
+      }}
       menuPlacement={menuPlacement}
-      {...menuProps}
+      placeholder={placeholder}
+      {...(isInNavbar && {
+        menuPortalTarget: document.body,
+        menuPosition: 'fixed' as const
+      })}
     />
   );
 };
