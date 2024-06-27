@@ -17,6 +17,6 @@ export enum AdminPath {
 }
 
 export enum VoteableTypes {
-  QUESTION,
-  ANSWER
+  QUESTION = 'QUESTION',
+  ANSWER = 'ANSWER'
 }
