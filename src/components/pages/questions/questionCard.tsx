@@ -1,14 +1,17 @@
-import AvatarFull from '@/components/common/avatarFull';
 import { Badge } from '@/components/ui/badge';
 import { IQuestionBEResponse } from '@/interfaces/question';
 import { I18nKeys } from '@/locales/i18nKeys';
 import { Check } from 'lucide-react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, generatePath } from 'react-router-dom';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { cn } from '@/lib/utils';
+import { cn, formatTitleForURL } from '@/lib/utils';
+import { Path } from '@/constants/enum';
+import TagGroup from '@/components/common/tagGroup';
+import UserData from '@/components/common/userData';
+import SanitizeHTML from '@/components/common/sanitizeHTML';
 dayjs.extend(relativeTime);
 
 interface IQuestionCardProps {
@@ -17,7 +20,7 @@ interface IQuestionCardProps {
 }
 
 const QuestionCard: React.FC<IQuestionCardProps> = ({ question, isLast }) => {
-  const { _count, title, description, tags, user, created_at } = question;
+  const { _count, title, description, tags, user, created_at, id } = question;
   const { t } = useTranslation();
 
   const hasAcceptedAnswer = question.answers.some((answer) => answer.is_accepted);
@@ -48,31 +51,17 @@ const QuestionCard: React.FC<IQuestionCardProps> = ({ question, isLast }) => {
       </div>
       <div className='h-full w-full'>
         <h3>
-          <Link className='text-blue-600 hover:text-blue-700' to='#'>
+          <Link
+            className='text-blue-600 hover:text-blue-700'
+            to={generatePath(Path.DETAIL_QUESTIONS, { id: String(id), title: formatTitleForURL(title) })}
+          >
             {title}
           </Link>
         </h3>
-        <p className='mt-1 text-sm'>{description}</p>
+        <SanitizeHTML className='mt-1 text-sm' html={description as string} />
         <div className='mt-2 flex items-center justify-between'>
-          <div className='flex gap-2'>
-            {tags.map((tag) => (
-              <Badge key={tag.id} variant='secondary' className='rounded-sm bg-[#f1f2f3] p-0 hover:bg-accent'>
-                <Link className='block px-2.5 py-0.5 font-bold' to='#'>
-                  {tag.name}
-                </Link>
-              </Badge>
-            ))}
-          </div>
-          <div className='flex items-center gap-1 text-sm'>
-            <AvatarFull className='size-5' />
-            <Link className='text-blue-600 hover:text-blue-700' to=''>
-              {user.username}
-            </Link>
-            <span className='font-bold'>{user.reputation}</span>
-            <span className='text-gray-500'>
-              {t(I18nKeys.GLOBAL.ASKED)} {dayjs(created_at).fromNow()} {/* i18n here */}
-            </span>
-          </div>
+          <TagGroup tags={tags} />
+          <UserData username={user.username} reputation={user.reputation} createdAt={created_at} isInList={true} />
         </div>
       </div>
     </div>

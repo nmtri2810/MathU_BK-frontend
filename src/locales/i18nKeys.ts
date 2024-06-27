@@ -61,5 +61,10 @@ export const I18nKeys = {
   },
   QUESTION_SCREEN: {
     ALL_QUESTIONS: 'question-screen.all-questions'
+  },
+  DETAIL_QUESTION_SCREEN: {
+    ASKED: 'detail-question-screen.asked',
+    MODIFIED: 'detail-question-screen.modified',
+    VIEWED: 'detail-question-screen.viewed'
   }
 };

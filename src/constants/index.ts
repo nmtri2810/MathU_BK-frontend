@@ -55,3 +55,34 @@ export const I18nNamespaces = {
 export const ItemsPerPage = ['5', '10', '15'];
 
 export const PerpageOptions = ItemsPerPage.map((value) => ({ label: value, value }));
+
+export const DateFormat = {
+  USER_DATA: 'DD/MM/YYYY - HH:mm'
+};
+
+export const MathTags = [
+  'math',
+  'mi',
+  'mo',
+  'mn',
+  'ms',
+  'mtext',
+  'mrow',
+  'msup',
+  'msub',
+  'msubsup',
+  'mfrac',
+  'mroot',
+  'msqrt',
+  'mfenced',
+  'mtable',
+  'mtr',
+  'mtd',
+  'mover',
+  'munder',
+  'munderover',
+  'mphantom',
+  'mpadded',
+  'menclose',
+  'mlabeledtr'
+];

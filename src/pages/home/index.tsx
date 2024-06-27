@@ -1,4 +1,4 @@
-import AskQuestionBtn from '@/components/common/askQuestionBtn';
+import AskQuestionBtn from '@/components/pages/questions/askQuestionBtn';
 import { Role } from '@/constants';
 import Layout from '@/layout/mainLayout';
 import { I18nKeys } from '@/locales/i18nKeys';

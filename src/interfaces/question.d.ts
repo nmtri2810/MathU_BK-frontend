@@ -55,8 +55,17 @@ export type TReqPayload = Omit<ICreateQuestionPayload, 'navigate'>;
 
 export interface ICreateQuestionDataResponse extends IQuestionBEResponse {}
 
+export interface IGetQuestionPayload {
+  id: number;
+}
+
+export interface IGetQuestionDataResponse extends IQuestionBEResponse {}
+
 export type TListQuestionAction = IAction<IListQuestionPayload>;
 export type TListQuestionResponse = IResponse<IListQuestionDataResponse>;
 
 export type TCreateQuestionAction = IAction<ICreateQuestionPayload>;
 export type TCreateQuestionResponse = IResponse<ICreateQuestionDataResponse>;
+
+export type TGetQuestionAction = IAction<IGetQuestionPayload>;
+export type TGetQuestionResponse = IResponse<IGetQuestionDataResponse>;
