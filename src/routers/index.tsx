@@ -14,6 +14,7 @@ import TagScreen from '@/pages/tags';
 import SaveScreen from '@/pages/saves';
 import UserScreen from '@/pages/users';
 import AskQuestionScreen from '@/pages/questions/askQuestion';
+import DetailQuestionScreen from '@/pages/questions/detailQuestion';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -28,6 +29,7 @@ const AppRoutes: React.FC = () => {
           <Route path={Path.HOME_CLIENT} element={<Home />} />
           <Route path={Path.QUESTIONS} element={<QuestionScreen />} />
           <Route path={Path.ASK_QUESTIONS} element={<AskQuestionScreen />} />
+          <Route path={Path.DETAIL_QUESTIONS} element={<DetailQuestionScreen />} />
           <Route path={Path.TAGS} element={<TagScreen />} />
           <Route path={Path.SAVES} element={<SaveScreen />} />
           <Route path={Path.USERS} element={<UserScreen />} />

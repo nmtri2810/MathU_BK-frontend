@@ -16,7 +16,7 @@ const AvatarFull: React.FC<IAvatarFullProps> = ({ imgUrl, username, className })
       <AvatarFallback>{`${username}_`}</AvatarFallback>
     </Avatar>
   ) : (
-    <CircleUserRound className={cn('size-8 select-none rounded-sm', className)} />
+    <CircleUserRound strokeWidth={1.5} className={cn('size-8 select-none rounded-sm', className)} />
   );
 };
 

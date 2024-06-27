@@ -6,6 +6,7 @@ export enum Path {
   UNAUTHORIZED = '/unauthorized',
   QUESTIONS = '/questions',
   ASK_QUESTIONS = '/questions/ask',
+  DETAIL_QUESTIONS = '/questions/:id/:title',
   TAGS = '/tags',
   SAVES = '/saves',
   USERS = '/users'

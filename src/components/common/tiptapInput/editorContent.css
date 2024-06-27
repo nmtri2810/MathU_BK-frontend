@@ -1,24 +1,30 @@
-.tiptap-input h1 {
+.tiptap-input h1,
+#question-body h1 {
   @apply text-2xl font-bold;
 }
 
-.tiptap-input h2 {
+.tiptap-input h2,
+#question-body h2 {
   @apply text-xl font-bold;
 }
 
-.tiptap-input ol {
+.tiptap-input ol,
+#question-body ol {
   @apply list-decimal pl-4;
 }
 
-.tiptap-input ul {
+.tiptap-input ul,
+#question-body ul {
   @apply list-disc pl-4;
 }
 
-.tiptap-input hr {
+.tiptap-input hr,
+#question-body hr {
   @apply my-4;
 }
 
-.tiptap-input blockquote {
+.tiptap-input blockquote,
+#question-body blockquote {
   @apply my-4 border-l-3 border-solid border-l-[#ccc] bg-gray-50/50 pl-4 text-gray-500;
 }
 
@@ -45,4 +51,8 @@
 .tiptap-input .Tiptap-mathematics-editor,
 .tiptap-input .Tiptap-mathematics-render {
   @apply inline-block rounded-sm;
+}
+
+.tiptap.ProseMirror {
+  @apply p-4;
 }

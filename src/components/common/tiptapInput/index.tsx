@@ -11,7 +11,7 @@ import 'katex/dist/katex.min.css';
 import { cn } from '@/lib/utils';
 
 interface ITiptapInputProps {
-  errorMsg: string | undefined;
+  errorMsg?: string | undefined;
   value: string;
   onChange: (value: string) => void;
 }
@@ -50,10 +50,7 @@ const TiptapInput: React.FC<ITiptapInputProps> = ({ errorMsg, value, onChange })
       )}
     >
       <MenuBar editor={editor} />
-      <EditorContent
-        className='editor-content max-h-44 flex-auto overflow-y-auto overflow-x-hidden p-4'
-        editor={editor}
-      />
+      <EditorContent className='editor-content max-h-44 flex-auto overflow-y-auto overflow-x-hidden' editor={editor} />
     </div>
   );
 };

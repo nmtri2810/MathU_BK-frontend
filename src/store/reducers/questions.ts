@@ -4,6 +4,9 @@ import {
   createQuestionFailure,
   createQuestionRequest,
   createQuestionSuccess,
+  getQuestionFailure,
+  getQuestionRequest,
+  getQuestionSuccess,
   listQuestionFailure,
   listQuestionRequest,
   listQuestionSuccess,
@@ -86,6 +89,30 @@ const questionReducer = createReducer<IQuestionState>(initialState, (builder) =>
       return {
         ...state,
         status: ApiStatus.POST_FAILED,
+        oneLoading: false
+      };
+    });
+
+  builder
+    .addCase(getQuestionRequest, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.REQUESTING,
+        oneLoading: true
+      };
+    })
+    .addCase(getQuestionSuccess, (state, action) => {
+      return {
+        ...state,
+        one: action.payload,
+        status: ApiStatus.GET_SUCCEED,
+        oneLoading: false
+      };
+    })
+    .addCase(getQuestionFailure, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.GET_FAILED,
         oneLoading: false
       };
     });

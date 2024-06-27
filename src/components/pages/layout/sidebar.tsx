@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Bookmark, CircleHelp, Home, Tags, Users } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
@@ -40,6 +40,10 @@ const Sidebar: React.FC = () => {
       icon: <Users size={18} />
     }
   ];
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   return (
     <div className='relative w-40 shrink-0 bg-white'>

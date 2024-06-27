@@ -9,7 +9,7 @@ import { SingleValue, MultiValue } from 'react-select';
 import { useTranslation } from 'react-i18next';
 import { I18nKeys } from '@/locales/i18nKeys';
 import FullPagination from '@/components/common/fullPagination';
-import AskQuestionBtn from '@/components/common/askQuestionBtn';
+import AskQuestionBtn from '@/components/pages/questions/askQuestionBtn';
 import PageLoading from '@/components/common/pageLoading';
 
 const QuestionScreen: React.FC = () => {

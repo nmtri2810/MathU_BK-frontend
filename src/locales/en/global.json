@@ -63,5 +63,10 @@
   },
   "question-screen": {
     "all-questions": "All Questions"
+  },
+  "detail-question-screen": {
+    "asked": "Asked",
+    "modified": "Modified",
+    "viewed": "Viewed"
   }
 }

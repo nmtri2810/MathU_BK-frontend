@@ -63,5 +63,10 @@
   },
   "question-screen": {
     "all-questions": "Tất cả câu hỏi"
+  },
+  "detail-question-screen": {
+    "asked": "Hỏi",
+    "modified": "Chỉnh sửa",
+    "viewed": "Xem"
   }
 }
