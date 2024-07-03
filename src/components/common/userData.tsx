@@ -33,7 +33,7 @@ const UserData: React.FC<IUserDataProps> = ({ username, reputation, createdAt, i
   );
 
   const userDataInList = (
-    <div className={cn('flex items-center gap-1 text-sm', className)}>
+    <div className={cn('flex shrink-0 items-center gap-1 text-sm', className)}>
       <AvatarFull className='size-5' />
       {userLink}
       <span className='font-bold'>{reputation}</span>
