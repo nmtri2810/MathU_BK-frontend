@@ -11,7 +11,7 @@ interface ITagGroupProps {
 
 const TagGroup: React.FC<ITagGroupProps> = ({ tags, className }) => {
   return (
-    <div className={cn('flex gap-2', className)}>
+    <div className={cn('max-w-400 flex grow flex-wrap gap-2', className)}>
       {tags?.map((tag, index) => (
         <Badge key={`${tag.id}_${index}`} variant='secondary' className='rounded-sm bg-[#f1f2f3] p-0 hover:bg-accent'>
           <Link className='block px-2.5 py-0.5 font-bold' to='#'>
