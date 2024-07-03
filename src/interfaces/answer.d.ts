@@ -1,4 +1,5 @@
 import { IAction, IResponse, ITimestamp } from '.';
+import { IUser } from './user';
 
 export interface IAnswer extends ITimestamp {
   id: number;
@@ -7,7 +8,11 @@ export interface IAnswer extends ITimestamp {
   parent_id?: number;
   question_id: number;
   user_id: number;
+  user: IUser;
+  children: IAnswer[];
 }
+
+export interface IChildAnswer extends Omit<IAnswer, 'children'> {}
 
 export interface ICreateAnswerPayload {
   content: string;

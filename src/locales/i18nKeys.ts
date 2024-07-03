@@ -13,19 +13,24 @@ export const I18nKeys = {
     FORGOT_PASSWORD: 'forgot-password',
     SUBMIT: 'submit',
     OR: 'or',
+    HIGHEST_SCORE: 'highest-score',
     NEWEST: 'newest',
     OLDEST: 'oldest',
     ASKED: 'asked',
     LOADING: 'loading',
     PERPAGE: 'perpage',
     LOGIN_FIRST: 'login-first',
-    TITLE: 'title'
+    TITLE: 'title',
+    SHARE: 'share',
+    EDIT: 'edit',
+    FOLLOW: 'follow'
   },
   COUNT: {
     QUESTION: 'count.question',
     VOTE: 'count.vote',
     ANSWER: 'count.answer',
-    VIEW: 'count.view'
+    VIEW: 'count.view',
+    TIME_COUNT: 'count.time-count'
   },
   HEADER: {
     ABOUT: 'header.about',
@@ -65,6 +70,28 @@ export const I18nKeys = {
   DETAIL_QUESTION_SCREEN: {
     ASKED: 'detail-question-screen.asked',
     MODIFIED: 'detail-question-screen.modified',
-    VIEWED: 'detail-question-screen.viewed'
+    VIEWED: 'detail-question-screen.viewed',
+    USER_ASKED_TIME: 'detail-question-screen.user-asked-time',
+    USER_ANSWERED_TIME: 'detail-question-screen.user-answered-time',
+    YOUR_ANSWER: 'detail-question-screen.your-answer',
+    SUBMIT_ANSWER: 'detail-question-screen.submit-answer'
+  },
+  ASK_QUESTION_SCREEN: {
+    TITLE_DESCRIPTION: 'ask-question-screen.title-description',
+    TITLE_PLACEHOLDER: 'ask-question-screen.title-placeholder',
+    BODY: 'ask-question-screen.body',
+    BODY_DESCRIPTION: 'ask-question-screen.body-description',
+    TAG_DESCRIPTION: 'ask-question-screen.tag-description',
+    TAG_PLACEHOLDER: 'ask-question-screen.tag-placeholder',
+    SUBMIT: 'ask-question-screen.submit'
+  },
+  RIGHT_SIDEBAR: {
+    HEADER: 'right-sidebar.header',
+    GOOD_QUES_CONTENT: 'right-sidebar.good-question-content',
+    GOOD_ANS_CONTENT: 'right-sidebar.good-answer-content',
+    LATEX_CONTENT: 'right-sidebar.latex-content'
+  },
+  ANSWER_SECTION: {
+    BTN_TEXT: 'answer-section.btn-text'
   }
 };

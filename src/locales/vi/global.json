@@ -12,6 +12,7 @@
   "forgot-password": "Quên mật khẩu?",
   "submit": "Submit",
   "or": "Hoặc",
+  "highest-score": "Điểm cao nhất",
   "newest": "Mới nhất",
   "oldest": "Cũ nhất",
   "asked": "hỏi",
@@ -19,6 +20,9 @@
   "perpage": "trên một trang",
   "login-first": "Vui lòng đăng nhập để tiếp tục",
   "title": "Tiêu đề",
+  "share": "Chia sẻ",
+  "edit": "Chỉnh sửa",
+  "follow": "Theo dõi",
   "count": {
     "question_one": "{{count}} câu hỏi",
     "question_other": "{{count}} câu hỏi",
@@ -27,7 +31,9 @@
     "answer_one": "{{count}} câu trả lời",
     "answer_other": "{{count}} câu trả lời",
     "view_one": "{{count}} lượt xem",
-    "view_other": "{{count}} lượt xem"
+    "view_other": "{{count}} lượt xem",
+    "time-count_one": "{{count}} lần",
+    "time-count_other": "{{count}} lần"
   },
   "header": {
     "about": "Về chúng tôi",
@@ -67,6 +73,28 @@
   "detail-question-screen": {
     "asked": "Hỏi",
     "modified": "Chỉnh sửa",
-    "viewed": "Xem"
+    "viewed": "Xem",
+    "user-asked-time": "Hỏi ngày",
+    "user-answered-time": "Trả lời ngày",
+    "your-answer": "Câu trả lời của bạn",
+    "submit-answer": "Đăng câu trả lời"
+  },
+  "ask-question-screen": {
+    "title-description": "Hãy có nội dung cụ thể và tưởng tượng bạn hỏi thầy cô hoặc bạn bè",
+    "title-placeholder": "Câu hỏi bạn đang gặp khó khăn là gì? Hãy nêu cụ thể vấn đề cần hỗ trợ",
+    "body": "Nội dung câu hỏi",
+    "body-description": "Bao gồm tất cả thông tin mà mọi người sẽ cần để trả lời câu hỏi của bạn",
+    "tag-description": "Thêm tối đa 5 thẻ chủ đề để mô tả nội dung câu hỏi của bạn",
+    "tag-placeholder": "Ví dụ: Giải tích 1, ...",
+    "submit": "Đăng câu hỏi"
+  },
+  "right-sidebar": {
+    "header": "Tính năng trên MathU",
+    "good-question-content": "Làm thế nào để viết một câu hỏi tốt?",
+    "good-answer-content": "Làm thế nào để viết một câu trả lời tốt?",
+    "latex-content": "Cách sử dụng LaTeX để viết công thức toán?"
+  },
+  "answer-section": {
+    "btn-text": "Thêm câu trả lời"
   }
 }
