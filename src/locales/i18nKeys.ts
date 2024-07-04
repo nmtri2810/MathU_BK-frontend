@@ -23,7 +23,8 @@ export const I18nKeys = {
     TITLE: 'title',
     SHARE: 'share',
     EDIT: 'edit',
-    FOLLOW: 'follow'
+    FOLLOW: 'follow',
+    CLOSE: 'close'
   },
   COUNT: {
     QUESTION: 'count.question',
@@ -92,6 +93,16 @@ export const I18nKeys = {
     LATEX_CONTENT: 'right-sidebar.latex-content'
   },
   ANSWER_SECTION: {
-    BTN_TEXT: 'answer-section.btn-text'
+    BTN_TEXT: 'answer-section.btn-text',
+    COMMENT_DESC: 'answer-section.comment-desc',
+    ADD_COMMENT: 'answer-section.add-comment'
+  },
+  FOOTER: {
+    ABOUT: 'footer.about',
+    BLOG: 'footer.blog',
+    PRICING: 'footer.pricing',
+    CONTACT: 'footer.contact',
+    TERMS: 'footer.terms',
+    ALL_RIGHTS_RESERVED: 'footer.all-rights-reserved'
   }
 };

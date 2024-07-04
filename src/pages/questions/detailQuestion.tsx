@@ -7,7 +7,7 @@ import Layout from '@/layout/mainLayout';
 import { formatTimeFromNow } from '@/lib/utils';
 import { getQuestionRequest } from '@/store/actions/question';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import UtilsLinkGroup from '@/components/pages/questions/utilsLinkGroup';
@@ -41,9 +41,13 @@ const DetailQuestionScreen: React.FC = () => {
     }
   ];
 
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     dispatch(getQuestionRequest({ id: Number(id) }));
   }, [dispatch, id]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return (
     <Layout>
@@ -83,7 +87,7 @@ const DetailQuestionScreen: React.FC = () => {
               </div>
             </div>
           </div>
-          <AnswerSection />
+          <AnswerSection callback={() => fetchData()} />
         </>
       )}
     </Layout>

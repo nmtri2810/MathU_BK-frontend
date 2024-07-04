@@ -23,6 +23,7 @@
   "share": "Chia sẻ",
   "edit": "Chỉnh sửa",
   "follow": "Theo dõi",
+  "close": "Đóng",
   "count": {
     "question_one": "{{count}} câu hỏi",
     "question_other": "{{count}} câu hỏi",
@@ -95,6 +96,16 @@
     "latex-content": "Cách sử dụng LaTeX để viết công thức toán?"
   },
   "answer-section": {
-    "btn-text": "Thêm câu trả lời"
+    "btn-text": "Thêm bình luận",
+    "comment-desc": "Nhập vào ít nhất 15 ký tự",
+    "add-comment": "Thêm bình luận"
+  },
+  "footer": {
+    "about": "Về chúng tôi",
+    "blog": "Blog của chúng tôi",
+    "pricing": "Chính sách giá cả",
+    "contact": "Liên hệ",
+    "terms": "Điều khoản dịch vụ",
+    "all-rights-reserved": "Đã đăng ký bản quyền"
   }
 }

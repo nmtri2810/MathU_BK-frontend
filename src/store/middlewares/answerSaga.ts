@@ -13,8 +13,12 @@ import { toast } from 'sonner';
 
 function* createAnswerSaga(action: TCreateAnswerAction) {
   try {
-    const { payload } = action;
+    const { callback, ...payload } = action.payload;
     const response: TCreateAnswerResponse = yield call(answerAPI.create, payload);
+
+    callback?.();
+
+    toast.success(response.message);
     yield put(createAnswerSuccess(response.data));
   } catch (error: unknown) {
     if (error instanceof AxiosError) {

@@ -1,13 +1,17 @@
+import { I18nKeys } from '@/locales/i18nKeys';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
+
   const navItems = [
-    { text: 'About', link: '#' },
-    { text: 'Blog', link: '#' },
-    { text: 'Pricing', link: '#' },
-    { text: 'Contact', link: '#' },
-    { text: 'Terms', link: '#' }
+    { text: t(I18nKeys.FOOTER.ABOUT), link: '#' },
+    { text: t(I18nKeys.FOOTER.BLOG), link: '#' },
+    { text: t(I18nKeys.FOOTER.PRICING), link: '#' },
+    { text: t(I18nKeys.FOOTER.CONTACT), link: '#' },
+    { text: t(I18nKeys.FOOTER.TERMS), link: '#' }
   ];
 
   const socialItems = [
@@ -81,7 +85,9 @@ const Footer: React.FC = () => {
             </Link>
           ))}
         </div>
-        <p className='mt-8 text-center text-base leading-6 text-gray-200'>© 2024 MathU. All rights reserved.</p>
+        <p className='mt-8 text-center text-base leading-6 text-gray-200'>
+          © 2024 MathU. {t(I18nKeys.FOOTER.ALL_RIGHTS_RESERVED)}.
+        </p>
       </div>
     </footer>
   );

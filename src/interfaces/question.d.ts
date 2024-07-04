@@ -51,7 +51,7 @@ export interface ICreateQuestionPayload {
   navigate: NavigateFunction;
 }
 
-export type TReqPayload = Omit<ICreateQuestionPayload, 'navigate'>;
+export type TCreateQuestionAPIPayload = Omit<ICreateQuestionPayload, 'navigate'>;
 
 export interface ICreateQuestionDataResponse extends IQuestionBEResponse {}
 

@@ -19,7 +19,9 @@ export interface ICreateAnswerPayload {
   parent_id?: number;
   question_id: number;
   user_id: number;
+  callback: () => void;
 }
+export type TCreateAnswerAPIPayload = Omit<ICreateAnswerPayload, 'callback'>;
 
 export interface IAnswerState {
   one: IAnswer | null;

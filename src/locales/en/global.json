@@ -23,6 +23,7 @@
   "share": "Share",
   "edit": "Edit",
   "follow": "Follow",
+  "close": "Close",
   "count": {
     "question_one": "{{count}} question",
     "question_other": "{{count}} questions",
@@ -95,6 +96,16 @@
     "latex-content": "How to use LaTeX to write math formulas?"
   },
   "answer-section": {
-    "btn-text": "Add an answer"
+    "btn-text": "Add a comment",
+    "comment-desc": "Enter at least 15 characters",
+    "add-comment": "Add comment"
+  },
+  "footer": {
+    "about": "About",
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "terms": "Terms",
+    "all-rights-reserved": "All rights reserved"
   }
 }

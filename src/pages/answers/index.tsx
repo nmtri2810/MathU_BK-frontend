@@ -3,25 +3,26 @@ import AnswerList from '@/components/pages/answers/answerList';
 import SortOption from '@/components/pages/questions/sortOption';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
-import { MessagesValidate } from '@/constants';
 import { I18nKeys } from '@/locales/i18nKeys';
-import { useAppSelector } from '@/store/hooks';
+import { createAnswerRequest } from '@/store/actions/answer';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { CreateAnswerSchema } from '@/validations/answer';
 import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
-const AnswerSection: React.FC = () => {
+interface IAnswerSectionProps {
+  callback: () => void;
+}
+
+const AnswerSection: React.FC<IAnswerSectionProps> = ({ callback }) => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
   const question = useAppSelector((state) => state.question.one);
-
-  const CreateAnswerSchema = z.object({
-    answer: z.string().min(15, {
-      message: MessagesValidate.isRequired('Answer')
-    })
-  });
+  const user = useAppSelector((state) => state.auth.user);
 
   const form = useForm<z.infer<typeof CreateAnswerSchema>>({
     resolver: zodResolver(CreateAnswerSchema),
@@ -31,7 +32,15 @@ const AnswerSection: React.FC = () => {
   });
 
   function onSubmit(data: z.infer<typeof CreateAnswerSchema>) {
-    console.log('src_pages_answers_index.tsx#34: ', data);
+    if (!user || !question) return;
+
+    const requestData = {
+      content: data.answer,
+      question_id: question.id,
+      user_id: user.id
+    };
+
+    dispatch(createAnswerRequest({ ...requestData, callback }));
   }
 
   return (
@@ -40,7 +49,7 @@ const AnswerSection: React.FC = () => {
         <div className='text-lg'>{t(I18nKeys.COUNT.ANSWER, { count: question?._count.answers })}</div>
         <SortOption />
       </div>
-      <AnswerList answers={question?.answers} />
+      <AnswerList answers={question?.answers} user={user} question={question} callback={callback} />
       <div className='mt-4 space-y-8'>
         <div className='text-lg'>{t(I18nKeys.DETAIL_QUESTION_SCREEN.YOUR_ANSWER)}</div>
         <Form {...form}>
