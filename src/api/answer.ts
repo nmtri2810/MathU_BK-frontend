@@ -1,10 +1,10 @@
 import axiosInstance from '@/api/axiosInstance';
-import { ICreateAnswerPayload } from '@/interfaces/answer';
+import { TCreateAnswerAPIPayload } from '@/interfaces/answer';
 
 const context = '/answers';
 
 const answerAPI = {
-  create(payload: ICreateAnswerPayload) {
+  create(payload: TCreateAnswerAPIPayload) {
     return axiosInstance.post(context, payload);
   }
   // update(payload: IUpdateAnswerPayload) {

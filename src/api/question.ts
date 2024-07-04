@@ -1,4 +1,4 @@
-import { IGetQuestionPayload, IListQuestionPayload, TReqPayload } from '@/interfaces/question';
+import { IGetQuestionPayload, IListQuestionPayload, TCreateQuestionAPIPayload } from '@/interfaces/question';
 import axiosInstance from './axiosInstance';
 import queryString from 'query-string';
 
@@ -9,7 +9,7 @@ const questionAPI = {
     const url = `${context}?${queryString.stringify(payload)}`;
     return axiosInstance.get(url);
   },
-  create(payload: TReqPayload) {
+  create(payload: TCreateQuestionAPIPayload) {
     return axiosInstance.post(context, payload);
   },
   get(payload: IGetQuestionPayload) {

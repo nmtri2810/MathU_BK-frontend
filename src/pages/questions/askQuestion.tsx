@@ -84,10 +84,10 @@ const AskQuestionScreen: React.FC = () => {
                   <AskQuestionCard
                     className='mt-6'
                     title={t(I18nKeys.GLOBAL.TITLE)}
-                    description="Be specific and imagine you're asking a question to another person"
+                    description={t(I18nKeys.ASK_QUESTION_SCREEN.TITLE_DESCRIPTION)}
                   >
                     <Input
-                      placeholder="What's your math question? Be specific"
+                      placeholder={t(I18nKeys.ASK_QUESTION_SCREEN.TITLE_PLACEHOLDER)}
                       type='text'
                       {...field}
                       errorMsg={form.formState.errors.title?.message}
@@ -106,8 +106,8 @@ const AskQuestionScreen: React.FC = () => {
                 <FormControl>
                   <AskQuestionCard
                     className='mt-6'
-                    title='Body'
-                    description='Include all the information someone would need to answer your question'
+                    title={t(I18nKeys.ASK_QUESTION_SCREEN.BODY)}
+                    description={t(I18nKeys.ASK_QUESTION_SCREEN.BODY_DESCRIPTION)}
                   >
                     <TiptapInput
                       value={field.value}
@@ -128,8 +128,8 @@ const AskQuestionScreen: React.FC = () => {
                 <FormControl>
                   <AskQuestionCard
                     className='mt-6'
-                    title='Tags'
-                    description='Add up to 5 tags to describe what your question is about'
+                    title={t(I18nKeys.GLOBAL.TAGS)}
+                    description={t(I18nKeys.ASK_QUESTION_SCREEN.TAG_DESCRIPTION)}
                   >
                     <ReactSelect
                       options={convertedTags(tagList as ITag[])}
@@ -139,7 +139,7 @@ const AskQuestionScreen: React.FC = () => {
                       isMulti
                       isClearable
                       isLoading={tagListLoading}
-                      placeholder='e.g. Calculus 1, ...'
+                      placeholder={t(I18nKeys.ASK_QUESTION_SCREEN.TAG_PLACEHOLDER)}
                       errorMsg={form.formState.errors.tags?.message}
                     />
                     <FormMessage className='mt-2' />
@@ -148,8 +148,12 @@ const AskQuestionScreen: React.FC = () => {
               </FormItem>
             )}
           />
-          <Button type='submit' onClick={form.handleSubmit(onSubmit)}>
-            Post your question
+          <Button
+            type='submit'
+            className='bg-blue-600 font-normal hover:bg-blue-700'
+            onClick={form.handleSubmit(onSubmit)}
+          >
+            {t(I18nKeys.ASK_QUESTION_SCREEN.SUBMIT)}
           </Button>
         </div>
       </Form>

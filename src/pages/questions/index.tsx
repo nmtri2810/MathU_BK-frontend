@@ -3,30 +3,25 @@ import Layout from '@/layout/mainLayout';
 import { listQuestionRequest, updateParams } from '@/store/actions/question';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import React, { useEffect, useState } from 'react';
-import { getQuestionFilterOptions } from '@/constants';
-import ReactSelect, { IReactSelectOptions } from '@/components/ui/reactSelect';
+import { IReactSelectOptions } from '@/components/ui/reactSelect';
 import { SingleValue, MultiValue } from 'react-select';
 import { useTranslation } from 'react-i18next';
 import { I18nKeys } from '@/locales/i18nKeys';
 import FullPagination from '@/components/common/fullPagination';
 import AskQuestionBtn from '@/components/pages/questions/askQuestionBtn';
 import PageLoading from '@/components/common/pageLoading';
+import SortOption from '@/components/pages/questions/sortOption';
 
 const QuestionScreen: React.FC = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const [filterOption, setFilterOption] = useState<SingleValue<IReactSelectOptions>>();
   const [perpageOption, setPerpageOption] = useState<SingleValue<IReactSelectOptions>>();
 
   const listQuestion = useAppSelector((state) => state.question.list);
   const listQuestionLoading = useAppSelector((state) => state.question.listLoading);
   const paginationData = useAppSelector((state) => state.question.meta);
   const { currentPage, perPage, lastPage, total } = paginationData;
-
-  const onChangeFilter = (option: SingleValue<IReactSelectOptions> | MultiValue<IReactSelectOptions>) => {
-    setFilterOption(option as SingleValue<IReactSelectOptions>);
-  };
 
   const onChangePage = (value: number) => {
     dispatch(updateParams({ page: value, perPage: perPage, keyword: '' }));
@@ -45,7 +40,6 @@ const QuestionScreen: React.FC = () => {
 
   // Bad practice
   useEffect(() => {
-    setFilterOption(getQuestionFilterOptions(t)[0]);
     setPerpageOption({ label: String(perPage), value: String(perPage) });
   }, [perPage, t]);
 
@@ -61,13 +55,7 @@ const QuestionScreen: React.FC = () => {
           </div>
           <div className='mb-5 flex items-center justify-between'>
             <div className='text-lg'>{t(I18nKeys.COUNT.QUESTION, { count: total })}</div>
-            <ReactSelect
-              options={getQuestionFilterOptions(t)}
-              defaultValue={getQuestionFilterOptions(t)[0]}
-              value={filterOption}
-              onChange={onChangeFilter}
-              className='z-0 w-32 text-sm'
-            />
+            <SortOption />
           </div>
           <div>
             {listQuestion?.map((question, index) => (

@@ -7,16 +7,19 @@ import Layout from '@/layout/mainLayout';
 import { formatTimeFromNow } from '@/lib/utils';
 import { getQuestionRequest } from '@/store/actions/question';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import UtilsLinkGroup from '@/components/pages/questions/utilsLinkGroup';
 import SanitizeHTML from '@/components/common/sanitizeHTML';
 import { I18nKeys } from '@/locales/i18nKeys';
+import AnswerSection from '@/pages/answers';
+import dayjs from 'dayjs';
 
 const DetailQuestionScreen: React.FC = () => {
   const { id } = useParams();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  dayjs.locale(i18n.language);
   const dispatch = useAppDispatch();
 
   const question = useAppSelector((state) => state.question.one);
@@ -33,13 +36,18 @@ const DetailQuestionScreen: React.FC = () => {
     },
     {
       text: t(I18nKeys.DETAIL_QUESTION_SCREEN.VIEWED),
-      time: '5 times'
+      time: t(I18nKeys.COUNT.TIME_COUNT, { count: 0 })
+      // temp
     }
   ];
 
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     dispatch(getQuestionRequest({ id: Number(id) }));
   }, [dispatch, id]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return (
     <Layout>
@@ -71,15 +79,15 @@ const DetailQuestionScreen: React.FC = () => {
                 <UtilsLinkGroup />
                 <UserData
                   className='rounded-md bg-[#edf5fd] p-2.5'
-                  username={'user.username'}
-                  reputation={0}
+                  username={question?.user.username}
+                  reputation={question?.user.reputation}
                   createdAt={question?.created_at}
                   isInList={false}
                 />
               </div>
-              <div>{/* comment here */}</div>
             </div>
           </div>
+          <AnswerSection callback={() => fetchData()} />
         </>
       )}
     </Layout>

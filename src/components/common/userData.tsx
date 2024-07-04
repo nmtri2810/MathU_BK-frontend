@@ -7,22 +7,29 @@ import { cn, dayjsFormat, formatTimeFromNow } from '@/lib/utils';
 import { DateFormat } from '@/constants';
 
 interface IUserDataProps {
-  username: string;
-  reputation: number;
+  username: string | undefined;
+  reputation: number | undefined;
   createdAt: string | undefined;
   isInList: boolean;
   className?: string;
+  isAnswers?: boolean;
 }
 
-const UserData: React.FC<IUserDataProps> = ({ username, reputation, createdAt, isInList, className }) => {
+const UserData: React.FC<IUserDataProps> = ({
+  username,
+  reputation,
+  createdAt,
+  isInList,
+  className,
+  isAnswers = false
+}) => {
   const { t } = useTranslation();
 
-  // i18n here
   const createdTime = (
     <span className='text-gray-500'>
       {isInList
         ? `${t(I18nKeys.GLOBAL.ASKED)} ${formatTimeFromNow(createdAt)}`
-        : `${t(I18nKeys.GLOBAL.ASKED)} ${dayjsFormat(createdAt, DateFormat.USER_DATA)}`}
+        : `${t(isAnswers ? I18nKeys.DETAIL_QUESTION_SCREEN.USER_ANSWERED_TIME : I18nKeys.DETAIL_QUESTION_SCREEN.USER_ASKED_TIME)} ${dayjsFormat(createdAt, DateFormat.USER_DATA)}`}
     </span>
   );
 

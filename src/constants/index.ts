@@ -39,6 +39,7 @@ export const QuestionFilterValues = {
 };
 
 export const getQuestionFilterOptions = (t: TFunction) => [
+  { label: t(I18nKeys.GLOBAL.HIGHEST_SCORE), value: 'highest_score' },
   { label: t(I18nKeys.GLOBAL.NEWEST), value: 'newest' },
   { label: t(I18nKeys.GLOBAL.OLDEST), value: 'oldest' }
 ];

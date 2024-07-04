@@ -12,6 +12,7 @@
   "forgot-password": "Forgot password?",
   "submit": "Submit",
   "or": "Or",
+  "highest-score": "Highest score",
   "newest": "Newest",
   "oldest": "Oldest",
   "asked": "asked",
@@ -19,6 +20,10 @@
   "perpage": "per page",
   "login-first": "Please login first",
   "title": "Title",
+  "share": "Share",
+  "edit": "Edit",
+  "follow": "Follow",
+  "close": "Close",
   "count": {
     "question_one": "{{count}} question",
     "question_other": "{{count}} questions",
@@ -27,7 +32,9 @@
     "answer_one": "{{count}} answer",
     "answer_other": "{{count}} answers",
     "view_one": "{{count}} view",
-    "view_other": "{{count}} views"
+    "view_other": "{{count}} views",
+    "time-count_one": "{{count}} time",
+    "time-count_other": "{{count}} times"
   },
   "header": {
     "about": "About",
@@ -67,6 +74,38 @@
   "detail-question-screen": {
     "asked": "Asked",
     "modified": "Modified",
-    "viewed": "Viewed"
+    "viewed": "Viewed",
+    "user-asked-time": "Asked at",
+    "user-answered-time": "Answered at",
+    "your-answer": "Your answer",
+    "submit-answer": "Post your answer"
+  },
+  "ask-question-screen": {
+    "title-description": "Be specific and imagine you're asking a question to another person",
+    "title-placeholder": "What's your math question? Be specific",
+    "body": "Body",
+    "body-description": "Include all the information someone would need to answer your question",
+    "tag-description": "Add up to 5 tags to describe what your question is about",
+    "tag-placeholder": "e.g. Calculus 1, ...",
+    "submit": "Post your question"
+  },
+  "right-sidebar": {
+    "header": "Feature on MathU",
+    "good-question-content": "How to write a good question?",
+    "good-answer-content": "How to write a good answer?",
+    "latex-content": "How to use LaTeX to write math formulas?"
+  },
+  "answer-section": {
+    "btn-text": "Add a comment",
+    "comment-desc": "Enter at least 15 characters",
+    "add-comment": "Add comment"
+  },
+  "footer": {
+    "about": "About",
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "terms": "Terms",
+    "all-rights-reserved": "All rights reserved"
   }
 }

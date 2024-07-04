@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, generatePath } from 'react-router-dom';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/vi';
 import { cn, formatTitleForURL } from '@/lib/utils';
 import { Path } from '@/constants/enum';
 import TagGroup from '@/components/common/tagGroup';
@@ -21,7 +22,8 @@ interface IQuestionCardProps {
 
 const QuestionCard: React.FC<IQuestionCardProps> = ({ question, isLast }) => {
   const { _count, title, description, tags, user, created_at, id } = question;
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  dayjs.locale(i18n.language);
 
   const hasAcceptedAnswer = question.answers.some((answer) => answer.is_accepted);
 

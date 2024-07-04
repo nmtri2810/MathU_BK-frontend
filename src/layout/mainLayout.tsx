@@ -1,3 +1,4 @@
+import Footer from '@/components/pages/layout/footer';
 import NavBar from '@/components/pages/layout/navbar';
 import RightSidebar from '@/components/pages/layout/rightSidebar';
 import Sidebar from '@/components/pages/layout/sidebar';
@@ -10,6 +11,7 @@ interface ILayoutProps {
   showLeftSidebar?: boolean;
   showRightSidebar?: boolean;
   containerClassname?: string;
+  showFooter?: boolean;
 }
 
 const Layout: React.FC<ILayoutProps> = ({
@@ -17,7 +19,8 @@ const Layout: React.FC<ILayoutProps> = ({
   className,
   showLeftSidebar = true,
   containerClassname,
-  showRightSidebar = true
+  showRightSidebar = true,
+  showFooter = true
 }) => {
   return (
     <div className={className}>
@@ -31,6 +34,7 @@ const Layout: React.FC<ILayoutProps> = ({
         </div>
         {showRightSidebar && <RightSidebar />}
       </div>
+      {showFooter && <Footer />}
     </div>
   );
 };
