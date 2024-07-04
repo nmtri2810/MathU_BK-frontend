@@ -75,7 +75,9 @@ export const I18nKeys = {
     USER_ASKED_TIME: 'detail-question-screen.user-asked-time',
     USER_ANSWERED_TIME: 'detail-question-screen.user-answered-time',
     YOUR_ANSWER: 'detail-question-screen.your-answer',
-    SUBMIT_ANSWER: 'detail-question-screen.submit-answer'
+    SUBMIT_ANSWER: 'detail-question-screen.submit-answer',
+    PLEASE_LOGIN: 'detail-question-screen.please-login',
+    LOGIN_NOW: 'detail-question-screen.login-now'
   },
   ASK_QUESTION_SCREEN: {
     TITLE_DESCRIPTION: 'ask-question-screen.title-description',

@@ -78,7 +78,9 @@
     "user-asked-time": "Hỏi ngày",
     "user-answered-time": "Trả lời ngày",
     "your-answer": "Câu trả lời của bạn",
-    "submit-answer": "Đăng câu trả lời"
+    "submit-answer": "Đăng câu trả lời",
+    "please-login": "Vui lòng đăng nhập để điền câu trả lời",
+    "login-now": "Đăng nhập ngay"
   },
   "ask-question-screen": {
     "title-description": "Hãy có nội dung cụ thể và tưởng tượng bạn hỏi thầy cô hoặc bạn bè",
