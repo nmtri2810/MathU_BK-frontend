@@ -14,6 +14,9 @@ import { createAnswerRequest } from '@/store/actions/answer';
 import { ILoginUser } from '@/interfaces/auth';
 import { IQuestionBEResponse } from '@/interfaces/question';
 import SanitizeHTML from '@/components/common/sanitizeHTML';
+import { useNavigate } from 'react-router-dom';
+import { Path } from '@/constants/enum';
+import { toast } from 'sonner';
 
 interface IAnswerListProps {
   answers: IAnswer[] | undefined;
@@ -25,6 +28,7 @@ interface IAnswerListProps {
 const AnswerList: React.FC<IAnswerListProps> = ({ answers, user, question, callback }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [openChildAnswerInput, setOpenChildAnswerInput] = useState<{ isOpen: boolean; answerId: number }>({
     isOpen: false,
@@ -34,6 +38,12 @@ const AnswerList: React.FC<IAnswerListProps> = ({ answers, user, question, callb
   const [showWarning, setShowWarning] = useState(false);
 
   const handleOpenInput = (answerId: number) => {
+    if (!user) {
+      navigate(Path.LOGIN);
+      toast.error(t(I18nKeys.GLOBAL.LOGIN_FIRST));
+      return;
+    }
+
     setOpenChildAnswerInput({ isOpen: true, answerId });
     setShowWarning(false);
   };
@@ -78,7 +88,7 @@ const AnswerList: React.FC<IAnswerListProps> = ({ answers, user, question, callb
           <div className='w-full grow'>
             <SanitizeHTML html={answer.content} />
             <div className='my-4 flex items-center justify-between'>
-              <UtilsLinkGroup />
+              <UtilsLinkGroup user={user} question={question} answer={answer} isInQuestion={false} />
               <UserData
                 username={answer.user.username}
                 reputation={answer.user.reputation}

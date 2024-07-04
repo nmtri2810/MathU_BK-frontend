@@ -24,6 +24,7 @@ const DetailQuestionScreen: React.FC = () => {
 
   const question = useAppSelector((state) => state.question.one);
   const questionLoading = useAppSelector((state) => state.question.oneLoading);
+  const user = useAppSelector((state) => state.auth.user);
 
   const questionTimeData = [
     {
@@ -76,7 +77,7 @@ const DetailQuestionScreen: React.FC = () => {
                 <TagGroup className='mt-10' tags={question?.tags} />
               </div>
               <div className='flex items-center justify-between'>
-                <UtilsLinkGroup />
+                <UtilsLinkGroup user={user} question={question} isInQuestion={true} />
                 <UserData
                   className='rounded-md bg-[#edf5fd] p-2.5'
                   username={question?.user.username}

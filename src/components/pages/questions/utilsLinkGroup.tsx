@@ -1,15 +1,28 @@
 import { Button } from '@/components/ui/button';
+import { IAnswer } from '@/interfaces/answer';
+import { ILoginUser } from '@/interfaces/auth';
+import { IQuestionBEResponse } from '@/interfaces/question';
 import { I18nKeys } from '@/locales/i18nKeys';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-const UtilsLinkGroup: React.FC = () => {
+interface IUtilsLinkGroupProps {
+  user: ILoginUser | null;
+  question: IQuestionBEResponse | null;
+  answer?: IAnswer | null;
+  isInQuestion: boolean;
+}
+
+const UtilsLinkGroup: React.FC<IUtilsLinkGroupProps> = ({ user, question, answer, isInQuestion }) => {
   const { t } = useTranslation();
+
+  const isOwnerQues = user && question && user.id === question.user_id;
+  const isOwnerAnswer = user && answer && user.id === answer.user_id;
 
   const utilsData = [
     { text: t(I18nKeys.GLOBAL.SHARE) },
-    { text: t(I18nKeys.GLOBAL.EDIT) },
-    { text: t(I18nKeys.GLOBAL.FOLLOW) }
+    ...(isInQuestion && isOwnerQues ? [{ text: t(I18nKeys.GLOBAL.EDIT) }, { text: t(I18nKeys.GLOBAL.FOLLOW) }] : []),
+    ...(!isInQuestion && isOwnerAnswer ? [{ text: t(I18nKeys.GLOBAL.EDIT) }, { text: t(I18nKeys.GLOBAL.FOLLOW) }] : [])
   ];
 
   return (
