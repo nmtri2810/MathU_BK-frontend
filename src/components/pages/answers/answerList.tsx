@@ -84,7 +84,7 @@ const AnswerList: React.FC<IAnswerListProps> = ({ answers, user, question, callb
           key={index}
           className={cn('mt-5 flex gap-6 border-t-1 pt-5', index === answers.length - 1 && 'border-b-1 pb-5')}
         >
-          <VotesBtnGroup />
+          <VotesBtnGroup id={answer.id} type='answer' votes={answer.votes} callback={callback} />
           <div className='w-full grow'>
             <SanitizeHTML html={answer.content} />
             <div className='my-4 flex items-center justify-between'>

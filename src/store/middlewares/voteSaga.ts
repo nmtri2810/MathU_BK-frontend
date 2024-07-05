@@ -26,6 +26,10 @@ function* createVoteSaga(action: TCreateVoteAction) {
   try {
     const { payload } = action;
     const response: TCreateVoteResponse = yield call(voteAPI.create, payload);
+
+    payload.callback?.();
+
+    toast.success(response.message);
     yield put(createVoteSuccess(response.data));
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
@@ -40,6 +44,10 @@ function* updateVoteSaga(action: TUpdateVoteAction) {
   try {
     const { payload } = action;
     const response: TUpdateVoteResponse = yield call(voteAPI.update, payload);
+
+    payload.callback?.();
+
+    toast.success(response.message);
     yield put(updateVoteSuccess(response.data));
   } catch (error) {
     if (error instanceof AxiosError) {
@@ -54,6 +62,10 @@ function* deleteVoteSaga(action: TDeleteVoteAction) {
   try {
     const { payload } = action;
     const response: TDeleteVoteResponse = yield call(voteAPI.delete, payload);
+
+    payload.callback?.();
+
+    toast.success(response.message);
     yield put(deleteVoteSuccess(response.data));
   } catch (error) {
     if (error instanceof AxiosError) {

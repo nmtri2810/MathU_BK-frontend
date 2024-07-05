@@ -1,5 +1,6 @@
 import { IAction, IResponse, ITimestamp } from '.';
 import { IUser } from './user';
+import { IVote } from './vote';
 
 export interface IAnswer extends ITimestamp {
   id: number;
@@ -10,6 +11,7 @@ export interface IAnswer extends ITimestamp {
   user_id: number;
   user: IUser;
   children: IAnswer[];
+  votes: IVote[];
 }
 
 export interface IChildAnswer extends Omit<IAnswer, 'children'> {}
