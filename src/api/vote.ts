@@ -4,15 +4,15 @@ import axiosInstance from '@/api/axiosInstance';
 const context = '/votes';
 
 const voteAPI = {
-  create(payload: ICreateVotePayload) {
+  create(payload: Omit<ICreateVotePayload, 'callback'>) {
     return axiosInstance.post(context, payload);
   },
-  update(payload: IUpdateVotePayload) {
+  update(payload: Omit<IUpdateVotePayload, 'callback'>) {
     return axiosInstance.patch(`${context}/${payload.id}`, {
       is_upvoted: payload.is_upvoted
     });
   },
-  delete(payload: IDeleteVotePayload) {
+  delete(payload: Omit<IDeleteVotePayload, 'callback'>) {
     return axiosInstance.delete(`${context}/${payload.id}`);
   }
 };

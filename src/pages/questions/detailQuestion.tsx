@@ -15,6 +15,7 @@ import SanitizeHTML from '@/components/common/sanitizeHTML';
 import { I18nKeys } from '@/locales/i18nKeys';
 import AnswerSection from '@/pages/answers';
 import dayjs from 'dayjs';
+import { IVote } from '@/interfaces/vote';
 
 const DetailQuestionScreen: React.FC = () => {
   const { id } = useParams();
@@ -70,7 +71,12 @@ const DetailQuestionScreen: React.FC = () => {
             </div>
           </div>
           <div className='mt-5 flex gap-6'>
-            <VotesBtnGroup />
+            <VotesBtnGroup
+              id={question?.id as number}
+              type='question'
+              votes={question?.votes as IVote[]}
+              callback={() => fetchData()}
+            />
             <div className='w-full grow space-y-10'>
               <div>
                 <SanitizeHTML html={question?.description as string} />
