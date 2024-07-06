@@ -31,16 +31,18 @@ export interface IAnswerState {
   status: string;
 }
 
-// export interface IUpdateAnswerPayload {
-//   questionId: number;
-//   id: number;
+export interface IUpdateAnswerPayload {
+  id: number;
+  question_id: number;
 
-//   content: string;
-//   is_accepted: boolean;
-// }
+  content?: string;
+  is_accepted?: boolean;
+
+  callback: () => void;
+}
 
 export type TCreateAnswerAction = IAction<ICreateAnswerPayload>;
 export type TCreateAnswerResponse = IResponse<IAnswer>;
 
-// export type TUpdateAnswerAction = IAction<IUpdateAnswerPayload>;
-// export type TUpdateAnswerResponse = IResponse<IAnswer>;
+export type TUpdateAnswerAction = IAction<IUpdateAnswerPayload>;
+export type TUpdateAnswerResponse = IResponse<IAnswer>;

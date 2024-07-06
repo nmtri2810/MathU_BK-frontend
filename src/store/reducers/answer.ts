@@ -1,6 +1,13 @@
 import { IAnswerState } from '@/interfaces/answer';
 import { createReducer } from '@reduxjs/toolkit';
-import { createAnswerFailure, createAnswerRequest, createAnswerSuccess } from '@/store/actions/answer';
+import {
+  createAnswerFailure,
+  createAnswerRequest,
+  createAnswerSuccess,
+  updateAnswerFailure,
+  updateAnswerRequest,
+  updateAnswerSuccess
+} from '@/store/actions/answer';
 import { ApiStatus } from '@/constants';
 
 const initialState: IAnswerState = {
@@ -30,6 +37,30 @@ const answerReducer = createReducer<IAnswerState>(initialState, (builder) => {
       return {
         ...state,
         status: ApiStatus.POST_FAILED,
+        oneLoading: false
+      };
+    });
+
+  builder
+    .addCase(updateAnswerRequest, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.REQUESTING,
+        oneLoading: true
+      };
+    })
+    .addCase(updateAnswerSuccess, (state, action) => {
+      return {
+        ...state,
+        one: action.payload,
+        status: ApiStatus.PATCH_SUCCEED,
+        oneLoading: false
+      };
+    })
+    .addCase(updateAnswerFailure, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.PATCH_FAILED,
         oneLoading: false
       };
     });

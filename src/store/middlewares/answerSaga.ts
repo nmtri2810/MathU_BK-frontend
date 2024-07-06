@@ -1,11 +1,18 @@
 import answerAPI from '@/api/answer';
-import { TCreateAnswerAction, TCreateAnswerResponse } from '@/interfaces/answer';
+import {
+  TCreateAnswerAction,
+  TCreateAnswerResponse,
+  TUpdateAnswerAction,
+  TUpdateAnswerResponse
+} from '@/interfaces/answer';
 import {
   CREATE_ANSWER_REQUEST,
   DELETE_ANSWER_REQUEST,
   UPDATE_ANSWER_REQUEST,
   createAnswerFailure,
-  createAnswerSuccess
+  createAnswerSuccess,
+  updateAnswerFailure,
+  updateAnswerSuccess
 } from '@/store/actions/answer';
 import { AxiosError } from 'axios';
 import { call, put, takeLatest } from 'redux-saga/effects';
@@ -29,18 +36,19 @@ function* createAnswerSaga(action: TCreateAnswerAction) {
   }
 }
 
-function* updateAnswerSaga() {
-  // try {
-  //   const { payload } = action;
-  //   const response: TUpdateAnswerResponse = yield call(answerAPI.update, payload);
-  //   yield put(updateAnswerSuccess(response.data));
-  // } catch (error: unknown) {
-  //   if (error instanceof AxiosError) {
-  //     const message = error.response?.data.message;
-  //     toast.error(message);
-  //     yield put(updateAnswerFailure());
-  //   }
-  // }
+function* updateAnswerSaga(action: TUpdateAnswerAction) {
+  try {
+    const { payload } = action;
+    const response: TUpdateAnswerResponse = yield call(answerAPI.update, payload);
+    toast.success(response.message);
+    yield put(updateAnswerSuccess(response.data));
+  } catch (error: unknown) {
+    if (error instanceof AxiosError) {
+      const message = error.response?.data.message;
+      toast.error(message);
+      yield put(updateAnswerFailure());
+    }
+  }
 }
 
 function* deleteAnswerSaga() {}
