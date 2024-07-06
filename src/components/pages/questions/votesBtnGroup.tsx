@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Bookmark, ChevronDown, ChevronUp } from 'lucide-react';
+import { Bookmark, Check, ChevronDown, ChevronUp } from 'lucide-react';
 import BaseTooltip from '@/components/common/baseTooltip';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { Path } from '@/constants/enum';
@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import { createVoteRequest, deleteVoteRequest, updateVoteRequest } from '@/store/actions/vote';
 import { IVote } from '@/interfaces/vote';
 import { cn } from '@/lib/utils';
+import BaseAlertDialog from '@/components/common/baseAlertDialog';
+import { updateAnswerRequest } from '@/store/actions/answer';
 
 interface IVotesBtnGroupProps {
   id: number;
@@ -24,7 +26,10 @@ const VotesBtnGroup: React.FC<IVotesBtnGroupProps> = ({ id, type, votes, callbac
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  const [isOpenConfirm, setIsOpenConfirm] = useState<boolean>(false);
+
   const user = useAppSelector((state) => state.auth.user);
+  const question = useAppSelector((state) => state.question.one);
 
   const handleVotesValue = (isUpvote: boolean) => {
     if (!votes || !user) return;
@@ -58,6 +63,41 @@ const VotesBtnGroup: React.FC<IVotesBtnGroupProps> = ({ id, type, votes, callbac
     }
   };
 
+  const updateAcceptAnswer = () => {
+    if (!user || !question) return;
+
+    dispatch(updateAnswerRequest({ id: id, question_id: question?.id, is_accepted: true, callback }));
+    setIsOpenConfirm(false);
+    // temp
+    window.location.reload();
+  };
+
+  const renderAcceptButton = () => {
+    const userCreatedQuestion = user?.id === question?.user_id;
+    const isQuestionHasAcceptedAnswer = question?.answers.some((answer) => answer.is_accepted);
+    const isAcceptedAnswer = question?.answers.some((answer) => answer.id === id && answer.is_accepted);
+
+    if (
+      (userCreatedQuestion && isQuestionHasAcceptedAnswer && isAcceptedAnswer) ||
+      (userCreatedQuestion && !isQuestionHasAcceptedAnswer) ||
+      (!userCreatedQuestion && isQuestionHasAcceptedAnswer && isAcceptedAnswer)
+    ) {
+      return (
+        <BaseTooltip content={<div>Approve</div>}>
+          <Button variant='link' className='h-fit p-0' onClick={() => !isAcceptedAnswer && setIsOpenConfirm(true)}>
+            <Check
+              size={46}
+              strokeWidth={3.5}
+              className={cn(isAcceptedAnswer ? 'cursor-default text-success-600' : 'text-gray-300 hover:text-gray-400')}
+            />
+          </Button>
+        </BaseTooltip>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <div className='flex shrink-0 flex-col items-center gap-3'>
       <BaseTooltip content={<div>Upvote</div>}>
@@ -84,6 +124,16 @@ const VotesBtnGroup: React.FC<IVotesBtnGroupProps> = ({ id, type, votes, callbac
           <Bookmark size={22} className='text-gray-300 hover:text-gray-400' />
         </Button>
       </BaseTooltip>
+      {type === 'answer' && renderAcceptButton()}
+
+      {isOpenConfirm && (
+        <BaseAlertDialog
+          closeModal={() => setIsOpenConfirm(false)}
+          confirmModal={updateAcceptAnswer}
+          title='Confirm answer acceptance'
+          description='Are you sure you want to accept this answer? The answer will be marked as the accepted solution'
+        ></BaseAlertDialog>
+      )}
     </div>
   );
 };

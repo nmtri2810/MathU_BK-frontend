@@ -46,39 +46,39 @@ const MenuBar: React.FC<IMenuBarProps> = ({ editor }) => {
       action: () => editor.chain().focus().toggleStrike().run(),
       isActive: () => editor.isActive('strike')
     },
-    // {
-    //   icon: 'mark-pen-line',
-    //   title: 'Highlight',
-    //   action: () => editor.chain().focus().toggleHighlight().run(),
-    //   isActive: () => editor.isActive('highlight')
-    // },
-    // {
-    //   type: 'divider'
-    // },
-    // {
-    //   icon: 'h-1',
-    //   title: 'Heading 1',
-    //   action: () => editor.chain().focus().toggleHeading({ level: 1 }).run(),
-    //   isActive: () => editor.isActive('heading', { level: 1 })
-    // },
-    // {
-    //   icon: 'h-2',
-    //   title: 'Heading 2',
-    //   action: () => editor.chain().focus().toggleHeading({ level: 2 }).run(),
-    //   isActive: () => editor.isActive('heading', { level: 2 })
-    // },
-    // {
-    //   icon: 'list-ordered',
-    //   title: 'Ordered list',
-    //   action: () => editor.chain().focus().toggleOrderedList().run(),
-    //   isActive: () => editor.isActive('orderedList')
-    // },
-    // {
-    //   icon: 'list-unordered',
-    //   title: 'Bullet list',
-    //   action: () => editor.chain().focus().toggleBulletList().run(),
-    //   isActive: () => editor.isActive('bulletList')
-    // },
+    {
+      icon: 'mark-pen-line',
+      title: 'Highlight',
+      action: () => editor.chain().focus().toggleHighlight().run(),
+      isActive: () => editor.isActive('highlight')
+    },
+    {
+      type: 'divider'
+    },
+    {
+      icon: 'h-1',
+      title: 'Heading 1',
+      action: () => editor.chain().focus().toggleHeading({ level: 1 }).run(),
+      isActive: () => editor.isActive('heading', { level: 1 })
+    },
+    {
+      icon: 'h-2',
+      title: 'Heading 2',
+      action: () => editor.chain().focus().toggleHeading({ level: 2 }).run(),
+      isActive: () => editor.isActive('heading', { level: 2 })
+    },
+    {
+      icon: 'list-ordered',
+      title: 'Ordered list',
+      action: () => editor.chain().focus().toggleOrderedList().run(),
+      isActive: () => editor.isActive('orderedList')
+    },
+    {
+      icon: 'list-unordered',
+      title: 'Bullet list',
+      action: () => editor.chain().focus().toggleBulletList().run(),
+      isActive: () => editor.isActive('bulletList')
+    },
     {
       type: 'divider'
     },
@@ -93,11 +93,11 @@ const MenuBar: React.FC<IMenuBarProps> = ({ editor }) => {
       title: 'Horizontal rule',
       action: () => editor.chain().focus().setHorizontalRule().run()
     },
-    // {
-    //   icon: 'text-wrap',
-    //   title: 'Hard break',
-    //   action: () => editor.chain().focus().setHardBreak().run()
-    // },
+    {
+      icon: 'text-wrap',
+      title: 'Hard break',
+      action: () => editor.chain().focus().setHardBreak().run()
+    },
     {
       icon: 'format-clear',
       title: 'Clear format',
