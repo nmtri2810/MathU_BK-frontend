@@ -24,6 +24,12 @@
   "edit": "Edit",
   "follow": "Follow",
   "close": "Close",
+  "answer": "Answer",
+  "question": "Question",
+  "body": "Body",
+  "tag": "Tag",
+  "cancel": "Cancel",
+  "continue": "Continue",
   "count": {
     "question_one": "{{count}} question",
     "question_other": "{{count}} questions",
@@ -42,7 +48,14 @@
     "image-scanning": "Image scanning",
     "log-in": "Log in",
     "sign-up": "Sign up",
-    "search-placeholder": "Search in title, content or advance search...",
+    "searchbar": {
+      "placeholder": "Search in title, content or advance search...",
+      "advance-search": "Advance search",
+      "tag-explain": "search within a tag",
+      "user-explain": "search for question creator",
+      "isaccepted-explain": "search within status",
+      "search-help": "Search help"
+    },
     "avatar-dropdown": {
       "profile": "Profile",
       "settings": "Settings",
@@ -80,7 +93,20 @@
     "your-answer": "Your answer",
     "submit-answer": "Post your answer",
     "please-login": "Please login to enter your answer",
-    "login-now": "Login now"
+    "login-now": "Login now",
+    "alert-no-question-title": "Not found",
+    "alert-no-question-description": "No questions found",
+    "votes-btn-gr": {
+      "upvote-question": "This question shows research effort; it is useful and clear",
+      "upvote-answer": "This answer is useful",
+      "downvote-question": "This question does not show any research effort; it is unclear or not useful",
+      "downvote-answer": "This answer is not useful",
+      "accept-answer": "Accept this as the best answer",
+      "answer-accepted": "The question owner accepted this as the best answer",
+      "save": "Save this {{field}}",
+      "modal-title": "Confirm answer acceptance",
+      "modal-desc": "Are you sure you want to accept this answer? The answer will be marked as the accepted solution"
+    }
   },
   "ask-question-screen": {
     "title-description": "Be specific and imagine you're asking a question to another person",
@@ -109,5 +135,120 @@
     "contact": "Contact",
     "terms": "Terms",
     "all-rights-reserved": "All rights reserved"
+  },
+  "response-API-msg": {
+    "answer": {
+      "create-success": "Create answer successfully"
+    },
+    "auth": {
+      "register-success": "Register successfully"
+    },
+    "question": {
+      "create-success": "Create question successfully"
+    },
+    "error": {
+      "vote-forbidden": "You can't vote for your own post"
+    }
+  },
+  "validation-msg": {
+    "min-length": "{{field}} must be more than {{length}} characters",
+    "max-length": "{{field}} must be less than {{length}} characters",
+    "is-required": "{{field}} is required"
+  },
+  "help-center": {
+    "heading": "Help center",
+    "question": {
+      "heading": "Asking",
+      "how-to-good-question": {
+        "title": "How do I ask a good question?",
+        "opening-p": "We're happy to help you, but in order to improve your chances of getting an answer, here are some guidelines to follow:",
+        "section1": {
+          "title": "Make sure your question is on-topic and suitable for this site",
+          "p1": "MathU only accepts certain types of questions about university math, and your question must be written in Vietnamese. If your question is not on-topic or is otherwise unsuitable for this site, then it will likely be closed.",
+          "p2": "Since you're reading this page, hopefully you will post a suitable, on-topic question from the outset, thus eliminating the need for the closure and reopening process!"
+        },
+        "section2": {
+          "title": "Search, and research",
+          "p1": "Before posting a question, we strongly recommend that you spend a reasonable amount of time researching the problem and searching for existing questions on this site that may provide an answer.",
+          "p2": "Make sure to keep track of what you find when researching, even if it doesn't help! If you ultimately aren't able to find the answer to your question elsewhere on this site, then including links to related questions (as well as an explanation of why they didn't help in your specific case) will help prevent your question from being marked as a duplicate when you ultimately do ask it."
+        },
+        "section3": {
+          "title": "Write a title that summarizes the specific problem",
+          "p1": "The title is the first thing that potential answerers will see. If your title isn't interesting, they won't read the rest. Also, without a good title, people may not even be able to find your question. So, make the title count:",
+          "ul1": {
+            "li1": {
+              "b": "Pretend you're talking to a busy friend",
+              "text": "and have to sum up your entire question in one sentence: what details can you include that will help someone identify and solve your problem? Include any error messages, key APIs, or unusual circumstances that make your question different from similar questions already on the site."
+            },
+            "li2": {
+              "text1": "If you're having trouble summarizing the problem,",
+              "b": "write the title last",
+              "text2": "—sometimes, writing the rest of the question first can make it easier to describe the problem."
+            }
+          },
+          "p2": "Examples:",
+          "bad-bold": "Bad:",
+          "good-bold": "Good:",
+          "li1": "Difficult to understand Bernoulli formula and binomial distribution",
+          "li2": "In what ways are the binomial distribution and Bernoulli's formula similar and different?"
+        },
+        "section4": {
+          "title": "Introduce the problem before you post any math",
+          "p1": "In the body of your question, start by expanding on the summary you put in the title. Don't just skip straight to the desired result!",
+          "p2": "Explain how you encountered the problem you're trying to solve, and any difficulties that have prevented you from solving it yourself. The first paragraph in your question is the second thing most readers will see, so make it as engaging and informative as possible. You want to make a good first impression."
+        },
+        "section5": {
+          "title": "Include all relevant tags",
+          "p": "Try to include a tag for the definition, theory, or formula that your question is about. If you start typing in the tags field, the system will suggest tags that match what you've typed—be sure to read the descriptions given for them to make sure they're relevant to the question you're asking!"
+        },
+        "section6": {
+          "title": "Proofread before posting!",
+          "p": "Now that you've finished writing your question, take a deep breath and read through it from start to finish. Pretend you're seeing it for the first time: does it make sense? Can someone without all of your context and background knowledge understand it? Try reproducing the problem yourself, in a fresh environment and make sure you can do so using only the information included in your question. Add any details you missed and read through it again. Re-read your title, and make sure that it succinctly and accurately describes the problem. Also, spelling, grammar, and punctuation are important!"
+        },
+        "section7": {
+          "title": "Respond to feedback after posting",
+          "p1": "After you post, don't run away too fast—leave the question open in your browser for a bit to see if anyone comments. If you missed an obvious piece of information, be ready to respond by editing your question to include it. If someone posts an answer, be ready to try it out and provide feedback!",
+          "p2": "Sometimes, you may find yourself frustrated by the comments. Maybe they make suggestions that you have already tried. Maybe they totally misunderstand your problem. Try not to get frustrated—people reading and commenting on your question generally want to help! Take these types of comments as suggestions of how to improve your question. Remember that you can edit your question at any time! (If someone does leave a rude or irrelevant comment, flag it for moderator attention so it can be removed.)"
+        }
+      }
+    },
+    "answer": {
+      "heading": "Answering",
+      "how-to-good-answer": {
+        "title": "How do I write a good answer?",
+        "opening-p": "Thanks for taking the time to write an answer. It's because of helpful people like yourself that we're able to learn together as a community. Here are a few tips on how to make your answer great:",
+        "section1": {
+          "title": "Read the question carefully",
+          "p": "What is the question asking for? Make sure your answer provides that - or at least a viable alternative. Any answer that fully addresses at least part of the question is helpful and can get the asker going in the right direction. State any limitations, assumptions or simplifications in your answer. Brevity is acceptable, but fuller explanations are better."
+        },
+        "section2": {
+          "title": "Have the same problem?",
+          "p": "Help us find a solution by researching the problem. So long as you fully answer at least a part of the original question, then you can contribute the results of your research and anything additional you've tried. That way, even if you can't figure it out, the next person has more to go on. You can also vote up the question so the question gets more attention."
+        },
+        "section3": {
+          "title": "Write to the best of your ability",
+          "p": "We don't expect every answer to be perfect, but answers with correct spelling, punctuation, and grammar are easier to read. They also tend to get upvoted more frequently. Remember, you can always go back at any time and edit your answer to improve it."
+        },
+        "section4": {
+          "title": "Answer well-asked questions",
+          "p1": "Not all questions can or should be answered here. Save yourself some frustration and avoid trying to answer questions which...",
+          "li1": "...are unclear or lacking specific details that can uniquely identify the problem.",
+          "li2": "...have already been asked and answered many times before.",
+          "li3": "...require too much guidance for you to answer in full, or request answers to multiple questions.",
+          "li4": "...are not about math as defined in the help center.",
+          "p2": "Don't forget that you can edit the question you're answering to improve the clarity and focus - this can reduce the chances of the question being closed or deleted."
+        },
+        "section5": {
+          "title": "Always be polite and have fun",
+          "p": "It's fine to disagree and express concern, but please be civil. There's always a real human being on the other end of that network connection, however misguided they may appear to be."
+        }
+      }
+    },
+    "latex": {
+      "heading": "LaTeX",
+      "how-to-use-latex": {
+        "title": "How to use LaTeX to write math formulas?"
+      }
+    }
   }
 }

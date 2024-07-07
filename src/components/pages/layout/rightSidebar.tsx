@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { CircleHelp, SquareSigma } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { I18nKeys } from '@/locales/i18nKeys';
+import { Path } from '@/constants/enum';
 
 interface IRightSidebarProps {}
 
@@ -13,17 +14,17 @@ const RightSidebar: React.FC<IRightSidebarProps> = () => {
   const helpCardContent = [
     {
       content: t(I18nKeys.RIGHT_SIDEBAR.GOOD_QUES_CONTENT),
-      to: '#',
+      to: Path.HOW_TO_QUESTION,
       icon: <CircleHelp size={20} strokeWidth={1.5} />
     },
     {
       content: t(I18nKeys.RIGHT_SIDEBAR.GOOD_ANS_CONTENT),
-      to: '#',
+      to: Path.HOW_TO_ANSWER,
       icon: <CircleHelp size={20} strokeWidth={1.5} />
     },
     {
       content: t(I18nKeys.RIGHT_SIDEBAR.LATEX_CONTENT),
-      to: '#',
+      to: Path.WRITE_MATH_FORMULA,
       icon: <SquareSigma size={20} strokeWidth={1.5} />
     }
   ];

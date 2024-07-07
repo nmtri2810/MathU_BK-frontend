@@ -34,10 +34,10 @@ const SearchBar: React.FC<ISearchBarProps> = ({ className }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const searchHelpList = [
-    { help: '[tag]:toán cao cấp', explain: 'search within a tag' },
-    { help: '[user]:abcd1234', explain: 'search for question creator' },
+    { help: '[tag]:toán cao cấp', explain: t(I18nKeys.HEADER.SEARCHBAR.TAG_EXPLAIN) },
+    { help: '[user]:abcd1234', explain: t(I18nKeys.HEADER.SEARCHBAR.USER_EXPLAIN) },
     // { help: '[score]:3', explain: 'question with a 3+ score' }, // temp
-    { help: '[isaccepted]:yes', explain: 'search within status' }
+    { help: '[isaccepted]:yes', explain: t(I18nKeys.HEADER.SEARCHBAR.IS_ACCEPTED_EXPLAIN) }
   ];
 
   const handleIconClick = () => {
@@ -95,7 +95,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({ className }) => {
         />
         <Input
           type='text'
-          placeholder={t(I18nKeys.HEADER.SEARCH_PLACEHOLDER)}
+          placeholder={t(I18nKeys.HEADER.SEARCHBAR.PLACEHOLDER)}
           className='h-8 select-none pl-8'
           ref={inputRef}
           onFocus={() => setIsFocused(true)}
@@ -112,7 +112,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({ className }) => {
             style={portalStyle}
             onMouseDown={(e) => e.preventDefault()}
           >
-            <div className='mb-2 text-lg font-bold'>Advance search</div>
+            <div className='mb-2 text-lg font-bold'>{t(I18nKeys.HEADER.SEARCHBAR.ADVANCE_SEARCH)}</div>
             <div className='mb-3 grid grid-cols-2 gap-3 border-b-1 pb-3 text-sm'>
               {searchHelpList.map((item, index) => (
                 <div key={index}>
@@ -124,7 +124,7 @@ const SearchBar: React.FC<ISearchBarProps> = ({ className }) => {
             <div className='flex items-center justify-between'>
               <AskQuestionBtn size='sm' />
               <Link className='text-sm text-blue-600 hover:text-blue-700 hover:underline' to='#'>
-                Search help
+                {t(I18nKeys.HEADER.SEARCHBAR.SEARCH_HELP)}
               </Link>
             </div>
           </div>,

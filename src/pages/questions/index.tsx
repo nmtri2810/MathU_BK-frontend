@@ -10,6 +10,8 @@ import { I18nKeys } from '@/locales/i18nKeys';
 import FullPagination from '@/components/common/fullPagination';
 import AskQuestionBtn from '@/components/pages/questions/askQuestionBtn';
 import PageLoading from '@/components/common/pageLoading';
+import BaseAlert from '@/components/common/baseAlert';
+import { Info } from 'lucide-react';
 
 const QuestionScreen: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -47,33 +49,41 @@ const QuestionScreen: React.FC = () => {
     <Layout>
       {listQuestionLoading ? (
         <PageLoading />
-      ) : listQuestion?.length === 0 ? (
-        <div>
-          <h1 className='text-3xl font-bold'>No questions found</h1>
-        </div>
       ) : (
         <>
           <div className='mb-7 flex min-h-10 justify-between'>
             <h1 className='text-3xl font-bold'>{t(I18nKeys.QUESTION_SCREEN.ALL_QUESTIONS)}</h1>
             <AskQuestionBtn />
           </div>
-          <div className='mb-5 flex items-center justify-between'>
-            <div className='text-lg italic'>{t(I18nKeys.COUNT.QUESTION, { count: total })}</div>
-            {/* temp */}
-            {/* <SortOption /> */}
-          </div>
-          <div>
-            {listQuestion?.map((question, index) => (
-              <QuestionCard key={question.id} question={question} isLast={index === listQuestion.length - 1} />
-            ))}
-          </div>
-          <FullPagination
-            currentPage={currentPage}
-            totalPages={lastPage}
-            onChangePage={onChangePage}
-            perpageValue={perpageOption}
-            onChangePerpage={onChangePerpage}
-          />
+          {listQuestion?.length === 0 ? (
+            <BaseAlert
+              variant='info'
+              title={t(I18nKeys.DETAIL_QUESTION_SCREEN.ALERT_NO_QUESTION_TITLE)}
+              description={t(I18nKeys.DETAIL_QUESTION_SCREEN.ALERT_NO_QUESTION_DESCRIPTION)}
+              className='flex items-center gap-4'
+              icon={<Info size={24} strokeWidth={1.5} />}
+            />
+          ) : (
+            <>
+              <div className='mb-5 flex items-center justify-between'>
+                <div className='text-lg italic'>{t(I18nKeys.COUNT.QUESTION, { count: total })}</div>
+                {/* temp */}
+                {/* <SortOption /> */}
+              </div>
+              <div>
+                {listQuestion?.map((question, index) => (
+                  <QuestionCard key={question.id} question={question} isLast={index === listQuestion.length - 1} />
+                ))}
+              </div>
+              <FullPagination
+                currentPage={currentPage}
+                totalPages={lastPage}
+                onChangePage={onChangePage}
+                perpageValue={perpageOption}
+                onChangePerpage={onChangePerpage}
+              />
+            </>
+          )}
         </>
       )}
     </Layout>
