@@ -15,6 +15,10 @@ import SaveScreen from '@/pages/saves';
 import UserScreen from '@/pages/users';
 import AskQuestionScreen from '@/pages/questions/askQuestion';
 import DetailQuestionScreen from '@/pages/questions/detailQuestion';
+import HelpScreen from '@/pages/help';
+import HowToAnswer from '@/pages/help/howToAnswer';
+import HowToQuestion from '@/pages/help/howToQuestion';
+import WriteMathFormula from '@/pages/help/writeMathFormula';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -33,6 +37,10 @@ const AppRoutes: React.FC = () => {
           <Route path={Path.TAGS} element={<TagScreen />} />
           <Route path={Path.SAVES} element={<SaveScreen />} />
           <Route path={Path.USERS} element={<UserScreen />} />
+          <Route path={Path.HELP} element={<HelpScreen />} />
+          <Route path={Path.HOW_TO_QUESTION} element={<HowToQuestion />} />
+          <Route path={Path.HOW_TO_ANSWER} element={<HowToAnswer />} />
+          <Route path={Path.WRITE_MATH_FORMULA} element={<WriteMathFormula />} />
         </Route>
 
         <Route element={<RoleBasedRoute roles={[Role.Admin]} />}>

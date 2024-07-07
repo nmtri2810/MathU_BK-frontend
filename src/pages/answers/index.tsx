@@ -47,12 +47,12 @@ const AnswerSection: React.FC<IAnswerSectionProps> = ({ callback }) => {
   return (
     <div className='mt-10'>
       <div className='flex items-center justify-between'>
-        {question?._count.answers !== 0 && (
-          <div className='text-lg italic'>{t(I18nKeys.COUNT.ANSWER, { count: question?._count.answers })}</div>
+        {question?.answers.length !== 0 && (
+          <>
+            <div className='text-lg italic'>{t(I18nKeys.COUNT.ANSWER, { count: question?._count.answers })}</div>
+            {/* <SortOption /> */}
+          </>
         )}
-
-        {/* temp */}
-        {/* <SortOption /> */}
       </div>
       <AnswerList answers={question?.answers} user={user} question={question} callback={callback} />
       <div className='mt-4 space-y-8'>

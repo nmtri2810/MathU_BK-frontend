@@ -87,3 +87,7 @@ export const MathTags = [
   'menclose',
   'mlabeledtr'
 ];
+
+export const Status = {
+  FORBIDDEN: 403
+};

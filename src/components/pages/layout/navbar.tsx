@@ -34,6 +34,7 @@ const NavBar: React.FC = () => {
     i18n.changeLanguage(selected?.value);
     localStorage.setItem('language', selected?.value as string);
     setSelectedOption(selected);
+    window.location.reload();
   };
 
   return (
@@ -45,7 +46,7 @@ const NavBar: React.FC = () => {
 
         <NavItemGroup className='shrink-0'>
           <NavItem link='/about'>{t(I18nKeys.HEADER.ABOUT)}</NavItem>
-          <NavItem link='/help-center'>{t(I18nKeys.HEADER.HELP_CENTER)}</NavItem>
+          <NavItem link={Path.HELP}>{t(I18nKeys.HEADER.HELP_CENTER)}</NavItem>
           <NavItem link='/image-scanning'>{t(I18nKeys.HEADER.IMAGE_SCANNING)}</NavItem>
         </NavItemGroup>
 
@@ -55,12 +56,16 @@ const NavBar: React.FC = () => {
           <NavItemGroup className='shrink-0 gap-2'>
             <Button
               variant='outline'
-              className='h-8 w-fit border-blue-600 font-normal text-blue-600 hover:bg-blue-100 hover:text-blue-600'
+              className='h-fit min-h-8 w-fit border-blue-600 p-0 font-normal text-blue-600 hover:bg-blue-100 hover:text-blue-600'
             >
-              <Link to={Path.LOGIN}>{t(I18nKeys.HEADER.LOGIN)}</Link>
+              <Link className='block px-4 py-1.5' to={Path.LOGIN}>
+                {t(I18nKeys.HEADER.LOGIN)}
+              </Link>
             </Button>
-            <Button className='h-8 w-fit bg-blue-600 font-normal hover:bg-blue-700'>
-              <Link to={Path.SIGN_UP}>{t(I18nKeys.HEADER.SIGNUP)}</Link>
+            <Button className='h-fit min-h-8 w-fit bg-blue-600 p-0 font-normal hover:bg-blue-700'>
+              <Link className='block px-4 py-1.5' to={Path.SIGN_UP}>
+                {t(I18nKeys.HEADER.SIGNUP)}
+              </Link>
             </Button>
           </NavItemGroup>
         </UnlockAccess>

@@ -25,6 +25,8 @@ import authAPI from '@/api/auth';
 import { toast } from 'sonner';
 import { Path } from '@/constants/enum';
 import { AxiosError } from 'axios';
+import i18n from '@/locales/i18next';
+import { I18nKeys } from '@/locales/i18nKeys';
 
 function* loginSaga(action: TLoginAction) {
   try {
@@ -59,7 +61,7 @@ function* signupSaga(action: TSignupAction) {
   try {
     const { payload } = action;
     const response: TSignupResponse = yield call(authAPI.signup, payload);
-    toast.success(response.message);
+    toast.success(i18n.t(I18nKeys.RESPONSE_API_MSG.AUTH.REGISTER_SUCCESS));
     yield put(signupSuccess(response.data));
   } catch (error) {
     if (error instanceof AxiosError) {

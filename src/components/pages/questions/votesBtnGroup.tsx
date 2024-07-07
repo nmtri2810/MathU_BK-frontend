@@ -83,7 +83,15 @@ const VotesBtnGroup: React.FC<IVotesBtnGroupProps> = ({ id, type, votes, callbac
       (!userCreatedQuestion && isQuestionHasAcceptedAnswer && isAcceptedAnswer)
     ) {
       return (
-        <BaseTooltip content={<div>Approve</div>}>
+        <BaseTooltip
+          content={
+            <div className='max-w-52'>
+              {isAcceptedAnswer
+                ? t(I18nKeys.DETAIL_QUESTION_SCREEN.VOTES_BTN_GR.ANSWER_ACCEPTED)
+                : t(I18nKeys.DETAIL_QUESTION_SCREEN.VOTES_BTN_GR.ACCEPT_ANSWER)}
+            </div>
+          }
+        >
           <Button variant='link' className='h-fit p-0' onClick={() => !isAcceptedAnswer && setIsOpenConfirm(true)}>
             <Check
               size={46}
@@ -100,7 +108,15 @@ const VotesBtnGroup: React.FC<IVotesBtnGroupProps> = ({ id, type, votes, callbac
 
   return (
     <div className='flex shrink-0 flex-col items-center gap-3'>
-      <BaseTooltip content={<div>Upvote</div>}>
+      <BaseTooltip
+        content={
+          <div className='max-w-52'>
+            {type === 'question'
+              ? t(I18nKeys.DETAIL_QUESTION_SCREEN.VOTES_BTN_GR.UPVOTE_QUESTION)
+              : t(I18nKeys.DETAIL_QUESTION_SCREEN.VOTES_BTN_GR.UPVOTE_ANSWER)}
+          </div>
+        }
+      >
         <Button
           variant='outline'
           className={cn('rounded-full p-0', handleVotesValue(true) && 'bg-secondary')}
@@ -110,7 +126,15 @@ const VotesBtnGroup: React.FC<IVotesBtnGroupProps> = ({ id, type, votes, callbac
         </Button>
       </BaseTooltip>
       <span className='text-xl font-bold'>{handleVotesCount()}</span>
-      <BaseTooltip content={<div>Downvote</div>}>
+      <BaseTooltip
+        content={
+          <div className='max-w-52'>
+            {type === 'question'
+              ? t(I18nKeys.DETAIL_QUESTION_SCREEN.VOTES_BTN_GR.DOWNVOTE_QUESTION)
+              : t(I18nKeys.DETAIL_QUESTION_SCREEN.VOTES_BTN_GR.DOWNVOTE_ANSWER)}
+          </div>
+        }
+      >
         <Button
           variant='outline'
           className={cn('rounded-full p-0', handleVotesValue(false) && 'bg-secondary')}
@@ -119,7 +143,11 @@ const VotesBtnGroup: React.FC<IVotesBtnGroupProps> = ({ id, type, votes, callbac
           <ChevronDown size={36} strokeWidth={1} />
         </Button>
       </BaseTooltip>
-      <BaseTooltip content={<div>Save</div>}>
+      <BaseTooltip
+        content={
+          <div className='max-w-52'>{t(I18nKeys.DETAIL_QUESTION_SCREEN.VOTES_BTN_GR.SAVE, { field: t(type) })}</div>
+        }
+      >
         <Button variant='link' className='h-fit p-0'>
           <Bookmark size={22} className='text-gray-300 hover:text-gray-400' />
         </Button>
@@ -130,8 +158,8 @@ const VotesBtnGroup: React.FC<IVotesBtnGroupProps> = ({ id, type, votes, callbac
         <BaseAlertDialog
           closeModal={() => setIsOpenConfirm(false)}
           confirmModal={updateAcceptAnswer}
-          title='Confirm answer acceptance'
-          description='Are you sure you want to accept this answer? The answer will be marked as the accepted solution'
+          title={t(I18nKeys.DETAIL_QUESTION_SCREEN.VOTES_BTN_GR.MODAL_TITLE)}
+          description={t(I18nKeys.DETAIL_QUESTION_SCREEN.VOTES_BTN_GR.MODAL_DESC)}
         ></BaseAlertDialog>
       )}
     </div>

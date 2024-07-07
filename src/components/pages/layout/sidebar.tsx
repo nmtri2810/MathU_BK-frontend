@@ -6,9 +6,14 @@ import { Path } from '@/constants/enum';
 import { NavLabel } from '@/constants';
 import { useTranslation } from 'react-i18next';
 import { I18nKeys } from '@/locales/i18nKeys';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { updateParams } from '@/store/actions/question';
 
 const Sidebar: React.FC = () => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
+
+  const { perPage } = useAppSelector((state) => state.question.meta);
 
   const sidebarNav = [
     {
@@ -19,7 +24,10 @@ const Sidebar: React.FC = () => {
     {
       label: t(I18nKeys.GLOBAL.QUESTIONS),
       link: Path.QUESTIONS,
-      icon: <CircleHelp size={18} />
+      icon: <CircleHelp size={18} />,
+      onClick: () => {
+        dispatch(updateParams({ page: 1, perPage: perPage, keyword: '' }));
+      }
     },
     {
       label: t(I18nKeys.GLOBAL.TAGS),
@@ -54,6 +62,7 @@ const Sidebar: React.FC = () => {
               item.label !== NavLabel.SPACER ? (
                 <li key={`${item.label}_${index}`}>
                   <NavLink
+                    onClick={item.onClick ? () => item.onClick() : undefined}
                     to={item.link || ''}
                     className={({ isActive }) =>
                       cn(

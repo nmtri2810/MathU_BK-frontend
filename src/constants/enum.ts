@@ -9,7 +9,11 @@ export enum Path {
   DETAIL_QUESTIONS = '/questions/:id/:title',
   TAGS = '/tags',
   SAVES = '/saves',
-  USERS = '/users'
+  USERS = '/users',
+  HELP = '/help',
+  HOW_TO_QUESTION = '/help/how-to-question',
+  HOW_TO_ANSWER = '/help/how-to-answer',
+  WRITE_MATH_FORMULA = '/help/write-math-formula'
 }
 
 const baseURL = '/admin/';

@@ -21,6 +21,9 @@ import {
 import { AxiosError } from 'axios';
 import { toast } from 'sonner';
 import voteAPI from '@/api/vote';
+import { Status } from '@/constants';
+import i18n from '@/locales/i18next';
+import { I18nKeys } from '@/locales/i18nKeys';
 
 function* createVoteSaga(action: TCreateVoteAction) {
   try {
@@ -29,12 +32,12 @@ function* createVoteSaga(action: TCreateVoteAction) {
 
     payload.callback?.();
 
-    toast.success(response.message);
     yield put(createVoteSuccess(response.data));
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
-      const message = error.response?.data.message;
-      toast.error(message);
+      if (error.response?.status === Status.FORBIDDEN) {
+        toast.error(i18n.t(I18nKeys.RESPONSE_API_MSG.ERROR.VOTE_FORBIDDEN));
+      }
       yield put(createVoteFailure());
     }
   }
@@ -47,7 +50,6 @@ function* updateVoteSaga(action: TUpdateVoteAction) {
 
     payload.callback?.();
 
-    toast.success(response.message);
     yield put(updateVoteSuccess(response.data));
   } catch (error) {
     if (error instanceof AxiosError) {
@@ -65,7 +67,6 @@ function* deleteVoteSaga(action: TDeleteVoteAction) {
 
     payload.callback?.();
 
-    toast.success(response.message);
     yield put(deleteVoteSuccess(response.data));
   } catch (error) {
     if (error instanceof AxiosError) {

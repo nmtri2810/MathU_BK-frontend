@@ -17,6 +17,8 @@ import {
 import { AxiosError } from 'axios';
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { toast } from 'sonner';
+import i18n from '@/locales/i18next';
+import { I18nKeys } from '@/locales/i18nKeys';
 
 function* createAnswerSaga(action: TCreateAnswerAction) {
   try {
@@ -25,7 +27,7 @@ function* createAnswerSaga(action: TCreateAnswerAction) {
 
     callback?.();
 
-    toast.success(response.message);
+    toast.success(i18n.t(I18nKeys.RESPONSE_API_MSG.ANSWER.CREATE_SUCCESS));
     yield put(createAnswerSuccess(response.data));
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
@@ -40,7 +42,6 @@ function* updateAnswerSaga(action: TUpdateAnswerAction) {
   try {
     const { payload } = action;
     const response: TUpdateAnswerResponse = yield call(answerAPI.update, payload);
-    toast.success(response.message);
     yield put(updateAnswerSuccess(response.data));
   } catch (error: unknown) {
     if (error instanceof AxiosError) {

@@ -24,6 +24,12 @@
   "edit": "Chỉnh sửa",
   "follow": "Theo dõi",
   "close": "Đóng",
+  "answer": "Câu trả lời",
+  "question": "Câu hỏi",
+  "body": "Nội dung câu hỏi",
+  "tag": "Thẻ chủ đề",
+  "cancel": "Hủy",
+  "continue": "Tiếp tục",
   "count": {
     "question_one": "{{count}} câu hỏi",
     "question_other": "{{count}} câu hỏi",
@@ -42,7 +48,14 @@
     "image-scanning": "Quét ảnh",
     "log-in": "Đăng nhập",
     "sign-up": "Đăng ký",
-    "search-placeholder": "Tìm kiếm với tiêu đề, nội dung, hoặc tìm kiếm nâng cao...",
+    "searchbar": {
+      "placeholder": "Tìm kiếm với tiêu đề, nội dung, hoặc tìm kiếm nâng cao...",
+      "advance-search": "Tìm kiếm nâng cao",
+      "tag-explain": "tìm kiếm thẻ chủ đề thuộc câu hỏi",
+      "user-explain": "tìm kiếm người tạo câu hỏi",
+      "isaccepted-explain": "tìm kiếm câu hỏi với trạng thái",
+      "search-help": "Trợ giúp tìm kiếm"
+    },
     "avatar-dropdown": {
       "profile": "Thông tin cá nhân",
       "settings": "Cài đặt",
@@ -80,7 +93,20 @@
     "your-answer": "Câu trả lời của bạn",
     "submit-answer": "Đăng câu trả lời",
     "please-login": "Vui lòng đăng nhập để điền câu trả lời",
-    "login-now": "Đăng nhập ngay"
+    "login-now": "Đăng nhập ngay",
+    "alert-no-question-title": "Không tìm thấy",
+    "alert-no-question-description": "Không tìm thấy câu hỏi thỏa mãn",
+    "votes-btn-gr": {
+      "upvote-question": "Câu hỏi này thể hiện nỗ lực tìm hiểu; rất hữu ích và rõ ràng",
+      "upvote-answer": "Câu trả lời này hữu ích",
+      "downvote-question": "Câu hỏi này không thể hiện bất kỳ nỗ lực tìm hiểu nào; không rõ ràng hoặc không hữu ích",
+      "downvote-answer": "Câu trả lời này không hữu ích",
+      "accept-answer": "Chấp nhận đây là câu trả lời tốt nhất",
+      "answer-accepted": "Người tạo câu hỏi đã chấp nhận đây là câu trả lời tốt nhất",
+      "save": "Lưu {{field}}",
+      "modal-title": "Xác nhận",
+      "modal-desc": "Bạn có chắc chắn muốn chấp nhận câu trả lời này? Câu trả lời sẽ được đánh dấu là giải pháp được chấp nhận"
+    }
   },
   "ask-question-screen": {
     "title-description": "Hãy có nội dung cụ thể và tưởng tượng bạn hỏi thầy cô hoặc bạn bè",
@@ -93,7 +119,7 @@
   },
   "right-sidebar": {
     "header": "Tính năng trên MathU",
-    "good-question-content": "Làm thế nào để viết một câu hỏi tốt?",
+    "good-question-content": "Làm thế nào để hỏi một câu hỏi tốt?",
     "good-answer-content": "Làm thế nào để viết một câu trả lời tốt?",
     "latex-content": "Cách sử dụng LaTeX để viết công thức toán?"
   },
@@ -109,5 +135,120 @@
     "contact": "Liên hệ",
     "terms": "Điều khoản dịch vụ",
     "all-rights-reserved": "Đã đăng ký bản quyền"
+  },
+  "response-API-msg": {
+    "answer": {
+      "create-success": "Tạo câu trả lời thành công"
+    },
+    "auth": {
+      "register-success": "Đăng ký tài khoản thành công"
+    },
+    "question": {
+      "create-success": "Tạo câu hỏi thành công"
+    },
+    "error": {
+      "vote-forbidden": "Bạn không thể bình chọn cho câu hỏi của chính mình"
+    }
+  },
+  "validation-msg": {
+    "min-length": "{{field}} phải nhiều hơn {{length}} ký tự",
+    "max-length": "{{field}} phải ít hơn {{length}} ký tự",
+    "is-required": "{{field}} là bắt buộc"
+  },
+  "help-center": {
+    "heading": "Trung tâm trợ giúp",
+    "question": {
+      "heading": "Hướng dẫn về câu hỏi",
+      "how-to-good-question": {
+        "title": "Làm thế nào để đặt một câu hỏi hay?",
+        "opening-p": "Chúng tôi rất sẵn lòng trợ giúp bạn, nhưng để nâng cao cơ hội nhận được câu trả lời, bạn cần tuân theo một số nguyên tắc sau:",
+        "section1": {
+          "title": "Đảm bảo câu hỏi của bạn đúng chủ đề và phù hợp với trang web này",
+          "p1": "MathU chỉ chấp nhận một số loại câu hỏi nhất định về toán đại học và câu hỏi của bạn phải được viết bằng tiếng Việt. Nếu câu hỏi của bạn không đúng chủ đề hoặc không phù hợp với trang web này thì nó có thể sẽ bị đóng.",
+          "p2": "Vì bạn đang đọc trang hướng dẫn này nên hy vọng bạn sẽ đăng một câu hỏi phù hợp, đúng chủ đề ngay từ đầu, từ đó loại bỏ sự cần thiết của quá trình đóng và mở lại câu hỏi!"
+        },
+        "section2": {
+          "title": "Tìm kiếm và nghiên cứu",
+          "p1": "Trước khi đăng câu hỏi, chúng tôi thực sự khuyên bạn nên dành một khoảng thời gian để nghiên cứu vấn đề và tìm kiếm các câu hỏi hiện có trên trang web này có thể đưa ra câu trả lời.",
+          "p2": "Hãy nhớ theo dõi những gì bạn tìm thấy khi nghiên cứu, ngay cả khi nó không giúp ích gì! Nếu bạn không thể tìm thấy câu trả lời cho câu hỏi của mình trên trang web này thì việc bao gồm các liên kết đến các câu hỏi liên quan (cũng như giải thích lý do tại sao chúng không giúp ích trong trường hợp cụ thể của bạn) sẽ giúp ngăn câu hỏi của bạn bị đánh dấu là trùng lặp."
+        },
+        "section3": {
+          "title": "Viết tiêu đề tóm tắt vấn đề cụ thể",
+          "p1": "Tiêu đề là điều đầu tiên mà người trả lời sẽ nhìn thấy. Nếu tiêu đề của bạn không thú vị, họ sẽ không đọc phần còn lại. Ngoài ra, nếu không có tiêu đề hay, mọi người thậm chí có thể không tìm thấy câu hỏi của bạn. Vì vậy, hãy khiến cho tiêu đề:",
+          "ul1": {
+            "li1": {
+              "b": "Giả vờ như bạn đang nói chuyện với một bạn học bận rộn",
+              "text": "và phải tóm tắt toàn bộ câu hỏi của bạn trong một câu: bạn có thể đưa chi tiết nào vào để giúp bạn mình xác định và giải quyết vấn đề của bạn? Bao gồm lý thuyết, định nghĩa khiến câu hỏi của bạn khác với các câu hỏi tương tự đã có trên trang web."
+            },
+            "li2": {
+              "text1": "Nếu bạn gặp khó khăn trong việc tóm tắt vấn đề,",
+              "b": "hãy viết tiêu đề cuối cùng",
+              "text2": "—đôi khi, việc viết phần còn lại của câu hỏi trước có thể giúp bạn mô tả vấn đề dễ dàng hơn."
+            }
+          },
+          "p2": "Ví dụ:",
+          "bad-bold": "Không tốt:",
+          "good-bold": "Tốt:",
+          "li1": "Khó hiểu về công thức Bernoulli và phân phối nhị thức",
+          "li2": "Phân phối nhị thức tính theo công thức Bernoulli và công thức Bernoulli giống và khác nhau ở điểm nào và được sử dụng trong trường hợp nào?"
+        },
+        "section4": {
+          "title": "Giới thiệu vấn đề trước khi đi thẳng đến bài toán",
+          "p1": "Trong phần nội dung câu hỏi của bạn, hãy bắt đầu bằng cách mở rộng ý ở tiêu đề. Đừng mong muốn kết quả bài toán luôn!",
+          "p2": "Giải thích tại sao bạn gặp vấn đề trên và khó khăn nào khiến bạn không thể tự mình giải quyết vấn đề đó. Đoạn đầu tiên trong câu hỏi của bạn là thứ hầu hết người đọc sẽ đọc sau tiêu đề, vì vậy hãy làm cho nó hấp dẫn và chứa nhiều thông tin nhất có thể. Bạn muốn tạo ấn tượng tốt ngay từ ban đầu."
+        },
+        "section5": {
+          "title": "Bao gồm tất cả các thẻ chủ đề có liên quan",
+          "p": "Cố gắng thêm những thẻ chủ đề cho định nghĩa, lý thuyết hoặc công thức mà câu hỏi của bạn đề cập đến. Nếu bạn nhập vào trường thẻ chủ đề, hệ thống sẽ đề xuất các thẻ phù hợp với những gì bạn đã nhập — hãy đọc mô tả được cung cấp để đảm bảo chúng có liên quan đến câu hỏi bạn đang hỏi!"
+        },
+        "section6": {
+          "title": "Kiểm tra lại trước khi đăng!",
+          "p": "Bây giờ bạn đã viết xong câu hỏi của mình, hãy hít một hơi thật sâu và đọc lại từ đầu đến cuối. Giả vờ như bạn nhìn thấy câu hỏi đó lần đầu tiên: nó có ý nghĩa không? Liệu ai đó không có thông tin và kiến thức của bạn có thể hiểu được nó không? Hãy thử tự tái tạo vấn đề của bạn và đảm bảo rằng bạn có thể làm như vậy chỉ bằng cách sử dụng thông tin có trong câu hỏi của mình. Thêm bất kỳ chi tiết nào cần bổ sung và đọc lại. Đọc lại tiêu đề của bạn và đảm bảo rằng nó mô tả ngắn gọn và chính xác vấn đề. Ngoài ra, chính tả, ngữ pháp và dấu câu cũng rất quan trọng!"
+        },
+        "section7": {
+          "title": "Trả lời phản hồi sau khi đăng",
+          "p1": "Sau khi đăng bài, đừng rời đi ngay — hãy để câu hỏi mở trong trình duyệt của bạn một lúc để xem có ai trả lời không. Nếu bạn quên thông tin nào đó quan trọng, hãy chỉnh sửa câu hỏi của bạn để đưa thông tin đó vào. Nếu ai đó đăng câu trả lời, hãy sẵn sàng làm thử và đưa ra phản hồi!",
+          "p2": "Đôi khi, bạn có thể cảm thấy khó chịu vì những bình luận không mong muốn. Có thể họ đưa ra những gợi ý mà bạn đã thử, hoặc hoàn toàn hiểu sai vấn đề của bạn. Cố gắng đừng nản lòng — mọi người đọc và trả lời câu hỏi của bạn luôn muốn giúp đỡ! Hãy coi những câu trả lời này là gợi ý về cách cải thiện câu hỏi của bạn. Hãy nhớ rằng bạn có thể chỉnh sửa câu hỏi của mình bất cứ lúc nào! (Nếu ai đó viết câu trả lời thô lỗ hoặc không liên quan, hãy đánh dấu câu trả lời đó để người kiểm duyệt có thể xóa.)"
+        }
+      }
+    },
+    "answer": {
+      "heading": "Hướng dẫn về câu trả lời",
+      "how-to-good-answer": {
+        "title": "Làm thế nào để viết một câu trả lời tốt?",
+        "opening-p": "Cảm ơn bạn đã dành thời gian để viết câu trả lời. Nhờ có những người tuyệt vời như bạn mà chúng ta có thể cùng nhau học hỏi trong cộng đồng. Dưới đây là một số hướng dẫn về cách làm cho câu trả lời của bạn trở nên tuyệt vời:",
+        "section1": {
+          "title": "Đọc câu hỏi một cách cẩn thận",
+          "p": "Câu hỏi đang hỏi về vấn đề gì? Hãy đảm bảo rằng câu trả lời của bạn cung cấp được điều đó - hoặc ít nhất là một giải pháp thay thế khả thi. Bất kỳ câu trả lời nào giải quyết đầy đủ ít nhất một phần của câu hỏi đều hữu ích và có thể khiến người hỏi đi đúng hướng. Nêu rõ mọi hạn chế, giả định hoặc đơn giản hóa vấn đề trong câu trả lời của bạn. Sự ngắn gọn có thể chấp nhận được, nhưng giải thích đầy đủ thì tốt hơn."
+        },
+        "section2": {
+          "title": "Bạn có chung vấn đề với câu hỏi?",
+          "p": "Hãy giúp chúng tôi tìm ra giải pháp bằng cách cùng nghiên cứu vấn đề. Miễn là bạn trả lời đầy đủ ít nhất một phần của câu hỏi thì bạn có thể đóng góp kết quả nghiên cứu của mình và bất kỳ sự bổ sung mà bạn đã thử. Bằng cách đó, ngay cả khi bạn chưa tìm ra lời giải thì người khác vẫn có thể tiếp tục nghiên cứu. Bạn cũng có thể bình chọn câu hỏi để câu hỏi được chú ý nhiều hơn."
+        },
+        "section3": {
+          "title": "Viết với khả năng tốt nhất của bạn",
+          "p": "Chúng tôi không mong đợi mọi câu trả lời đều hoàn hảo nhưng những câu trả lời đúng chính tả, dấu câu và ngữ pháp sẽ dễ đọc và hiểu hơn. Những câu trả lời đó cũng có xu hướng được bình chọn thường xuyên hơn. Hãy nhớ rằng, bạn luôn có thể chỉnh sửa câu trả lời của mình để cải thiện."
+        },
+        "section4": {
+          "title": "Trả lời những câu hỏi tốt",
+          "p1": "Không phải tất cả các câu hỏi đều có thể hoặc nên được trả lời ở đây. Hãy tránh trả lời những câu hỏi...",
+          "li1": "...không rõ ràng hoặc thiếu chi tiết cụ thể để giải quyết vấn đề.",
+          "li2": "...đã được hỏi và trả lời nhiều lần trước đây.",
+          "li3": "...yêu cầu quá nhiều hướng dẫn để bạn có thể trả lời đầy đủ hoặc yêu cầu câu trả lời cho nhiều câu hỏi.",
+          "li4": "...không phải về toán học đại học.",
+          "p2": "Đừng quên rằng bạn có thể chỉnh sửa câu hỏi bạn đang trả lời để cải thiện độ rõ ràng và trọng tâm nội dung - điều này có thể làm giảm khả năng câu hỏi bị đóng hoặc bị xóa."
+        },
+        "section5": {
+          "title": "Luôn lịch sự và vui vẻ",
+          "p": "Bạn có thể không đồng ý và bày tỏ sự đối lập nhưng hãy cư xử lịch sự. Luôn có một con người thực sự ở đầu bên kia, cho dù họ có không hiểu đến đâu."
+        }
+      }
+    },
+    "latex": {
+      "heading": "Hướng dẫn về LaTeX",
+      "how-to-use-latex": {
+        "title": "Cách sử dụng LaTeX để viết công thức toán?"
+      }
+    }
   }
 }

@@ -9,6 +9,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle
 } from '@/components/ui/alert-dialog';
+import i18n from '@/locales/i18next';
+import { I18nKeys } from '@/locales/i18nKeys';
 
 interface IBaseAlertDialogProps {
   closeModal: () => void;
@@ -24,8 +26,8 @@ const BaseAlertDialog: React.FC<IBaseAlertDialogProps> = ({
   confirmModal,
   title,
   description,
-  cancelText = 'Cancel',
-  confirmText = 'Continue'
+  cancelText = i18n.t(I18nKeys.GLOBAL.CANCEL),
+  confirmText = i18n.t(I18nKeys.GLOBAL.CONTINUE)
 }) => {
   return (
     <AlertDialog defaultOpen>
