@@ -10,7 +10,6 @@ import { I18nKeys } from '@/locales/i18nKeys';
 import FullPagination from '@/components/common/fullPagination';
 import AskQuestionBtn from '@/components/pages/questions/askQuestionBtn';
 import PageLoading from '@/components/common/pageLoading';
-import SortOption from '@/components/pages/questions/sortOption';
 
 const QuestionScreen: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -22,21 +21,22 @@ const QuestionScreen: React.FC = () => {
   const listQuestionLoading = useAppSelector((state) => state.question.listLoading);
   const paginationData = useAppSelector((state) => state.question.meta);
   const { currentPage, perPage, lastPage, total } = paginationData;
+  const searchKeyword = useAppSelector((state) => state.question.keyword);
 
   const onChangePage = (value: number) => {
-    dispatch(updateParams({ page: value, perPage: perPage, keyword: '' }));
+    dispatch(updateParams({ page: value, perPage: perPage, keyword: searchKeyword }));
   };
 
   const onChangePerpage = (option: SingleValue<IReactSelectOptions> | MultiValue<IReactSelectOptions>) => {
     const selected = option as SingleValue<IReactSelectOptions>;
 
     setPerpageOption(selected);
-    dispatch(updateParams({ page: 1, perPage: Number(selected?.value), keyword: '' }));
+    dispatch(updateParams({ page: 1, perPage: Number(selected?.value), keyword: searchKeyword }));
   };
 
   useEffect(() => {
-    dispatch(listQuestionRequest({ page: currentPage, perPage: perPage, keyword: '' }));
-  }, [currentPage, dispatch, perPage]);
+    dispatch(listQuestionRequest({ page: currentPage, perPage: perPage, keyword: searchKeyword }));
+  }, [currentPage, dispatch, perPage, searchKeyword]);
 
   // Bad practice
   useEffect(() => {
@@ -47,6 +47,10 @@ const QuestionScreen: React.FC = () => {
     <Layout>
       {listQuestionLoading ? (
         <PageLoading />
+      ) : listQuestion?.length === 0 ? (
+        <div>
+          <h1 className='text-3xl font-bold'>No questions found</h1>
+        </div>
       ) : (
         <>
           <div className='mb-7 flex min-h-10 justify-between'>
@@ -54,8 +58,9 @@ const QuestionScreen: React.FC = () => {
             <AskQuestionBtn />
           </div>
           <div className='mb-5 flex items-center justify-between'>
-            <div className='text-lg'>{t(I18nKeys.COUNT.QUESTION, { count: total })}</div>
-            <SortOption />
+            <div className='text-lg italic'>{t(I18nKeys.COUNT.QUESTION, { count: total })}</div>
+            {/* temp */}
+            {/* <SortOption /> */}
           </div>
           <div>
             {listQuestion?.map((question, index) => (

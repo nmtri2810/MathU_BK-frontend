@@ -1,6 +1,5 @@
 import TiptapInput from '@/components/common/tiptapInput';
 import AnswerList from '@/components/pages/answers/answerList';
-import SortOption from '@/components/pages/questions/sortOption';
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Path } from '@/constants/enum';
@@ -48,8 +47,12 @@ const AnswerSection: React.FC<IAnswerSectionProps> = ({ callback }) => {
   return (
     <div className='mt-10'>
       <div className='flex items-center justify-between'>
-        <div className='text-lg'>{t(I18nKeys.COUNT.ANSWER, { count: question?._count.answers })}</div>
-        <SortOption />
+        {question?._count.answers !== 0 && (
+          <div className='text-lg italic'>{t(I18nKeys.COUNT.ANSWER, { count: question?._count.answers })}</div>
+        )}
+
+        {/* temp */}
+        {/* <SortOption /> */}
       </div>
       <AnswerList answers={question?.answers} user={user} question={question} callback={callback} />
       <div className='mt-4 space-y-8'>
