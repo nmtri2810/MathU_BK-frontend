@@ -28,10 +28,6 @@ const NavBar: React.FC = () => {
     return LanguageOptions.find((option) => option.value === localStorage.getItem('language')) || LanguageOptions[0];
   });
 
-  const search = (text: string) => {
-    console.log('src_layout_navbar_index.tsx#8: ', text);
-  };
-
   const handleChangeLanguage = (option: SingleValue<IReactSelectOptions> | MultiValue<IReactSelectOptions>) => {
     const selected = option as SingleValue<IReactSelectOptions>;
 
@@ -53,7 +49,7 @@ const NavBar: React.FC = () => {
           <NavItem link='/image-scanning'>{t(I18nKeys.HEADER.IMAGE_SCANNING)}</NavItem>
         </NavItemGroup>
 
-        <SearchBar className='mx-4 grow' onSubmit={search} placeholder={t(I18nKeys.HEADER.SEARCH_PLACEHOLDER)} />
+        <SearchBar className='mx-4 grow' />
 
         <UnlockAccess request={[Role.Guest]}>
           <NavItemGroup className='shrink-0 gap-2'>

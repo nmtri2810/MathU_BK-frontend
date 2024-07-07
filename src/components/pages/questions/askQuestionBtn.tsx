@@ -7,7 +7,11 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { I18nKeys } from '@/locales/i18nKeys';
 
-const AskQuestionBtn: React.FC = () => {
+interface IAskQuestionBtnProps {
+  size?: 'default' | 'sm' | 'lg' | 'icon';
+}
+
+const AskQuestionBtn: React.FC<IAskQuestionBtnProps> = ({ size }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -24,7 +28,7 @@ const AskQuestionBtn: React.FC = () => {
   };
 
   return (
-    <Button onClick={handleNavigate} className='bg-blue-600 font-normal hover:bg-blue-700'>
+    <Button onClick={handleNavigate} className='bg-blue-600 font-normal hover:bg-blue-700' size={size}>
       {t(I18nKeys.GLOBAL.ASK_QUESTION)}
     </Button>
   );
