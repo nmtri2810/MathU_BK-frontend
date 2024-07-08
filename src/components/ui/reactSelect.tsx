@@ -1,4 +1,6 @@
+import { I18nKeys } from '@/locales/i18nKeys';
 import React, { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import Select, { SingleValue, MultiValue, ActionMeta, StylesConfig } from 'react-select';
 
 export interface IReactSelectOptions {
@@ -68,6 +70,8 @@ const ReactSelect: React.FC<IReactSelectProps> = ({
   placeholder,
   errorMsg
 }) => {
+  const { t } = useTranslation();
+
   const defaultStyles: StylesConfig<IReactSelectOptions, true> = {
     option: (baseStyles) => ({
       ...baseStyles,
@@ -98,6 +102,7 @@ const ReactSelect: React.FC<IReactSelectProps> = ({
         menuPortalTarget: document.body,
         menuPosition: 'fixed' as const
       })}
+      noOptionsMessage={() => t(I18nKeys.GLOBAL.NO_OPTIONS)}
     />
   );
 };

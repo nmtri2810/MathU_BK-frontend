@@ -1,5 +1,4 @@
 import AskQuestionBtn from '@/components/pages/questions/askQuestionBtn';
-import PageLoading from '@/components/common/pageLoading';
 import TagGroup from '@/components/common/tagGroup';
 import UserData from '@/components/common/userData';
 import VotesBtnGroup from '@/components/pages/questions/votesBtnGroup';
@@ -52,10 +51,8 @@ const DetailQuestionScreen: React.FC = () => {
   }, [fetchData]);
 
   return (
-    <Layout>
-      {questionLoading ? (
-        <PageLoading />
-      ) : (
+    <Layout showFooter={!questionLoading}>
+      {!questionLoading && (
         <>
           <div>
             <div className='flex min-h-10 justify-between'>

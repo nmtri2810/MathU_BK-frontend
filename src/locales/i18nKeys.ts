@@ -30,7 +30,8 @@ export const I18nKeys = {
     BODY: 'body',
     TAG: 'tag',
     CANCEL: 'cancel',
-    CONTINUE: 'continue'
+    CONTINUE: 'continue',
+    NO_OPTIONS: 'no-options'
   },
   COUNT: {
     QUESTION: 'count.question',
@@ -112,7 +113,15 @@ export const I18nKeys = {
     BODY_DESCRIPTION: 'ask-question-screen.body-description',
     TAG_DESCRIPTION: 'ask-question-screen.tag-description',
     TAG_PLACEHOLDER: 'ask-question-screen.tag-placeholder',
-    SUBMIT: 'ask-question-screen.submit'
+    SUBMIT: 'ask-question-screen.submit',
+    CHECK_DUPLICATE: {
+      CARD_TITLE: 'ask-question-screen.check-duplicate.card-title',
+      CARD_DESCRIPTION: 'ask-question-screen.check-duplicate.card-description',
+      AI_NOT_FOUNG: 'ask-question-screen.check-duplicate.ai-not-found',
+      AI_FOUND1: 'ask-question-screen.check-duplicate.ai-found1',
+      AI_FOUND2: 'ask-question-screen.check-duplicate.ai-found2',
+      SUBMIT: 'ask-question-screen.check-duplicate.submit'
+    }
   },
   RIGHT_SIDEBAR: {
     HEADER: 'right-sidebar.header',
