@@ -7,16 +7,19 @@ import ReactSelect from '@/components/ui/reactSelect';
 import { Path } from '@/constants/enum';
 import { ITag } from '@/interfaces/tag';
 import Layout from '@/layout/mainLayout';
+import { formatTitleForURL } from '@/lib/utils';
 import { I18nKeys } from '@/locales/i18nKeys';
+import { checkQuesDupRequest } from '@/store/actions/openai';
 import { createQuestionRequest } from '@/store/actions/question';
 import { listTagRequest } from '@/store/actions/tag';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { AskQuestionSchema } from '@/validations/question';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Spinner } from '@nextui-org/spinner';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { generatePath, Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { z } from 'zod';
 
@@ -28,6 +31,10 @@ const AskQuestionScreen: React.FC = () => {
   const user = useAppSelector((state) => state.auth.user);
   const tagList = useAppSelector((state) => state.tag.list) || [];
   const tagListLoading = useAppSelector((state) => state.tag.listLoading);
+
+  const AIResponse = useAppSelector((state) => state.openai.data);
+  const AIResArr: { id: number; title: string }[] = AIResponse ? JSON.parse(AIResponse?.content) : [];
+  const isAIResponseLoading = useAppSelector((state) => state.openai.loading);
 
   const form = useForm<z.infer<typeof AskQuestionSchema>>({
     resolver: zodResolver(AskQuestionSchema),
@@ -47,7 +54,11 @@ const AskQuestionScreen: React.FC = () => {
       tag_ids: tagNumArr
     };
 
-    dispatch(createQuestionRequest({ ...requestData, navigate }));
+    if (AIResponse) {
+      dispatch(createQuestionRequest({ ...requestData, navigate }));
+    } else {
+      dispatch(checkQuesDupRequest({ messages: [{ role: 'user', content: data.title }] }));
+    }
   }
 
   const convertedTags = (tags: ITag[]) => {
@@ -148,13 +159,62 @@ const AskQuestionScreen: React.FC = () => {
               </FormItem>
             )}
           />
-          <Button
-            type='submit'
-            className='bg-blue-600 font-normal hover:bg-blue-700'
-            onClick={form.handleSubmit(onSubmit)}
+          <AskQuestionCard
+            className='mt-6'
+            title={t(I18nKeys.ASK_QUESTION_SCREEN.CHECK_DUPLICATE.CARD_TITLE)}
+            description={t(I18nKeys.ASK_QUESTION_SCREEN.CHECK_DUPLICATE.CARD_DESCRIPTION)}
           >
-            {t(I18nKeys.ASK_QUESTION_SCREEN.SUBMIT)}
-          </Button>
+            <div className='-mt-2 space-y-2'>
+              {isAIResponseLoading && (
+                <div className='flex items-center justify-center'>
+                  <Spinner label={t(I18nKeys.GLOBAL.LOADING)} color='default' labelColor='foreground' size='lg' />
+                </div>
+              )}
+
+              {AIResponse && AIResArr.length === 0 && t(I18nKeys.ASK_QUESTION_SCREEN.CHECK_DUPLICATE.AI_NOT_FOUNG)}
+
+              {AIResponse && AIResArr.length !== 0 && (
+                <>
+                  <div>{t(I18nKeys.ASK_QUESTION_SCREEN.CHECK_DUPLICATE.AI_FOUND1, { count: AIResArr.length })}</div>
+                  <ul className='list-disc pl-6'>
+                    {AIResArr.map((data, index) => (
+                      <li key={index}>
+                        <Link
+                          target='_blank'
+                          className='block w-fit text-blue-600 hover:text-blue-700 hover:underline'
+                          to={generatePath(Path.DETAIL_QUESTIONS, {
+                            id: String(data.id),
+                            title: formatTitleForURL(data.title)
+                          })}
+                        >
+                          {data.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <div>{t(I18nKeys.ASK_QUESTION_SCREEN.CHECK_DUPLICATE.AI_FOUND2)}</div>
+                </>
+              )}
+            </div>
+          </AskQuestionCard>
+          {AIResponse ? (
+            <Button
+              type='submit'
+              className='bg-blue-600 font-normal hover:bg-blue-700'
+              onClick={form.handleSubmit(onSubmit)}
+            >
+              {t(I18nKeys.ASK_QUESTION_SCREEN.SUBMIT)}
+            </Button>
+          ) : (
+            <Button
+              type='submit'
+              className='bg-blue-600 font-normal hover:bg-blue-700'
+              onClick={form.handleSubmit(onSubmit)}
+              disabled={isAIResponseLoading}
+            >
+              {t(I18nKeys.ASK_QUESTION_SCREEN.CHECK_DUPLICATE.SUBMIT)}
+            </Button>
+          )}
         </div>
       </Form>
     </Layout>

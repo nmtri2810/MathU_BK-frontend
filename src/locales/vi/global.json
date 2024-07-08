@@ -30,6 +30,7 @@
   "tag": "Thẻ chủ đề",
   "cancel": "Hủy",
   "continue": "Tiếp tục",
+  "no-options": "Không tìm thấy lựa chọn",
   "count": {
     "question_one": "{{count}} câu hỏi",
     "question_other": "{{count}} câu hỏi",
@@ -115,7 +116,16 @@
     "body-description": "Bao gồm tất cả thông tin mà mọi người sẽ cần để trả lời câu hỏi của bạn",
     "tag-description": "Thêm tối đa 5 thẻ chủ đề để mô tả nội dung câu hỏi của bạn",
     "tag-placeholder": "Ví dụ: Giải tích 1, ...",
-    "submit": "Đăng câu hỏi"
+    "submit": "Đăng câu hỏi",
+    "check-duplicate": {
+      "card-title": "Kiểm tra câu hỏi trùng lặp",
+      "card-description": "Sau khi điền thông tin câu hỏi, nhấn vào nút bên dưới để hệ thống kiểm tra trùng lặp câu hỏi",
+      "ai-not-found": "AI không tìm thấy câu hỏi trùng lặp nào, hãy đăng câu hỏi để nhận được sự trợ giúp.",
+      "ai-found1_one": "Có {{count}} câu hỏi trùng lặp mà AI đã tìm thấy, bạn có thể tham khảo trước khi đăng câu hỏi:",
+      "ai-found1_other": "Có {{count}} câu hỏi trùng lặp mà AI đã tìm thấy, bạn có thể tham khảo trước khi đăng câu hỏi:",
+      "ai-found2": "Nếu bạn thấy những câu hỏi trên không giải quyết được vấn đề bạn đang gặp, vui lòng chỉ ra điểm khác biệt trong câu hỏi của bạn.",
+      "submit": "Kiểm tra"
+    }
   },
   "right-sidebar": {
     "header": "Tính năng trên MathU",

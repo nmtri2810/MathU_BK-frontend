@@ -30,6 +30,7 @@
   "tag": "Tag",
   "cancel": "Cancel",
   "continue": "Continue",
+  "no-options": "No options",
   "count": {
     "question_one": "{{count}} question",
     "question_other": "{{count}} questions",
@@ -115,7 +116,16 @@
     "body-description": "Include all the information someone would need to answer your question",
     "tag-description": "Add up to 5 tags to describe what your question is about",
     "tag-placeholder": "e.g. Calculus 1, ...",
-    "submit": "Post your question"
+    "submit": "Post your question",
+    "check-duplicate": {
+      "card-title": "Check duplicate questions",
+      "card-description": "After filling in the question information, click the button below to let the system check for duplicate questions",
+      "ai-not-found": "AI did not find any duplicate questions, please post a question to seek help",
+      "ai-found1_one": "There is {{count}} duplicate question that AI has found, you can refer to before posting questions:",
+      "ai-found1_other": "There are {{count}} duplicate questions that AI has found, you can refer to before posting questions:",
+      "ai-found2": "If you find the above questions do not solve your problem, please point out the difference in your question.",
+      "submit": "Check"
+    }
   },
   "right-sidebar": {
     "header": "Feature on MathU",

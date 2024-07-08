@@ -9,7 +9,6 @@ import { useTranslation } from 'react-i18next';
 import { I18nKeys } from '@/locales/i18nKeys';
 import FullPagination from '@/components/common/fullPagination';
 import AskQuestionBtn from '@/components/pages/questions/askQuestionBtn';
-import PageLoading from '@/components/common/pageLoading';
 import BaseAlert from '@/components/common/baseAlert';
 import { Info } from 'lucide-react';
 
@@ -47,9 +46,7 @@ const QuestionScreen: React.FC = () => {
 
   return (
     <Layout>
-      {listQuestionLoading ? (
-        <PageLoading />
-      ) : (
+      {!listQuestionLoading && (
         <>
           <div className='mb-7 flex min-h-10 justify-between'>
             <h1 className='text-3xl font-bold'>{t(I18nKeys.QUESTION_SCREEN.ALL_QUESTIONS)}</h1>
