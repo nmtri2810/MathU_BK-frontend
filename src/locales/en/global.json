@@ -31,6 +31,8 @@
   "cancel": "Cancel",
   "continue": "Continue",
   "no-options": "No options",
+  "username": "Username",
+  "delete": "Delete",
   "count": {
     "question_one": "{{count}} question",
     "question_other": "{{count}} questions",
@@ -77,7 +79,9 @@
     "google-signup": "Sign up with Google",
     "acc-exist": "Already have an account?",
     "password-confirmation": "Password confirmation",
-    "password-confirmation-placeholder": "Enter password confirmation"
+    "password-confirmation-invalid": "Passwords did not match",
+    "password-confirmation-placeholder": "Enter password confirmation",
+    "enter-username": "Enter username"
   },
   "home-screen": {
     "top-questions": "Top Questions"
@@ -131,7 +135,7 @@
     "header": "Feature on MathU",
     "good-question-content": "How to write a good question?",
     "good-answer-content": "How to write a good answer?",
-    "latex-content": "How to use LaTeX to write math formulas?"
+    "katex-content": "How to use KaTeX to write math formulas?"
   },
   "answer-section": {
     "btn-text": "Add a comment",
@@ -157,13 +161,16 @@
       "create-success": "Create question successfully"
     },
     "error": {
-      "vote-forbidden": "You can't vote for your own post"
+      "vote-forbidden": "You can't vote for your own question or answer"
     }
   },
   "validation-msg": {
     "min-length": "{{field}} must be more than {{length}} characters",
     "max-length": "{{field}} must be less than {{length}} characters",
-    "is-required": "{{field}} is required"
+    "is-required": "{{field}} is required",
+    "min-length-arr": "{{field}} must be more than {{length}} elements",
+    "max-length-arr": "{{field}} must be less than {{length}} elements",
+    "invalid": "{{field}} is invalid"
   },
   "help-center": {
     "heading": "Help center",
@@ -254,10 +261,10 @@
         }
       }
     },
-    "latex": {
-      "heading": "LaTeX",
-      "how-to-use-latex": {
-        "title": "How to use LaTeX to write math formulas?"
+    "katex": {
+      "heading": "KaTeX",
+      "how-to-use-katex": {
+        "title": "How to use KaTeX to write math formulas?"
       }
     }
   }

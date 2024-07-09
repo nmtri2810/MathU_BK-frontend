@@ -29,6 +29,7 @@ const openaiReducer = createReducer<IOpenAIState>(initialState, (builder) => {
     .addCase(checkQuesDupFailure, (state) => {
       return {
         ...state,
+        data: null,
         status: ApiStatus.POST_FAILED,
         loading: false
       };

@@ -99,10 +99,10 @@ const SignUp: React.FC = () => {
             name='username'
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>{t(I18nKeys.GLOBAL.USERNAME)}</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder='Enter username'
+                    placeholder={t(I18nKeys.SIGNUP_SCREEN.ENTER_USERNAME)}
                     type='text'
                     errorMsg={form.formState.errors.username?.message}
                     {...field}

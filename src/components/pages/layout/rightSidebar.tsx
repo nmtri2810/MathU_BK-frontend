@@ -23,7 +23,7 @@ const RightSidebar: React.FC<IRightSidebarProps> = () => {
       icon: <CircleHelp size={20} strokeWidth={1.5} />
     },
     {
-      content: t(I18nKeys.RIGHT_SIDEBAR.LATEX_CONTENT),
+      content: t(I18nKeys.RIGHT_SIDEBAR.KATEX_CONTENT),
       to: Path.WRITE_MATH_FORMULA,
       icon: <SquareSigma size={20} strokeWidth={1.5} />
     }

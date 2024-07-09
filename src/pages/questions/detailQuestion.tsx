@@ -51,7 +51,7 @@ const DetailQuestionScreen: React.FC = () => {
   }, [fetchData]);
 
   return (
-    <Layout showFooter={!questionLoading}>
+    <Layout>
       {!questionLoading && (
         <>
           <div>

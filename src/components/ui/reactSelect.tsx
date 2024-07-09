@@ -26,6 +26,7 @@ export interface IReactSelectProps {
   menuPlacement?: 'auto' | 'top' | 'bottom';
   placeholder?: string;
   errorMsg?: string;
+  closeMenuOnSelect?: boolean;
 }
 
 const navbarStyles: StylesConfig<IReactSelectOptions, true> = {
@@ -68,7 +69,8 @@ const ReactSelect: React.FC<IReactSelectProps> = ({
   defaultValue,
   menuPlacement,
   placeholder,
-  errorMsg
+  errorMsg,
+  closeMenuOnSelect
 }) => {
   const { t } = useTranslation();
 
@@ -103,6 +105,7 @@ const ReactSelect: React.FC<IReactSelectProps> = ({
         menuPosition: 'fixed' as const
       })}
       noOptionsMessage={() => t(I18nKeys.GLOBAL.NO_OPTIONS)}
+      closeMenuOnSelect={closeMenuOnSelect}
     />
   );
 };
