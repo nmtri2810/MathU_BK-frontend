@@ -25,6 +25,7 @@ import { Status } from '@/constants';
 import i18n from '@/locales/i18next';
 import { I18nKeys } from '@/locales/i18nKeys';
 
+// temp vietnamese
 function* createVoteSaga(action: TCreateVoteAction) {
   try {
     const { payload } = action;
@@ -32,6 +33,7 @@ function* createVoteSaga(action: TCreateVoteAction) {
 
     payload.callback?.();
 
+    toast.success('Bình chọn thành công');
     yield put(createVoteSuccess(response.data));
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
@@ -50,6 +52,7 @@ function* updateVoteSaga(action: TUpdateVoteAction) {
 
     payload.callback?.();
 
+    toast.success('Bình chọn thành công');
     yield put(updateVoteSuccess(response.data));
   } catch (error) {
     if (error instanceof AxiosError) {

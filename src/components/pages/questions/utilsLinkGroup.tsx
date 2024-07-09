@@ -22,8 +22,8 @@ const UtilsLinkGroup: React.FC<IUtilsLinkGroupProps> = ({ user, question, answer
   const utilsData = [
     { text: t(I18nKeys.GLOBAL.SHARE) },
     user !== null ? { text: t(I18nKeys.GLOBAL.FOLLOW) } : {},
-    ...(isInQuestion && isOwnerQues ? [{ text: t(I18nKeys.GLOBAL.EDIT) }] : []),
-    ...(!isInQuestion && isOwnerAnswer ? [{ text: t(I18nKeys.GLOBAL.EDIT) }] : [])
+    ...(isInQuestion && isOwnerQues ? [{ text: t(I18nKeys.GLOBAL.EDIT) }, { text: t(I18nKeys.GLOBAL.DELETE) }] : []),
+    ...(!isInQuestion && isOwnerAnswer ? [{ text: t(I18nKeys.GLOBAL.EDIT) }, { text: t(I18nKeys.GLOBAL.DELETE) }] : [])
   ];
 
   return (

@@ -31,7 +31,9 @@ export const I18nKeys = {
     TAG: 'tag',
     CANCEL: 'cancel',
     CONTINUE: 'continue',
-    NO_OPTIONS: 'no-options'
+    NO_OPTIONS: 'no-options',
+    USERNAME: 'username',
+    DELETE: 'delete'
   },
   COUNT: {
     QUESTION: 'count.question',
@@ -74,7 +76,9 @@ export const I18nKeys = {
     GOOGLE_SIGNUP: 'signup-screen.google-signup',
     ACC_EXIST: 'signup-screen.acc-exist',
     PASSWORD_CONFIRMATION: 'signup-screen.password-confirmation',
-    PASSWORD_CONFIRMATION_PLACEHOLDER: 'signup-screen.password-confirmation-placeholder'
+    PASSWORD_CONFIRMATION_INVALID: 'signup-screen.password-confirmation-invalid',
+    PASSWORD_CONFIRMATION_PLACEHOLDER: 'signup-screen.password-confirmation-placeholder',
+    ENTER_USERNAME: 'signup-screen.enter-username'
   },
   HOME_SCREEN: {
     TOP_QUESTIONS: 'home-screen.top-questions'
@@ -127,7 +131,7 @@ export const I18nKeys = {
     HEADER: 'right-sidebar.header',
     GOOD_QUES_CONTENT: 'right-sidebar.good-question-content',
     GOOD_ANS_CONTENT: 'right-sidebar.good-answer-content',
-    LATEX_CONTENT: 'right-sidebar.latex-content'
+    KATEX_CONTENT: 'right-sidebar.katex-content'
   },
   ANSWER_SECTION: {
     BTN_TEXT: 'answer-section.btn-text',
@@ -159,7 +163,10 @@ export const I18nKeys = {
   VALIDATION_MSG: {
     MIN_LENGTH: 'validation-msg.min-length',
     MAX_LENGTH: 'validation-msg.max-length',
-    IS_REQUIRED: 'validation-msg.is-required'
+    IS_REQUIRED: 'validation-msg.is-required',
+    MIN_LENGTH_ARR: 'validation-msg.min-length-arr',
+    MAX_LENGTH_ARR: 'validation-msg.max-length-arr',
+    INVALID: 'validation-msg.invalid'
   },
   HELP_CENTER: {
     HEADING: 'help-center.heading',
@@ -250,10 +257,10 @@ export const I18nKeys = {
         }
       }
     },
-    LATEX: {
-      HEADING: 'help-center.latex.heading',
-      HOW_TO_USE_LATEX: {
-        TITLE: 'help-center.latex.how-to-use-latex.title'
+    KATEX: {
+      HEADING: 'help-center.katex.heading',
+      HOW_TO_USE_KATEX: {
+        TITLE: 'help-center.katex.how-to-use-katex.title'
       }
     }
   }

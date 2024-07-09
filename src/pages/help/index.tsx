@@ -18,8 +18,8 @@ const HelpScreen: React.FC = () => {
       links: [{ to: Path.HOW_TO_ANSWER, text: t(I18nKeys.RIGHT_SIDEBAR.GOOD_ANS_CONTENT) }]
     },
     {
-      heading: t(I18nKeys.HELP_CENTER.LATEX.HEADING),
-      links: [{ to: Path.WRITE_MATH_FORMULA, text: t(I18nKeys.RIGHT_SIDEBAR.LATEX_CONTENT) }]
+      heading: t(I18nKeys.HELP_CENTER.KATEX.HEADING),
+      links: [{ to: Path.WRITE_MATH_FORMULA, text: t(I18nKeys.RIGHT_SIDEBAR.KATEX_CONTENT) }]
     }
   ];
 

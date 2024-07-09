@@ -60,7 +60,7 @@ const QuestionCard: React.FC<IQuestionCardProps> = ({ question, isLast }) => {
             {title}
           </Link>
         </h3>
-        <SanitizeHTML className='mt-1 text-sm' html={description as string} />
+        <SanitizeHTML className='mt-1 text-sm' html={description as string} innerText={true} />
         <div className='mt-2 flex items-center justify-between'>
           <TagGroup tags={tags} />
           <UserData username={user.username} reputation={user.reputation} createdAt={created_at} isInList={true} />

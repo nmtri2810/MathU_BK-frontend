@@ -9,7 +9,7 @@ import { ITag } from '@/interfaces/tag';
 import Layout from '@/layout/mainLayout';
 import { formatTitleForURL } from '@/lib/utils';
 import { I18nKeys } from '@/locales/i18nKeys';
-import { checkQuesDupRequest } from '@/store/actions/openai';
+import { checkQuesDupFailure, checkQuesDupRequest } from '@/store/actions/openai';
 import { createQuestionRequest } from '@/store/actions/question';
 import { listTagRequest } from '@/store/actions/tag';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -79,6 +79,7 @@ const AskQuestionScreen: React.FC = () => {
 
   useEffect(() => {
     dispatch(listTagRequest());
+    dispatch(checkQuesDupFailure());
   }, [dispatch]);
 
   return (
@@ -152,6 +153,7 @@ const AskQuestionScreen: React.FC = () => {
                       isLoading={tagListLoading}
                       placeholder={t(I18nKeys.ASK_QUESTION_SCREEN.TAG_PLACEHOLDER)}
                       errorMsg={form.formState.errors.tags?.message}
+                      closeMenuOnSelect={false}
                     />
                     <FormMessage className='mt-2' />
                   </AskQuestionCard>

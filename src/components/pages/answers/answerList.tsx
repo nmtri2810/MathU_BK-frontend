@@ -90,6 +90,7 @@ const AnswerList: React.FC<IAnswerListProps> = ({ answers, user, question, callb
             <div className='my-4 flex items-center justify-between'>
               <UtilsLinkGroup user={user} question={question} answer={answer} isInQuestion={false} />
               <UserData
+                className={cn(question?.user_id === answer?.user_id && 'rounded-md bg-[#edf5fd] p-2.5')}
                 username={answer.user.username}
                 reputation={answer.user.reputation}
                 createdAt={answer.created_at}

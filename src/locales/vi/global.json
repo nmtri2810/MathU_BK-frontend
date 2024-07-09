@@ -31,6 +31,8 @@
   "cancel": "Hủy",
   "continue": "Tiếp tục",
   "no-options": "Không tìm thấy lựa chọn",
+  "username": "Tên đăng nhập",
+  "delete": "Xóa",
   "count": {
     "question_one": "{{count}} câu hỏi",
     "question_other": "{{count}} câu hỏi",
@@ -77,7 +79,9 @@
     "google-signup": "Đăng ký với Google",
     "acc-exist": "Đã có tài khoản?",
     "password-confirmation": "Xác nhận mật khẩu",
-    "password-confirmation-placeholder": "Nhập vào xác nhận mật khẩu"
+    "password-confirmation-invalid": "Mật khẩu không trùng khớp",
+    "password-confirmation-placeholder": "Nhập vào xác nhận mật khẩu",
+    "enter-username": "Nhập vào tên đăng nhập"
   },
   "home-screen": {
     "top-questions": "Câu hỏi nổi bật"
@@ -131,7 +135,7 @@
     "header": "Tính năng trên MathU",
     "good-question-content": "Làm thế nào để hỏi một câu hỏi tốt?",
     "good-answer-content": "Làm thế nào để viết một câu trả lời tốt?",
-    "latex-content": "Cách sử dụng LaTeX để viết công thức toán?"
+    "katex-content": "Cách sử dụng KaTeX để viết công thức toán học?"
   },
   "answer-section": {
     "btn-text": "Thêm bình luận",
@@ -157,13 +161,16 @@
       "create-success": "Tạo câu hỏi thành công"
     },
     "error": {
-      "vote-forbidden": "Bạn không thể bình chọn cho câu hỏi của chính mình"
+      "vote-forbidden": "Bạn không thể bình chọn cho câu hỏi hoặc câu trả lời của chính mình"
     }
   },
   "validation-msg": {
     "min-length": "{{field}} phải nhiều hơn {{length}} ký tự",
     "max-length": "{{field}} phải ít hơn {{length}} ký tự",
-    "is-required": "{{field}} là bắt buộc"
+    "is-required": "{{field}} là bắt buộc",
+    "min-length-arr": "{{field}} phải nhiều hơn {{length}} phần tử",
+    "max-length-arr": "{{field}} phải ít hơn {{length}} phần tử",
+    "invalid": "{{field}} không hợp lệ"
   },
   "help-center": {
     "heading": "Trung tâm trợ giúp",
@@ -254,10 +261,10 @@
         }
       }
     },
-    "latex": {
-      "heading": "Hướng dẫn về LaTeX",
-      "how-to-use-latex": {
-        "title": "Cách sử dụng LaTeX để viết công thức toán?"
+    "katex": {
+      "heading": "Hướng dẫn về KaTeX",
+      "how-to-use-katex": {
+        "title": "Cách sử dụng KaTeX để viết công thức toán học?"
       }
     }
   }
