@@ -1,10 +1,13 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   CREATE_QUESTION_REQUEST,
+  DELETE_QUESTION_REQUEST,
   GET_QUESTION_REQUEST,
   LIST_QUESTION_REQUEST,
   createQuestionFailure,
   createQuestionSuccess,
+  deleteQuestionFailure,
+  deleteQuestionSuccess,
   getQuestionFailure,
   getQuestionSuccess,
   listQuestionFailure,
@@ -13,6 +16,8 @@ import {
 import {
   TCreateQuestionAction,
   TCreateQuestionResponse,
+  TDeleteQuestionAction,
+  TDeleteQuestionResponse,
   TGetQuestionAction,
   TGetQuestionResponse,
   TListQuestionAction,
@@ -78,10 +83,29 @@ function* getQuestionSaga(action: TGetQuestionAction) {
   }
 }
 
+function* deleteQuestionSaga(action: TDeleteQuestionAction) {
+  try {
+    const { payload } = action;
+    const response: TDeleteQuestionResponse = yield call(questionAPI.delete, payload);
+
+    toast.success('Xóa câu hỏi thành công');
+
+    payload.navigate(Path.QUESTIONS);
+    yield put(deleteQuestionSuccess(response.data));
+  } catch (error: unknown) {
+    if (error instanceof AxiosError) {
+      const message = error.response?.data.message;
+      toast.error(message);
+      yield put(deleteQuestionFailure());
+    }
+  }
+}
+
 function* watchQuestion() {
   yield takeLatest(LIST_QUESTION_REQUEST, listQuestionSaga);
   yield takeLatest(CREATE_QUESTION_REQUEST, createQuestionSaga);
   yield takeLatest(GET_QUESTION_REQUEST, getQuestionSaga);
+  yield takeLatest(DELETE_QUESTION_REQUEST, deleteQuestionSaga);
 }
 
 export default watchQuestion;

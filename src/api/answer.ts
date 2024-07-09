@@ -1,5 +1,5 @@
 import axiosInstance from '@/api/axiosInstance';
-import { IUpdateAnswerPayload, TCreateAnswerAPIPayload } from '@/interfaces/answer';
+import { IDeleteAnswerPayload, IUpdateAnswerPayload, TCreateAnswerAPIPayload } from '@/interfaces/answer';
 
 const context = '/answers';
 
@@ -12,10 +12,10 @@ const answerAPI = {
       content: payload.content,
       is_accepted: payload.is_accepted
     });
+  },
+  delete(payload: Omit<IDeleteAnswerPayload, 'callback'>) {
+    return axiosInstance.delete(`${context}/${payload.id}`);
   }
-  // delete(payload: IDeleteAnswerPayload) {
-  //   return axiosInstance.delete(`${context}/${payload.id}`);
-  // }
 };
 
 export default answerAPI;

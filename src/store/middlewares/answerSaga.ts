@@ -2,6 +2,8 @@ import answerAPI from '@/api/answer';
 import {
   TCreateAnswerAction,
   TCreateAnswerResponse,
+  TDeleteAnswerAction,
+  TDeleteAnswerResponse,
   TUpdateAnswerAction,
   TUpdateAnswerResponse
 } from '@/interfaces/answer';
@@ -11,6 +13,8 @@ import {
   UPDATE_ANSWER_REQUEST,
   createAnswerFailure,
   createAnswerSuccess,
+  deleteAnswerFailure,
+  deleteAnswerSuccess,
   updateAnswerFailure,
   updateAnswerSuccess
 } from '@/store/actions/answer';
@@ -52,7 +56,23 @@ function* updateAnswerSaga(action: TUpdateAnswerAction) {
   }
 }
 
-function* deleteAnswerSaga() {}
+function* deleteAnswerSaga(action: TDeleteAnswerAction) {
+  try {
+    const { payload } = action;
+    const response: TDeleteAnswerResponse = yield call(answerAPI.delete, payload);
+
+    toast.success('Xóa câu trả lời thành công');
+
+    payload.callback?.();
+    yield put(deleteAnswerSuccess(response.data));
+  } catch (error: unknown) {
+    if (error instanceof AxiosError) {
+      const message = error.response?.data.message;
+      toast.error(message);
+      yield put(deleteAnswerFailure());
+    }
+  }
+}
 
 function* watchAnswer() {
   yield takeLatest(CREATE_ANSWER_REQUEST, createAnswerSaga);

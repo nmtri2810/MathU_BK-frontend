@@ -1,4 +1,9 @@
-import { IGetQuestionPayload, IListQuestionPayload, TCreateQuestionAPIPayload } from '@/interfaces/question';
+import {
+  IDeleteQuestionPayload,
+  IGetQuestionPayload,
+  IListQuestionPayload,
+  TCreateQuestionAPIPayload
+} from '@/interfaces/question';
 import axiosInstance from './axiosInstance';
 import queryString from 'query-string';
 
@@ -14,6 +19,9 @@ const questionAPI = {
   },
   get(payload: IGetQuestionPayload) {
     return axiosInstance.get(`${context}/${payload.id}`);
+  },
+  delete(payload: Omit<IDeleteQuestionPayload, 'navigate'>) {
+    return axiosInstance.delete(`${context}/${payload.id}`);
   }
 };
 

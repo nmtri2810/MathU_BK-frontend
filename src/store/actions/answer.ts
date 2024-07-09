@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 import { createActionTypes } from '@/store/actions/reduxActions';
-import { IAnswer, ICreateAnswerPayload, IUpdateAnswerPayload } from '@/interfaces/answer';
+import { IAnswer, ICreateAnswerPayload, IDeleteAnswerPayload, IUpdateAnswerPayload } from '@/interfaces/answer';
 
 const context = 'answer';
 
@@ -22,6 +22,6 @@ export const updateAnswerRequest = createAction<IUpdateAnswerPayload>(UPDATE_ANS
 export const updateAnswerSuccess = createAction<IAnswer>(UPDATE_ANSWER_SUCCESS);
 export const updateAnswerFailure = createAction(UPDATE_ANSWER_FAILURE);
 
-// export const deleteAnswerRequest = createAction(DELETE_ANSWER_REQUEST);
-// export const deleteAnswerSuccess = createAction(DELETE_ANSWER_SUCCESS);
-// export const deleteAnswerFailure = createAction(DELETE_ANSWER_FAILURE);
+export const deleteAnswerRequest = createAction<IDeleteAnswerPayload>(DELETE_ANSWER_REQUEST);
+export const deleteAnswerSuccess = createAction<IAnswer>(DELETE_ANSWER_SUCCESS);
+export const deleteAnswerFailure = createAction(DELETE_ANSWER_FAILURE);

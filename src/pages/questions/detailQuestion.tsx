@@ -80,7 +80,7 @@ const DetailQuestionScreen: React.FC = () => {
                 <TagGroup className='mt-10' tags={question?.tags} />
               </div>
               <div className='flex items-center justify-between'>
-                <UtilsLinkGroup user={user} question={question} isInQuestion={true} />
+                <UtilsLinkGroup user={user} question={question} isInQuestion={true} callback={() => fetchData()} />
                 <UserData
                   className='rounded-md bg-[#edf5fd] p-2.5'
                   username={question?.user.username}
