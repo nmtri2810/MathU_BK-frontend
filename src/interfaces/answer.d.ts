@@ -41,8 +41,17 @@ export interface IUpdateAnswerPayload {
   callback: () => void;
 }
 
+export interface IDeleteAnswerPayload {
+  id: number;
+
+  callback: () => void;
+}
+
 export type TCreateAnswerAction = IAction<ICreateAnswerPayload>;
 export type TCreateAnswerResponse = IResponse<IAnswer>;
 
 export type TUpdateAnswerAction = IAction<IUpdateAnswerPayload>;
 export type TUpdateAnswerResponse = IResponse<IAnswer>;
+
+export type TDeleteAnswerAction = IAction<IDeleteAnswerPayload>;
+export type TDeleteAnswerResponse = IResponse<IAnswer>;

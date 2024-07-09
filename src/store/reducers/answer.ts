@@ -4,6 +4,9 @@ import {
   createAnswerFailure,
   createAnswerRequest,
   createAnswerSuccess,
+  deleteAnswerFailure,
+  deleteAnswerRequest,
+  deleteAnswerSuccess,
   updateAnswerFailure,
   updateAnswerRequest,
   updateAnswerSuccess
@@ -61,6 +64,30 @@ const answerReducer = createReducer<IAnswerState>(initialState, (builder) => {
       return {
         ...state,
         status: ApiStatus.PATCH_FAILED,
+        oneLoading: false
+      };
+    });
+
+  builder
+    .addCase(deleteAnswerRequest, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.REQUESTING,
+        oneLoading: true
+      };
+    })
+    .addCase(deleteAnswerSuccess, (state, action) => {
+      return {
+        ...state,
+        one: action.payload,
+        status: ApiStatus.DELETE_SUCCEED,
+        oneLoading: false
+      };
+    })
+    .addCase(deleteAnswerFailure, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.DELETE_FAILED,
         oneLoading: false
       };
     });

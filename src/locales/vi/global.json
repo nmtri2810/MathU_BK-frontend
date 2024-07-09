@@ -100,7 +100,7 @@
     "please-login": "Vui lòng đăng nhập để điền câu trả lời",
     "login-now": "Đăng nhập ngay",
     "alert-no-question-title": "Không tìm thấy",
-    "alert-no-question-description": "Không tìm thấy câu hỏi thỏa mãn",
+    "alert-no-question-description": "Không tìm thấy hoặc không tồn tại câu hỏi",
     "votes-btn-gr": {
       "upvote-question": "Câu hỏi này thể hiện nỗ lực tìm hiểu; rất hữu ích và rõ ràng",
       "upvote-answer": "Câu trả lời này hữu ích",

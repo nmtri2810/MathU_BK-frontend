@@ -53,19 +53,24 @@ export interface ICreateQuestionPayload {
 
 export type TCreateQuestionAPIPayload = Omit<ICreateQuestionPayload, 'navigate'>;
 
-export interface ICreateQuestionDataResponse extends IQuestionBEResponse {}
-
 export interface IGetQuestionPayload {
   id: number;
 }
 
-export interface IGetQuestionDataResponse extends IQuestionBEResponse {}
+export interface IDeleteQuestionPayload {
+  id: number;
+
+  navigate: NavigateFunction;
+}
 
 export type TListQuestionAction = IAction<IListQuestionPayload>;
 export type TListQuestionResponse = IResponse<IListQuestionDataResponse>;
 
 export type TCreateQuestionAction = IAction<ICreateQuestionPayload>;
-export type TCreateQuestionResponse = IResponse<ICreateQuestionDataResponse>;
+export type TCreateQuestionResponse = IResponse<IQuestionBEResponse>;
 
 export type TGetQuestionAction = IAction<IGetQuestionPayload>;
-export type TGetQuestionResponse = IResponse<IGetQuestionDataResponse>;
+export type TGetQuestionResponse = IResponse<IQuestionBEResponse>;
+
+export type TDeleteQuestionAction = IAction<IDeleteQuestionPayload>;
+export type TDeleteQuestionResponse = IResponse<IQuestionBEResponse>;

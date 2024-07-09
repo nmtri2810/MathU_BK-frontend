@@ -1,8 +1,8 @@
 import { IPaginationPayload } from '@/interfaces';
 import {
-  ICreateQuestionDataResponse,
+  IQuestionBEResponse,
   ICreateQuestionPayload,
-  IGetQuestionDataResponse,
+  IDeleteQuestionPayload,
   IGetQuestionPayload,
   IListQuestionDataResponse,
   IListQuestionPayload
@@ -22,6 +22,12 @@ export const [CREATE_QUESTION_REQUEST, CREATE_QUESTION_SUCCESS, CREATE_QUESTION_
 export const [GET_QUESTION_REQUEST, GET_QUESTION_SUCCESS, GET_QUESTION_FAILURE] = createActionTypes(
   `${context}/GET_QUESTION`
 );
+export const [DELETE_QUESTION_REQUEST, DELETE_QUESTION_SUCCESS, DELETE_QUESTION_FAILURE] = createActionTypes(
+  `${context}/DELETE_QUESTION`
+);
+export const [UPDATE_QUESTION_REQUEST, UPDATE_QUESTION_SUCCESS, UPDATE_QUESTION_FAILURE] = createActionTypes(
+  `${context}/UPDATE_QUESTION`
+);
 
 export const listQuestionRequest = createAction<IListQuestionPayload>(LIST_QUESTION_REQUEST);
 export const listQuestionSuccess = createAction<IListQuestionDataResponse>(LIST_QUESTION_SUCCESS);
@@ -30,9 +36,17 @@ export const listQuestionFailure = createAction(LIST_QUESTION_FAILURE);
 export const updateParams = createAction<IPaginationPayload>(UPDATE_PARAMS);
 
 export const createQuestionRequest = createAction<ICreateQuestionPayload>(CREATE_QUESTION_REQUEST);
-export const createQuestionSuccess = createAction<ICreateQuestionDataResponse>(CREATE_QUESTION_SUCCESS);
+export const createQuestionSuccess = createAction<IQuestionBEResponse>(CREATE_QUESTION_SUCCESS);
 export const createQuestionFailure = createAction(CREATE_QUESTION_FAILURE);
 
 export const getQuestionRequest = createAction<IGetQuestionPayload>(GET_QUESTION_REQUEST);
-export const getQuestionSuccess = createAction<IGetQuestionDataResponse>(GET_QUESTION_SUCCESS);
+export const getQuestionSuccess = createAction<IQuestionBEResponse>(GET_QUESTION_SUCCESS);
 export const getQuestionFailure = createAction(GET_QUESTION_FAILURE);
+
+export const deleteQuestionRequest = createAction<IDeleteQuestionPayload>(DELETE_QUESTION_REQUEST);
+export const deleteQuestionSuccess = createAction<IQuestionBEResponse>(DELETE_QUESTION_SUCCESS);
+export const deleteQuestionFailure = createAction(DELETE_QUESTION_FAILURE);
+
+export const updateQuestionRequest = createAction(UPDATE_QUESTION_REQUEST);
+export const updateQuestionSuccess = createAction(UPDATE_QUESTION_SUCCESS);
+export const updateQuestionFailure = createAction(UPDATE_QUESTION_FAILURE);

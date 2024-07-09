@@ -4,6 +4,9 @@ import {
   createQuestionFailure,
   createQuestionRequest,
   createQuestionSuccess,
+  deleteQuestionFailure,
+  deleteQuestionRequest,
+  deleteQuestionSuccess,
   getQuestionFailure,
   getQuestionRequest,
   getQuestionSuccess,
@@ -113,6 +116,30 @@ const questionReducer = createReducer<IQuestionState>(initialState, (builder) =>
       return {
         ...state,
         status: ApiStatus.GET_FAILED,
+        oneLoading: false
+      };
+    });
+
+  builder
+    .addCase(deleteQuestionRequest, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.REQUESTING,
+        oneLoading: true
+      };
+    })
+    .addCase(deleteQuestionSuccess, (state, action) => {
+      return {
+        ...state,
+        one: action.payload,
+        status: ApiStatus.DELETE_SUCCEED,
+        oneLoading: false
+      };
+    })
+    .addCase(deleteQuestionFailure, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.DELETE_FAILED,
         oneLoading: false
       };
     });

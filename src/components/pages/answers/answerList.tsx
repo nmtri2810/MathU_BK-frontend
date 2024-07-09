@@ -88,7 +88,13 @@ const AnswerList: React.FC<IAnswerListProps> = ({ answers, user, question, callb
           <div className='w-full grow'>
             <SanitizeHTML html={answer.content} />
             <div className='my-4 flex items-center justify-between'>
-              <UtilsLinkGroup user={user} question={question} answer={answer} isInQuestion={false} />
+              <UtilsLinkGroup
+                user={user}
+                question={question}
+                answer={answer}
+                isInQuestion={false}
+                callback={callback}
+              />
               <UserData
                 className={cn(question?.user_id === answer?.user_id && 'rounded-md bg-[#edf5fd] p-2.5')}
                 username={answer.user.username}
@@ -98,7 +104,7 @@ const AnswerList: React.FC<IAnswerListProps> = ({ answers, user, question, callb
                 isAnswers={true}
               />
             </div>
-            {answer.children.length > 0 && <ChildAnswerList childAnswerList={answer.children} />}
+            {answer.children.length > 0 && <ChildAnswerList childAnswerList={answer.children} callback={callback} />}
             {openChildAnswerInput.isOpen && openChildAnswerInput.answerId === answer.id ? (
               <div className='mt-8 space-y-3'>
                 <span className={cn('text-sm text-gray-500', showWarning ? 'text-destructive' : '')}>
