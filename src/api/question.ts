@@ -2,6 +2,7 @@ import {
   IDeleteQuestionPayload,
   IGetQuestionPayload,
   IListQuestionPayload,
+  IUpdateQuestionPayload,
   TCreateQuestionAPIPayload
 } from '@/interfaces/question';
 import axiosInstance from './axiosInstance';
@@ -22,6 +23,9 @@ const questionAPI = {
   },
   delete(payload: Omit<IDeleteQuestionPayload, 'navigate'>) {
     return axiosInstance.delete(`${context}/${payload.id}`);
+  },
+  update(payload: IUpdateQuestionPayload) {
+    return axiosInstance.patch(context, payload);
   }
 };
 

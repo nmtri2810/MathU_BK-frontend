@@ -5,7 +5,8 @@ import {
   IDeleteQuestionPayload,
   IGetQuestionPayload,
   IListQuestionDataResponse,
-  IListQuestionPayload
+  IListQuestionPayload,
+  IUpdateQuestionPayload
 } from '@/interfaces/question';
 import { createActionTypes } from '@/store/actions/reduxActions';
 import { createAction } from '@reduxjs/toolkit';
@@ -47,6 +48,6 @@ export const deleteQuestionRequest = createAction<IDeleteQuestionPayload>(DELETE
 export const deleteQuestionSuccess = createAction<IQuestionBEResponse>(DELETE_QUESTION_SUCCESS);
 export const deleteQuestionFailure = createAction(DELETE_QUESTION_FAILURE);
 
-export const updateQuestionRequest = createAction(UPDATE_QUESTION_REQUEST);
-export const updateQuestionSuccess = createAction(UPDATE_QUESTION_SUCCESS);
+export const updateQuestionRequest = createAction<IUpdateQuestionPayload>(UPDATE_QUESTION_REQUEST);
+export const updateQuestionSuccess = createAction<IQuestionBEResponse>(UPDATE_QUESTION_SUCCESS);
 export const updateQuestionFailure = createAction(UPDATE_QUESTION_FAILURE);

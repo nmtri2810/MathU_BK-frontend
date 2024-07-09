@@ -13,7 +13,10 @@ import {
   listQuestionFailure,
   listQuestionRequest,
   listQuestionSuccess,
-  updateParams
+  updateParams,
+  updateQuestionFailure,
+  updateQuestionRequest,
+  updateQuestionSuccess
 } from '@/store/actions/question';
 import { ApiStatus, ItemsPerPage } from '@/constants';
 
@@ -140,6 +143,30 @@ const questionReducer = createReducer<IQuestionState>(initialState, (builder) =>
       return {
         ...state,
         status: ApiStatus.DELETE_FAILED,
+        oneLoading: false
+      };
+    });
+
+  builder
+    .addCase(updateQuestionRequest, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.REQUESTING,
+        oneLoading: true
+      };
+    })
+    .addCase(updateQuestionSuccess, (state, action) => {
+      return {
+        ...state,
+        one: action.payload,
+        status: ApiStatus.PATCH_SUCCEED,
+        oneLoading: false
+      };
+    })
+    .addCase(updateQuestionFailure, (state) => {
+      return {
+        ...state,
+        status: ApiStatus.PATCH_FAILED,
         oneLoading: false
       };
     });

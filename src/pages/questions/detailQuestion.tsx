@@ -54,8 +54,8 @@ const DetailQuestionScreen: React.FC = () => {
     <Layout>
       {!questionLoading && (
         <>
-          <div>
-            <div className='flex min-h-10 justify-between'>
+          <div className='break-all'>
+            <div className='flex min-h-10 justify-between gap-4'>
               <h1 className='text-2xl'>{question?.title}</h1>
               <AskQuestionBtn />
             </div>

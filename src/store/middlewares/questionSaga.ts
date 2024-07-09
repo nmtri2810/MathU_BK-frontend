@@ -4,6 +4,7 @@ import {
   DELETE_QUESTION_REQUEST,
   GET_QUESTION_REQUEST,
   LIST_QUESTION_REQUEST,
+  UPDATE_QUESTION_REQUEST,
   createQuestionFailure,
   createQuestionSuccess,
   deleteQuestionFailure,
@@ -11,7 +12,9 @@ import {
   getQuestionFailure,
   getQuestionSuccess,
   listQuestionFailure,
-  listQuestionSuccess
+  listQuestionSuccess,
+  updateQuestionFailure,
+  updateQuestionSuccess
 } from '@/store/actions/question';
 import {
   TCreateQuestionAction,
@@ -21,7 +24,9 @@ import {
   TGetQuestionAction,
   TGetQuestionResponse,
   TListQuestionAction,
-  TListQuestionResponse
+  TListQuestionResponse,
+  TUpdateQuestionAction,
+  TUpdateQuestionResponse
 } from '@/interfaces/question';
 import questionAPI from '@/api/question';
 import { AxiosError } from 'axios';
@@ -101,11 +106,30 @@ function* deleteQuestionSaga(action: TDeleteQuestionAction) {
   }
 }
 
+function* updateQuestionSaga(action: TUpdateQuestionAction) {
+  try {
+    const { payload } = action;
+    const response: TUpdateQuestionResponse = yield call(questionAPI.update, payload);
+
+    toast.success('Cập nhật câu hỏi thành công');
+
+    // callback
+    yield put(updateQuestionSuccess(response.data));
+  } catch (error: unknown) {
+    if (error instanceof AxiosError) {
+      const message = error.response?.data.message;
+      toast.error(message);
+      yield put(updateQuestionFailure());
+    }
+  }
+}
+
 function* watchQuestion() {
   yield takeLatest(LIST_QUESTION_REQUEST, listQuestionSaga);
   yield takeLatest(CREATE_QUESTION_REQUEST, createQuestionSaga);
   yield takeLatest(GET_QUESTION_REQUEST, getQuestionSaga);
   yield takeLatest(DELETE_QUESTION_REQUEST, deleteQuestionSaga);
+  yield takeLatest(UPDATE_QUESTION_REQUEST, updateQuestionSaga);
 }
 
 export default watchQuestion;
