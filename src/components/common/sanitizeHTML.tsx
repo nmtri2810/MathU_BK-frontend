@@ -76,7 +76,9 @@ const SanitizeHTML: React.FC<ISanitizeHTMLProps> = ({
 }) => {
   const sanitizedHtml = React.useMemo(() => sanitize(html, options, innerText), [html, options, innerText]);
 
-  return <div id='question-body' className={cn('space-y-4', className)} dangerouslySetInnerHTML={sanitizedHtml} />;
+  return (
+    <div id='question-body' className={cn('space-y-4 break-all', className)} dangerouslySetInnerHTML={sanitizedHtml} />
+  );
 };
 
 export default SanitizeHTML;

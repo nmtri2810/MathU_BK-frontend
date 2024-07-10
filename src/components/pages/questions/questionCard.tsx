@@ -51,7 +51,7 @@ const QuestionCard: React.FC<IQuestionCardProps> = ({ question, isLast }) => {
         {renderAnswerUI(_count.answers, hasAcceptedAnswer)}
         <p>{t(I18nKeys.COUNT.VIEW, { count: 0 })}</p> {/* temp */}
       </div>
-      <div className='h-full w-full'>
+      <div className='h-full w-full break-all'>
         <h3>
           <Link
             className='text-blue-600 hover:text-blue-700'

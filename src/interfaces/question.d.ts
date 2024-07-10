@@ -63,6 +63,14 @@ export interface IDeleteQuestionPayload {
   navigate: NavigateFunction;
 }
 
+export interface IUpdateQuestionPayload {
+  id: number;
+  title?: string;
+  description?: string;
+  tag_ids?: number[];
+  callback: (() => void) | undefined;
+}
+
 export type TListQuestionAction = IAction<IListQuestionPayload>;
 export type TListQuestionResponse = IResponse<IListQuestionDataResponse>;
 
@@ -74,3 +82,6 @@ export type TGetQuestionResponse = IResponse<IQuestionBEResponse>;
 
 export type TDeleteQuestionAction = IAction<IDeleteQuestionPayload>;
 export type TDeleteQuestionResponse = IResponse<IQuestionBEResponse>;
+
+export type TUpdateQuestionAction = IAction<IUpdateQuestionPayload>;
+export type TUpdateQuestionResponse = IResponse<IQuestionBEResponse>;

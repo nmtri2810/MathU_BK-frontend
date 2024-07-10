@@ -17,10 +17,18 @@ interface IUtilsLinkGroupProps {
   answer?: IAnswer | null;
   isInQuestion: boolean;
   callback: () => void;
+  openEdit: () => void;
 }
 
 // Temp vietnamese
-const UtilsLinkGroup: React.FC<IUtilsLinkGroupProps> = ({ user, question, answer, isInQuestion, callback }) => {
+const UtilsLinkGroup: React.FC<IUtilsLinkGroupProps> = ({
+  user,
+  question,
+  answer,
+  isInQuestion,
+  callback,
+  openEdit
+}) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -29,17 +37,18 @@ const UtilsLinkGroup: React.FC<IUtilsLinkGroupProps> = ({ user, question, answer
 
   const isOwnerQues = user && question && user.id === question.user_id;
   const isOwnerAnswer = user && answer && user.id === answer.user_id;
+  const isQuestionHasAcceptedAnswer = question?.answers.some((answer) => answer.is_accepted);
 
   const utilsData = [
     { text: t(I18nKeys.GLOBAL.SHARE), onClick: () => handleShare() },
     user !== null ? { text: t(I18nKeys.GLOBAL.FOLLOW), onClick: () => handleFollow() } : {},
-    ...(isInQuestion && isOwnerQues
+    ...(isInQuestion && isOwnerQues && !isQuestionHasAcceptedAnswer
       ? [
           { text: t(I18nKeys.GLOBAL.EDIT), onClick: () => handleEdit() },
           { text: t(I18nKeys.GLOBAL.DELETE), onClick: () => setIsOpenConfirm(true) }
         ]
       : []),
-    ...(!isInQuestion && isOwnerAnswer
+    ...(!isInQuestion && isOwnerAnswer && !isQuestionHasAcceptedAnswer
       ? [
           { text: t(I18nKeys.GLOBAL.EDIT), onClick: () => handleEdit() },
           { text: t(I18nKeys.GLOBAL.DELETE), onClick: () => setIsOpenConfirm(true) }
@@ -56,10 +65,8 @@ const UtilsLinkGroup: React.FC<IUtilsLinkGroupProps> = ({ user, question, answer
   };
 
   const handleEdit = () => {
-    if (!answer) {
-      console.log(question);
-    } else {
-      console.log(answer);
+    if (question || answer) {
+      openEdit();
     }
   };
 

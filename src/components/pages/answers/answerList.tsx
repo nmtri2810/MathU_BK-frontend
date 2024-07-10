@@ -8,15 +8,22 @@ import ChildAnswerList from '@/components/pages/answers/childAnswerList';
 import { useTranslation } from 'react-i18next';
 import { I18nKeys } from '@/locales/i18nKeys';
 import { cn } from '@/lib/utils';
-import TiptapInput from '@/components/common/tiptapInput';
 import { useAppDispatch } from '@/store/hooks';
-import { createAnswerRequest } from '@/store/actions/answer';
+import { createAnswerRequest, updateAnswerRequest } from '@/store/actions/answer';
 import { ILoginUser } from '@/interfaces/auth';
 import { IQuestionBEResponse } from '@/interfaces/question';
 import SanitizeHTML from '@/components/common/sanitizeHTML';
 import { useNavigate } from 'react-router-dom';
 import { Path } from '@/constants/enum';
 import { toast } from 'sonner';
+import ChildAnswerInput from '@/components/pages/answers/childAnswerInput';
+
+export interface answerState {
+  isOpen: boolean;
+  answerId: number;
+  content: string;
+  showWarning: boolean;
+}
 
 interface IAnswerListProps {
   answers: IAnswer[] | undefined;
@@ -25,46 +32,51 @@ interface IAnswerListProps {
   callback: () => void;
 }
 
+// Temp vietnamese
 const AnswerList: React.FC<IAnswerListProps> = ({ answers, user, question, callback }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const [openChildAnswerInput, setOpenChildAnswerInput] = useState<{ isOpen: boolean; answerId: number }>({
+  const [childAnswerState, setChildAnswerState] = useState<answerState>({
     isOpen: false,
-    answerId: 0
+    answerId: 0,
+    content: '',
+    showWarning: false
   });
-  const [childAnswerData, setChildAnswerData] = useState<string>('');
-  const [showWarning, setShowWarning] = useState(false);
 
-  const handleOpenInput = (answerId: number) => {
+  const [editAnswerState, setEditAnswerState] = useState<answerState>({
+    isOpen: false,
+    answerId: 0,
+    content: '',
+    showWarning: false
+  });
+
+  const handleOpenChild = (answerId: number) => {
     if (!user) {
       navigate(Path.LOGIN);
       toast.error(t(I18nKeys.GLOBAL.LOGIN_FIRST));
       return;
     }
 
-    setOpenChildAnswerInput({ isOpen: true, answerId });
-    setShowWarning(false);
+    setChildAnswerState({ isOpen: true, answerId, content: '', showWarning: false });
   };
 
-  const handleCloseInput = () => {
-    setOpenChildAnswerInput({ isOpen: false, answerId: 0 });
-    setShowWarning(false);
-    setChildAnswerData('');
+  const handleCloseChild = () => {
+    setChildAnswerState({ isOpen: false, answerId: 0, content: '', showWarning: false });
   };
 
-  const handleSubmit = (answerId: number) => {
-    if (childAnswerData.trim().length <= 15) {
-      setShowWarning(true);
+  const handleSubmitChild = (answerId: number) => {
+    if (childAnswerState.content.trim().length <= 15) {
+      setChildAnswerState((prev) => ({ ...prev, showWarning: true }));
       return;
     }
-    setShowWarning(false);
+    setChildAnswerState((prev) => ({ ...prev, showWarning: false }));
 
     if (!user || !question || !answerId) return;
 
     const requestData = {
-      content: childAnswerData,
+      content: childAnswerState.content,
       parent_id: answerId,
       question_id: question.id,
       user_id: user.id
@@ -73,9 +85,28 @@ const AnswerList: React.FC<IAnswerListProps> = ({ answers, user, question, callb
     dispatch(createAnswerRequest({ ...requestData, callback }));
   };
 
+  const handleCloseEdit = () => {
+    setEditAnswerState({ isOpen: false, answerId: 0, content: '', showWarning: false });
+  };
+
+  const handleSubmitEdit = (answerId: number) => {
+    if (editAnswerState.content.trim().length <= 15) {
+      setEditAnswerState((prev) => ({ ...prev, showWarning: true }));
+      return;
+    }
+    setEditAnswerState((prev) => ({ ...prev, showWarning: false }));
+
+    if (!user || !question || !answerId) return;
+
+    dispatch(
+      updateAnswerRequest({ id: answerId, question_id: question.id, content: editAnswerState.content, callback })
+    );
+  };
+
   useEffect(() => {
-    if (childAnswerData.trim().length > 15) setShowWarning(false);
-  }, [childAnswerData]);
+    if (childAnswerState.content.trim().length > 15) setChildAnswerState((prev) => ({ ...prev, showWarning: false }));
+    if (editAnswerState.content.trim().length > 15) setEditAnswerState((prev) => ({ ...prev, showWarning: false }));
+  }, [childAnswerState.content, editAnswerState.content]);
 
   return (
     <>
@@ -86,49 +117,70 @@ const AnswerList: React.FC<IAnswerListProps> = ({ answers, user, question, callb
         >
           <VotesBtnGroup id={answer.id} type='answer' votes={answer.votes} callback={callback} />
           <div className='w-full grow'>
-            <SanitizeHTML html={answer.content} />
-            <div className='my-4 flex items-center justify-between'>
-              <UtilsLinkGroup
-                user={user}
-                question={question}
-                answer={answer}
-                isInQuestion={false}
-                callback={callback}
-              />
-              <UserData
-                className={cn(question?.user_id === answer?.user_id && 'rounded-md bg-[#edf5fd] p-2.5')}
-                username={answer.user.username}
-                reputation={answer.user.reputation}
-                createdAt={answer.created_at}
-                isInList={false}
-                isAnswers={true}
-              />
-            </div>
-            {answer.children.length > 0 && <ChildAnswerList childAnswerList={answer.children} callback={callback} />}
-            {openChildAnswerInput.isOpen && openChildAnswerInput.answerId === answer.id ? (
-              <div className='mt-8 space-y-3'>
-                <span className={cn('text-sm text-gray-500', showWarning ? 'text-destructive' : '')}>
-                  {t(I18nKeys.ANSWER_SECTION.COMMENT_DESC)}
-                </span>
-                <TiptapInput value={childAnswerData} onChange={setChildAnswerData} />
-                <div className='flex justify-end gap-3'>
-                  <Button size='sm' variant='outline' onClick={() => handleCloseInput()}>
-                    {t(I18nKeys.GLOBAL.CLOSE)}
-                  </Button>
-                  <Button
-                    size='sm'
-                    className='bg-blue-600 font-normal hover:bg-blue-700'
-                    onClick={() => handleSubmit(answer.id)}
-                  >
-                    {t(I18nKeys.ANSWER_SECTION.ADD_COMMENT)}
-                  </Button>
+            {editAnswerState.isOpen && editAnswerState.answerId === answer.id ? (
+              <>
+                <h3 className='text-lg font-semibold'>Cập nhật câu trả lời</h3>
+                <ChildAnswerInput
+                  answer={answer}
+                  showWarning={editAnswerState.showWarning}
+                  text={editAnswerState.content}
+                  setText={(text: string) => setEditAnswerState((prev) => ({ ...prev, content: text }))}
+                  handleClose={handleCloseEdit}
+                  handleSubmit={handleSubmitEdit}
+                  className='mb-8'
+                  btnSubmit='Cập nhật'
+                />
+              </>
+            ) : (
+              <div>
+                <SanitizeHTML html={answer.content} />
+                <div className='my-4 flex items-center justify-between'>
+                  <UtilsLinkGroup
+                    user={user}
+                    question={question}
+                    answer={answer}
+                    isInQuestion={false}
+                    callback={callback}
+                    openEdit={() =>
+                      setEditAnswerState({
+                        isOpen: true,
+                        answerId: answer.id,
+                        content: answer.content,
+                        showWarning: false
+                      })
+                    }
+                  />
+                  <UserData
+                    className={cn(question?.user_id === answer?.user_id && 'rounded-md bg-[#edf5fd] p-2.5')}
+                    username={answer.user.username}
+                    reputation={answer.user.reputation}
+                    createdAt={answer.created_at}
+                    isInList={false}
+                    isAnswers={true}
+                  />
                 </div>
               </div>
+            )}
+
+            {answer.children.length > 0 && (
+              <ChildAnswerList childAnswerList={answer.children} question={question} callback={callback} />
+            )}
+            {childAnswerState.isOpen && childAnswerState.answerId === answer.id ? (
+              <ChildAnswerInput
+                answer={answer}
+                showWarning={childAnswerState.showWarning}
+                text={childAnswerState.content}
+                setText={(text: string) => setChildAnswerState((prev) => ({ ...prev, content: text }))}
+                handleClose={handleCloseChild}
+                handleSubmit={handleSubmitChild}
+                className='mt-8'
+                btnSubmit={t(I18nKeys.ANSWER_SECTION.ADD_COMMENT)}
+              />
             ) : (
               <Button
                 variant='link'
                 className='mt-4 h-fit p-0 font-normal text-[#c1c4c8]'
-                onClick={() => handleOpenInput(answer.id)}
+                onClick={() => handleOpenChild(answer.id)}
               >
                 {t(I18nKeys.ANSWER_SECTION.BTN_TEXT)}
               </Button>
