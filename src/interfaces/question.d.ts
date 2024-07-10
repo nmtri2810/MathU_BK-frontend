@@ -64,11 +64,10 @@ export interface IDeleteQuestionPayload {
 }
 
 export interface IUpdateQuestionPayload {
+  id: number;
   title?: string;
   description?: string;
   tag_ids?: number[];
-
-  // callback: () => void;
 }
 
 export type TListQuestionAction = IAction<IListQuestionPayload>;

@@ -6,7 +6,7 @@ import Layout from '@/layout/mainLayout';
 import { formatTimeFromNow } from '@/lib/utils';
 import { getQuestionRequest } from '@/store/actions/question';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import UtilsLinkGroup from '@/components/pages/questions/utilsLinkGroup';
@@ -15,12 +15,15 @@ import { I18nKeys } from '@/locales/i18nKeys';
 import AnswerSection from '@/pages/answers';
 import dayjs from 'dayjs';
 import { IVote } from '@/interfaces/vote';
+import CreateQuestionForm from '@/pages/questions/createQuestionForm';
 
 const DetailQuestionScreen: React.FC = () => {
   const { id } = useParams();
   const { t, i18n } = useTranslation();
   dayjs.locale(i18n.language);
   const dispatch = useAppDispatch();
+
+  const [openEditQuestion, setOpenEditQuestion] = useState<boolean>(false);
 
   const question = useAppSelector((state) => state.question.one);
   const questionLoading = useAppSelector((state) => state.question.oneLoading);
@@ -50,48 +53,64 @@ const DetailQuestionScreen: React.FC = () => {
     fetchData();
   }, [fetchData]);
 
+  // Temp vietnamese
   return (
     <Layout>
       {!questionLoading && (
         <>
-          <div className='break-all'>
-            <div className='flex min-h-10 justify-between gap-4'>
-              <h1 className='text-2xl'>{question?.title}</h1>
-              <AskQuestionBtn />
-            </div>
-            <div className='mt-2 space-x-4 border-b-1 pb-5 text-sm'>
-              {questionTimeData.map((data, index) => (
-                <span key={index}>
-                  {data.text} <span className='italic'>{data.time}</span>
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className='mt-5 flex gap-6'>
-            <VotesBtnGroup
-              id={question?.id as number}
-              type='question'
-              votes={question?.votes as IVote[]}
-              callback={() => fetchData()}
-            />
-            <div className='w-full grow space-y-10'>
-              <div>
-                <SanitizeHTML html={question?.description as string} />
-                <TagGroup className='mt-10' tags={question?.tags} />
+          {openEditQuestion ? (
+            <>
+              <h1 className='text-3xl font-bold'>Chỉnh sửa câu hỏi</h1>
+              <CreateQuestionForm isEdit={true} questionEdit={question} callback={() => setOpenEditQuestion(false)} />
+            </>
+          ) : (
+            <>
+              <div className='break-all'>
+                <div className='flex min-h-10 justify-between gap-4'>
+                  <h1 className='text-2xl'>{question?.title}</h1>
+                  <AskQuestionBtn />
+                </div>
+                <div className='mt-2 space-x-4 border-b-1 pb-5 text-sm'>
+                  {questionTimeData.map((data, index) => (
+                    <span key={index}>
+                      {data.text} <span className='italic'>{data.time}</span>
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className='flex items-center justify-between'>
-                <UtilsLinkGroup user={user} question={question} isInQuestion={true} callback={() => fetchData()} />
-                <UserData
-                  className='rounded-md bg-[#edf5fd] p-2.5'
-                  username={question?.user.username}
-                  reputation={question?.user.reputation}
-                  createdAt={question?.created_at}
-                  isInList={false}
+              <div className='mt-5 flex gap-6'>
+                <VotesBtnGroup
+                  id={question?.id as number}
+                  type='question'
+                  votes={question?.votes as IVote[]}
+                  callback={() => fetchData()}
                 />
+                <div className='w-full grow space-y-10'>
+                  <div>
+                    <SanitizeHTML html={question?.description as string} />
+                    <TagGroup className='mt-10' tags={question?.tags} />
+                  </div>
+                  <div className='flex items-center justify-between'>
+                    <UtilsLinkGroup
+                      user={user}
+                      question={question}
+                      isInQuestion={true}
+                      callback={() => fetchData()}
+                      openEditQuestion={() => setOpenEditQuestion(true)}
+                    />
+                    <UserData
+                      className='rounded-md bg-[#edf5fd] p-2.5'
+                      username={question?.user.username}
+                      reputation={question?.user.reputation}
+                      createdAt={question?.created_at}
+                      isInList={false}
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <AnswerSection callback={() => fetchData()} />
+              <AnswerSection callback={() => fetchData()} />
+            </>
+          )}
         </>
       )}
     </Layout>

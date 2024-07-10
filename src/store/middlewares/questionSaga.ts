@@ -113,7 +113,6 @@ function* updateQuestionSaga(action: TUpdateQuestionAction) {
 
     toast.success('Cập nhật câu hỏi thành công');
 
-    // callback
     yield put(updateQuestionSuccess(response.data));
   } catch (error: unknown) {
     if (error instanceof AxiosError) {

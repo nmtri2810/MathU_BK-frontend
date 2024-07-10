@@ -17,10 +17,18 @@ interface IUtilsLinkGroupProps {
   answer?: IAnswer | null;
   isInQuestion: boolean;
   callback: () => void;
+  openEditQuestion: () => void;
 }
 
 // Temp vietnamese
-const UtilsLinkGroup: React.FC<IUtilsLinkGroupProps> = ({ user, question, answer, isInQuestion, callback }) => {
+const UtilsLinkGroup: React.FC<IUtilsLinkGroupProps> = ({
+  user,
+  question,
+  answer,
+  isInQuestion,
+  callback,
+  openEditQuestion
+}) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -56,10 +64,10 @@ const UtilsLinkGroup: React.FC<IUtilsLinkGroupProps> = ({ user, question, answer
   };
 
   const handleEdit = () => {
-    if (!answer) {
-      console.log(question);
-    } else {
-      console.log(answer);
+    if (question && !answer) {
+      openEditQuestion();
+    } else if (answer) {
+      // edit answer
     }
   };
 
