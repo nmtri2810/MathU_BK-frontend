@@ -71,6 +71,7 @@ const AnswerSection: React.FC<IAnswerSectionProps> = ({ callback }) => {
                           value={field.value}
                           onChange={field.onChange}
                           errorMsg={form.formState.errors.answer?.message}
+                          className='max-w-[839px]'
                         />
                         <FormMessage className='mt-2' />
                       </div>

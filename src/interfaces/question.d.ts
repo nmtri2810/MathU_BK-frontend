@@ -68,6 +68,7 @@ export interface IUpdateQuestionPayload {
   title?: string;
   description?: string;
   tag_ids?: number[];
+  callback: (() => void) | undefined;
 }
 
 export type TListQuestionAction = IAction<IListQuestionPayload>;

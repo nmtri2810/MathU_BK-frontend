@@ -14,9 +14,10 @@ interface ITiptapInputProps {
   errorMsg?: string | undefined;
   value: string;
   onChange: (value: string) => void;
+  className: string;
 }
 
-const TiptapInput: React.FC<ITiptapInputProps> = ({ errorMsg, value, onChange }) => {
+const TiptapInput: React.FC<ITiptapInputProps> = ({ errorMsg, value, onChange, className }) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -46,7 +47,8 @@ const TiptapInput: React.FC<ITiptapInputProps> = ({ errorMsg, value, onChange })
     <div
       className={cn(
         'tiptap-input max-h-96 rounded-md border bg-white text-[#0d0d0d] focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2',
-        errorMsg ? 'border-destructive focus-within:ring-red-100' : ''
+        errorMsg ? 'border-destructive focus-within:ring-red-100' : '',
+        className
       )}
     >
       <MenuBar editor={editor} />

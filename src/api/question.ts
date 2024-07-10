@@ -24,7 +24,7 @@ const questionAPI = {
   delete(payload: Omit<IDeleteQuestionPayload, 'navigate'>) {
     return axiosInstance.delete(`${context}/${payload.id}`);
   },
-  update(payload: Omit<IUpdateQuestionPayload, 'navigate'>) {
+  update(payload: Omit<IUpdateQuestionPayload, 'callback'>) {
     const { id, ...data } = payload;
     return axiosInstance.patch(`${context}/${id}`, data);
   }

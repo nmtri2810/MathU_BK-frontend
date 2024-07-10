@@ -25,7 +25,7 @@ import { z } from 'zod';
 interface ICreateQuestionFormProps {
   isEdit: boolean;
   questionEdit?: IQuestionBEResponse | null;
-  callback: () => void;
+  callback?: () => void;
 }
 
 // Temp vietnamese, handle here
@@ -79,10 +79,10 @@ const CreateQuestionForm: React.FC<ICreateQuestionFormProps> = ({ isEdit, questi
           id: questionEdit?.id,
           title: data.title,
           description: data.body,
-          tag_ids: tagNumArr
+          tag_ids: tagNumArr,
+          callback
         })
       );
-      callback();
     } else {
       dispatch(checkQuesDupRequest({ messages: [{ role: 'user', content: data.title }] }));
     }
@@ -134,6 +134,7 @@ const CreateQuestionForm: React.FC<ICreateQuestionFormProps> = ({ isEdit, questi
                     value={field.value}
                     onChange={field.onChange}
                     errorMsg={form.formState.errors.body?.message}
+                    className='max-w-[789px]'
                   />
                   <FormMessage className='mt-2' />
                 </AskQuestionCard>

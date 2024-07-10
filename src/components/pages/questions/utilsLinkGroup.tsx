@@ -17,7 +17,7 @@ interface IUtilsLinkGroupProps {
   answer?: IAnswer | null;
   isInQuestion: boolean;
   callback: () => void;
-  openEditQuestion: () => void;
+  openEdit: () => void;
 }
 
 // Temp vietnamese
@@ -27,7 +27,7 @@ const UtilsLinkGroup: React.FC<IUtilsLinkGroupProps> = ({
   answer,
   isInQuestion,
   callback,
-  openEditQuestion
+  openEdit
 }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -37,17 +37,18 @@ const UtilsLinkGroup: React.FC<IUtilsLinkGroupProps> = ({
 
   const isOwnerQues = user && question && user.id === question.user_id;
   const isOwnerAnswer = user && answer && user.id === answer.user_id;
+  const isQuestionHasAcceptedAnswer = question?.answers.some((answer) => answer.is_accepted);
 
   const utilsData = [
     { text: t(I18nKeys.GLOBAL.SHARE), onClick: () => handleShare() },
     user !== null ? { text: t(I18nKeys.GLOBAL.FOLLOW), onClick: () => handleFollow() } : {},
-    ...(isInQuestion && isOwnerQues
+    ...(isInQuestion && isOwnerQues && !isQuestionHasAcceptedAnswer
       ? [
           { text: t(I18nKeys.GLOBAL.EDIT), onClick: () => handleEdit() },
           { text: t(I18nKeys.GLOBAL.DELETE), onClick: () => setIsOpenConfirm(true) }
         ]
       : []),
-    ...(!isInQuestion && isOwnerAnswer
+    ...(!isInQuestion && isOwnerAnswer && !isQuestionHasAcceptedAnswer
       ? [
           { text: t(I18nKeys.GLOBAL.EDIT), onClick: () => handleEdit() },
           { text: t(I18nKeys.GLOBAL.DELETE), onClick: () => setIsOpenConfirm(true) }
@@ -64,10 +65,8 @@ const UtilsLinkGroup: React.FC<IUtilsLinkGroupProps> = ({
   };
 
   const handleEdit = () => {
-    if (question && !answer) {
-      openEditQuestion();
-    } else if (answer) {
-      // edit answer
+    if (question || answer) {
+      openEdit();
     }
   };
 

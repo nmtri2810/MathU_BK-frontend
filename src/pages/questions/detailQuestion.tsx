@@ -61,7 +61,15 @@ const DetailQuestionScreen: React.FC = () => {
           {openEditQuestion ? (
             <>
               <h1 className='text-3xl font-bold'>Chỉnh sửa câu hỏi</h1>
-              <CreateQuestionForm isEdit={true} questionEdit={question} callback={() => setOpenEditQuestion(false)} />
+              <CreateQuestionForm
+                isEdit={true}
+                questionEdit={question}
+                callback={() => {
+                  fetchData();
+                  setOpenEditQuestion(false);
+                  window.scrollTo({ top: 0, behavior: 'instant' });
+                }}
+              />
             </>
           ) : (
             <>
@@ -96,7 +104,7 @@ const DetailQuestionScreen: React.FC = () => {
                       question={question}
                       isInQuestion={true}
                       callback={() => fetchData()}
-                      openEditQuestion={() => setOpenEditQuestion(true)}
+                      openEdit={() => setOpenEditQuestion(true)}
                     />
                     <UserData
                       className='rounded-md bg-[#edf5fd] p-2.5'

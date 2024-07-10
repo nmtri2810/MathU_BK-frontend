@@ -46,6 +46,10 @@ function* updateAnswerSaga(action: TUpdateAnswerAction) {
   try {
     const { payload } = action;
     const response: TUpdateAnswerResponse = yield call(answerAPI.update, payload);
+
+    toast.success('Cập nhật câu trả lời thành công');
+
+    payload.callback?.();
     yield put(updateAnswerSuccess(response.data));
   } catch (error: unknown) {
     if (error instanceof AxiosError) {
